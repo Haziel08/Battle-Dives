@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b7ksoswosjirl"]
+
+[ext_resource type="Script" uid="uid://chr48sixv7qeh" path="res://entities/findings/finding.gd" id="1_qb5re"]
+
+[node name="Finding" type="Node2D" unique_id=1624516279]
+script = ExtResource("1_qb5re")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1356876344]
+
+[node name="Collision" type="Area2D" parent="." unique_id=1183298046]
+
+[node name="Shape" type="CollisionShape2D" parent="Collision" unique_id=1854676678]
+
+[node name="StatsLabel" type="Label" parent="." unique_id=1504463343]
+offset_right = 40.0
+offset_bottom = 23.0

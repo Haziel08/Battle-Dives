@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b2461a675k1fx"]
+
+[ext_resource type="Script" uid="uid://bsgdlftggsrpl" path="res://entities/threats/threat_base.gd" id="1_gr5rv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6jv"]
+
+[node name="ThreatBase" type="PathFollow2D" unique_id=878067196]
+script = ExtResource("1_gr5rv")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2114193391]
+
+[node name="Collision" type="Area2D" parent="." unique_id=2079149758]
+
+[node name="Shape" type="CollisionShape2D" parent="Collision" unique_id=1857260864]
+shape = SubResource("RectangleShape2D_6x6jv")
