@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://drp25ucsq8umd"]
+
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/specialist_data.gd" id="1_ex4ev"]
+
+[resource]
+script = ExtResource("1_ex4ev")
+nombre = "Arqueólogo"
+costo = 120
+hp = 80.0
+danio = 0.0
+velocidad = 0.0
+velocidad_ataque = 0.0
+es_estatico = true
+curacion_fisica = 5.0
+color_debug = Color(0.6813187, 0.3703858, 0.09170278, 1)
+tecla_numero = 4
+efectivo_contra = Array[String](["buceador"])
+metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

@@ -6,12 +6,7 @@
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/ingeniero.tres" id="3_c1bvk"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/espeleobuzo.tres" id="4_1gksf"]
 [ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="4_5qqpq"]
-[ext_resource type="Resource" uid="uid://drp25ucsq8umd" path="res://entities/specialists/arqueologo.tres" id="4_15qh4"]
 [ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="5_c1bvk"]
-[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/cient_materiales.tres" id="6_1lclo"]
-[ext_resource type="Resource" uid="uid://mwr1khs78xw7" path="res://entities/specialists/oceanografo.tres" id="7_bwlsm"]
-[ext_resource type="Resource" uid="uid://c1u1ch451rlfh" path="res://entities/specialists/paleontologo.tres" id="8_56i0c"]
-[ext_resource type="Resource" uid="uid://d38r41g5a533o" path="res://entities/specialists/conservador.tres" id="9_isui0"]
 
 [sub_resource type="Curve2D" id="Curve2D_fhjk5"]
 _data = {
@@ -21,8 +16,9 @@ point_count = 2
 
 [node name="LevelBase" type="Node2D" unique_id=982060970]
 script = ExtResource("1_6gbj8")
-especialistas = Array[ExtResource("2_17c11")]([ExtResource("4_1gksf"), ExtResource("7_bwlsm"), ExtResource("6_1lclo"), ExtResource("4_15qh4"), ExtResource("9_isui0"), ExtResource("8_56i0c"), ExtResource("3_c1bvk")])
+especialistas = Array[ExtResource("2_17c11")]([ExtResource("3_c1bvk"), ExtResource("4_1gksf")])
 amenazas_oleada = Array[ExtResource("4_5qqpq")]([ExtResource("5_c1bvk")])
+intervalo_oleada = null
 
 [node name="Path2D" type="Path2D" parent="." unique_id=880993261]
 curve = SubResource("Curve2D_fhjk5")
@@ -38,126 +34,112 @@ offset_bottom = 311.0
 [node name="TopPanel" type="ColorRect" parent="HUD" unique_id=724008284]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 60.0
 grow_horizontal = 2
-color = Color(0.078431375, 0.078431375, 0.11764706, 0.78431374)
+color = Color(0, 0, 0, 0)
 
 [node name="LabelFI" type="Label" parent="HUD/TopPanel" unique_id=1625199864]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 15.0
-offset_right = 160.0
-offset_bottom = 45.0
+offset_left = 565.0
+offset_top = 98.0
+offset_right = 566.0
+offset_bottom = 121.0
 
 [node name="LabelIF" type="Label" parent="HUD/TopPanel" unique_id=1020431226]
 layout_mode = 0
-offset_left = 865.0
-offset_top = 25.0
-offset_right = 1010.0
-offset_bottom = 48.0
+offset_left = 562.0
+offset_top = 98.0
+offset_right = 563.0
+offset_bottom = 121.0
 
 [node name="LabelIC" type="Label" parent="HUD/TopPanel" unique_id=1797213782]
 layout_mode = 0
-offset_left = 515.0
-offset_top = 25.0
-offset_right = 660.0
-offset_bottom = 48.0
+offset_left = 560.0
+offset_top = 98.0
+offset_right = 561.0
+offset_bottom = 121.0
 
 [node name="LabelNombre" type="Label" parent="HUD/TopPanel" unique_id=215230953]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 5.0
-offset_right = 1140.0
-offset_bottom = 28.0
+offset_left = 567.0
+offset_top = 98.0
+offset_right = 568.0
+offset_bottom = 121.0
 
 [node name="BarraFisica" type="ProgressBar" parent="HUD/TopPanel" unique_id=671412389]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 25.0
-offset_right = 1140.0
-offset_bottom = 52.0
+offset_left = 570.0
+offset_top = 40.0
+offset_right = 574.0
+offset_bottom = 67.0
 max_value = 1000.0
 value = 1000.0
 
 [node name="BarraCientifica" type="ProgressBar" parent="HUD/TopPanel" unique_id=895385268]
 layout_mode = 0
-offset_left = 500.0
-offset_top = 25.0
-offset_right = 790.0
-offset_bottom = 52.0
+offset_left = 574.0
+offset_top = 40.0
+offset_right = 578.0
+offset_bottom = 67.0
 
 [node name="BottomPanel" type="ColorRect" parent="HUD" unique_id=42704498]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -90.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.078431375, 0.078431375, 0.11764706, 0.78431374)
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="BtnSlot1" type="Button" parent="HUD/BottomPanel" unique_id=1190528054]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 90.0
-offset_bottom = 85.0
+offset_left = 4.0
+offset_top = 570.0
+offset_right = 84.0
+offset_bottom = 650.0
 
 [node name="BtnSlot2" type="Button" parent="HUD/BottomPanel" unique_id=2052707981]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 100.0
-offset_top = 5.0
-offset_right = 180.0
-offset_bottom = 85.0
+offset_left = 92.0
+offset_top = 570.0
+offset_right = 172.0
+offset_bottom = 650.0
 
 [node name="BtnSlot3" type="Button" parent="HUD/BottomPanel" unique_id=1327244759]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 190.0
-offset_top = 5.0
-offset_right = 270.0
-offset_bottom = 85.0
+offset_left = 180.0
+offset_top = 570.0
+offset_right = 260.0
+offset_bottom = 650.0
 
 [node name="BtnSlot4" type="Button" parent="HUD/BottomPanel" unique_id=1199779240]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 280.0
-offset_top = 5.0
-offset_right = 360.0
-offset_bottom = 85.0
+offset_left = 268.0
+offset_top = 570.0
+offset_right = 348.0
+offset_bottom = 650.0
 
 [node name="BtnSlot5" type="Button" parent="HUD/BottomPanel" unique_id=1636245290]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 370.0
-offset_top = 5.0
-offset_right = 450.0
-offset_bottom = 85.0
+offset_left = 356.0
+offset_top = 570.0
+offset_right = 436.0
+offset_bottom = 650.0
 
 [node name="BtnSlot6" type="Button" parent="HUD/BottomPanel" unique_id=803972699]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 460.0
-offset_top = 5.0
-offset_right = 540.0
-offset_bottom = 85.0
+offset_left = 444.0
+offset_top = 570.0
+offset_right = 524.0
+offset_bottom = 650.0
 
 [node name="BtnSlot7" type="Button" parent="HUD/BottomPanel" unique_id=1000143109]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 550.0
-offset_top = 5.0
-offset_right = 630.0
-offset_bottom = 85.0
-
-[node name="BtnMejoraFI" type="Button" parent="HUD/BottomPanel" unique_id=391739322]
-layout_mode = 0
-offset_left = 960.0
-offset_top = 5.0
-offset_right = 1140.0
-offset_bottom = 85.0
+offset_left = 532.0
+offset_top = 570.0
+offset_right = 612.0
+offset_bottom = 650.0
 
 [node name="FindingZone" type="Node2D" parent="." unique_id=1478852481]
 position = Vector2(1137, 99)

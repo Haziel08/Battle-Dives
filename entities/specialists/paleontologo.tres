@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://c1u1ch451rlfh"]
+
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/specialist_data.gd" id="1_fn8s5"]
+
+[resource]
+script = ExtResource("1_fn8s5")
+nombre = "Paleontólogo"
+costo = 150
+hp = 70.0
+danio = 30.0
+fuerza_empuje = 0.1
+genera_fi_bonus = 15.0
+color_debug = Color(0.6944704, 0.675528, 0.21433261, 1)
+tecla_numero = 6
+efectivo_contra = Array[String](["saqueador", "buceador"])
+metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ThreatData" format=3 uid="uid://cox33n1ev3ogr"]
+
+[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="1_tnb0x"]
+
+[resource]
+script = ExtResource("1_tnb0x")
+nombre = "Sedimento"
+hp = 1.0
+velocidad = 60.0
+danio_fisico = 0.0
+ignora_tropas = true
+color_debug = Color(0.9607843, 0, 0.023529412, 1)
+tipo = "sedimento"
+metadata/_custom_type_script = "uid://d04cl4yo35bla"

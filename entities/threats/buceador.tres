@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ThreatData" format=3 uid="uid://d1p6sces8obfg"]
+
+[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="1_3o40w"]
+
+[resource]
+script = ExtResource("1_3o40w")
+nombre = "Buceador Irresponsable"
+danio_fisico = 0.0
+danio_cientifico = 25.0
+color_debug = Color(0.025315145, 0.090824105, 0.21424428, 1)
+tipo = "buceador"
+metadata/_custom_type_script = "uid://d04cl4yo35bla"

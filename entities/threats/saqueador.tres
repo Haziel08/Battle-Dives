@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ThreatData" format=3 uid="uid://cqnmwh05koeev"]
+
+[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="1_optev"]
+
+[resource]
+script = ExtResource("1_optev")
+nombre = "Saqueador"
+hp = 200.0
+danio_fisico = 50.0
+danio_cientifico = 50.0
+danio_a_tropas = 40.0
+color_debug = Color(0.15881714, 0.0999141, 0.18641132, 1)
+tipo = "saqueador"
+metadata/_custom_type_script = "uid://d04cl4yo35bla"

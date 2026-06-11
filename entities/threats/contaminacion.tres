@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ThreatData" format=3 uid="uid://vyjuxdp1q4sy"]
+
+[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="1_u0qyw"]
+
+[resource]
+script = ExtResource("1_u0qyw")
+nombre = "Contaminación"
+hp = 80.0
+velocidad = 25.0
+danio_cientifico = 0.0
+danio_a_tropas = 10.0
+danio_continuo = true
+color_debug = Color(0.51478, 0.22906473, 0.1208977, 1)
+tipo = "contaminacion"
+metadata/_custom_type_script = "uid://d04cl4yo35bla"

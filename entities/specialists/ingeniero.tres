@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://bbbwcfhe43j23"]
+
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/specialist_data.gd" id="1_idu7o"]
+
+[resource]
+script = ExtResource("1_idu7o")
+nombre = "Ingeniero"
+costo = 200
+hp = 120.0
+danio = 20.0
+velocidad_ataque = 0.7
+fuerza_empuje = 0.6
+color_debug = Color(0.46347243, 0.7177514, 0.18079364, 1)
+tecla_numero = 7
+efectivo_contra = Array[String](["sedimento", "buceador"])
+metadata/_custom_type_script = "uid://cn5ubsk5eln5s"
