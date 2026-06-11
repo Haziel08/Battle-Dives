@@ -1,9 +1,6 @@
 extends PathFollow2D
 
-# La ficha de datos (se asigna desde el nivel)
 var datos: SpecialistData = null
-
-# Estado en tiempo real
 var hp_actual: float = 0.0
 var objetivo = null
 var timer_ataque: float = 0.0
@@ -26,7 +23,6 @@ func _process(delta: float) -> void:
 
 	offset_golpe = lerp(offset_golpe, 0.0, delta * 10.0)
 
-	# Curación pasiva
 	if datos.curacion_fisica > 0.0 or datos.curacion_cientifica > 0.0:
 		timer_curacion += delta
 		if timer_curacion >= 1.0:
@@ -75,15 +71,23 @@ func _atacar() -> void:
 		objetivo = null
 		en_combate = false
 		return
+
+	if objetivo.datos == null:
+		objetivo = null
+		en_combate = false
+		return
+
 	var danio_final = datos.danio
-	# Ventaja por tipo
-	if datos.efectivo_contra.has(objetivo.datos.tipo):
-		danio_final *= datos.multiplicador_daño
-		print("¡Ventaja! ", datos.nombre, " x", datos.multiplicador_daño, " contra ", objetivo.datos.tipo)
-	# Bonus FI al dar golpe de gracia (Paleontólogo)
+
+	# Solo aplica ventaja si el objetivo es una amenaza (tiene threat_data con .tipo)
+	if objetivo.datos is ThreatData:
+		if datos.efectivo_contra.has(objetivo.datos.tipo):
+			danio_final *= datos.multiplicador_danio
+
 	if datos.genera_fi_bonus > 0.0 and objetivo.hp_actual - danio_final <= 0.0:
 		if ref_nivel != null:
 			ref_nivel.agregar_fi(datos.genera_fi_bonus)
+
 	objetivo.recibir_danio_de_tropa(danio_final, datos.fuerza_empuje)
 	offset_golpe = 8.0
 

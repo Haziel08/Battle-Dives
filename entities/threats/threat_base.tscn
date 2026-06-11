@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6jv"]
 
 [node name="ThreatBase" type="PathFollow2D" unique_id=878067196]
+loop = false
 script = ExtResource("1_gr5rv")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2114193391]

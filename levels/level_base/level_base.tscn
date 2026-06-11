@@ -2,27 +2,17 @@
 
 [ext_resource type="Script" uid="uid://y47v0xe8rh55" path="res://levels/level_base/level_base.gd" id="1_6gbj8"]
 [ext_resource type="PackedScene" uid="uid://b7ksoswosjirl" path="res://entities/findings/finding.tscn" id="2_5v68e"]
-[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/specialist_data.gd" id="2_17c11"]
-[ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/ingeniero.tres" id="3_c1bvk"]
-[ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/espeleobuzo.tres" id="4_1gksf"]
-[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="4_5qqpq"]
-[ext_resource type="Resource" uid="uid://drp25ucsq8umd" path="res://entities/specialists/arqueologo.tres" id="4_15qh4"]
-[ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="5_c1bvk"]
-[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/cient_materiales.tres" id="6_1lclo"]
-[ext_resource type="Resource" uid="uid://mwr1khs78xw7" path="res://entities/specialists/oceanografo.tres" id="7_bwlsm"]
-[ext_resource type="Resource" uid="uid://c1u1ch451rlfh" path="res://entities/specialists/paleontologo.tres" id="8_56i0c"]
-[ext_resource type="Resource" uid="uid://d38r41g5a533o" path="res://entities/specialists/conservador.tres" id="9_isui0"]
+[ext_resource type="Resource" uid="uid://cnhbn04yv5h16" path="res://levels/level_base/nivel_1.tres" id="2_7sxc7"]
 
 [sub_resource type="Curve2D" id="Curve2D_fhjk5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 150, 0, 0, 0, 0, 1152, 150)
+"points": PackedVector2Array(0, 0, 0, 0, -1, 300, 0, 0, 0, 0, 1152, 300)
 }
 point_count = 2
 
 [node name="LevelBase" type="Node2D" unique_id=982060970]
 script = ExtResource("1_6gbj8")
-especialistas = Array[ExtResource("2_17c11")]([ExtResource("4_1gksf"), ExtResource("7_bwlsm"), ExtResource("6_1lclo"), ExtResource("4_15qh4"), ExtResource("9_isui0"), ExtResource("8_56i0c"), ExtResource("3_c1bvk")])
-amenazas_oleada = Array[ExtResource("4_5qqpq")]([ExtResource("5_c1bvk")])
+nivel_actual = ExtResource("2_7sxc7")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=880993261]
 curve = SubResource("Curve2D_fhjk5")
@@ -160,10 +150,8 @@ offset_right = 1140.0
 offset_bottom = 85.0
 
 [node name="FindingZone" type="Node2D" parent="." unique_id=1478852481]
-position = Vector2(1137, 99)
+position = Vector2(1000, 282)
 
 [node name="Finding" parent="FindingZone" unique_id=1624516279 instance=ExtResource("2_5v68e")]
-position = Vector2(-145, -6)
+position = Vector2(-2, 0)
 nombre_hallazgo = "Marcas de Soga"
-integridad_fisica = null
-integridad_cientifica = null

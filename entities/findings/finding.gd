@@ -14,6 +14,7 @@ signal stats_actualizados(if_actual, if_max, ic_actual, ic_max)
 func _ready() -> void:
 	if_max = integridad_fisica
 	ic_max = integridad_cientifica
+	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
 
 func recibir_danio_fisico(cantidad: float) -> void:
 	integridad_fisica = max(0.0, integridad_fisica - cantidad)
@@ -26,6 +27,14 @@ func recibir_danio_cientifico(cantidad: float) -> void:
 	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
 	if integridad_cientifica <= 0.0:
 		emit_signal("contexto_perdido")
+
+func curar_fisico(cantidad: float) -> void:
+	integridad_fisica = min(if_max, integridad_fisica + cantidad)
+	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
+
+func curar_cientifico(cantidad: float) -> void:
+	integridad_cientifica = min(ic_max, integridad_cientifica + cantidad)
+	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
 
 func get_nombre() -> String:
 	return nombre_hallazgo
