@@ -10,6 +10,7 @@ var esta_vivo: bool = true
 var offset_golpe: float = 0.0
 var ref_hallazgo = null
 var ref_nivel = null
+var timer_vida_estatico: float = 0.0
 
 func inicializar(ficha: SpecialistData, hallazgo, nivel) -> void:
 	datos = ficha
@@ -34,6 +35,10 @@ func _process(delta: float) -> void:
 					ref_hallazgo.curar_cientifico(datos.curacion_cientifica)
 
 	if datos.es_estatico:
+		timer_vida_estatico += delta
+		if timer_vida_estatico >= datos.duracion_estatico:
+			esta_vivo = false
+			queue_free()
 		return
 
 	if objetivo == null or not is_instance_valid(objetivo):

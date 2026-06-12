@@ -19,3 +19,4 @@ extends Resource
 @export var tecla_numero: int = 1  # qué tecla lo despliega (1-7)
 @export var efectivo_contra: Array[String] = []
 @export var multiplicador_danio: float = 2.0  # daño x2 contra esas amenazas
+@export var duracion_estatico: float = 10.0  # segundos que permanece curando
