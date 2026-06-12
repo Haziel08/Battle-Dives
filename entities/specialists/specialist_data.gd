@@ -18,4 +18,4 @@ extends Resource
 @export var color_debug: Color = Color.CYAN
 @export var tecla_numero: int = 1  # qué tecla lo despliega (1-7)
 @export var efectivo_contra: Array[String] = []
-@export var multiplicador_daño: float = 2.0  # daño x2 contra esas amenazas
+@export var multiplicador_danio: float = 2.0  # daño x2 contra esas amenazas

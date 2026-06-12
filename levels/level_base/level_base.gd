@@ -30,6 +30,17 @@ const MAX_NIVEL_GENERACION: int = 5
 @onready var label_mensaje: Label = $HUD/LabelMensaje
 @onready var bottom_bar = $HUD/BottomPanel
 @onready var btn_mejora: Button = $HUD/BottomPanel/BtnMejoraFI
+@onready var panel_fin: Panel = $HUD/PanelFin
+@onready var label_resultado: Label = $HUD/PanelFin/LabelResultado
+@onready var btn_reintentar: Button = $HUD/PanelFin/BtnReintentar
+@onready var btn_siguiente: Button = $HUD/PanelFin/BtnSiguiente
+@onready var btn_salir: Button = $HUD/PanelFin/BtnSalir
+@onready var btn_pausa: Button = $HUD/BtnPausa
+@onready var panel_pausa: Panel = $HUD/PanelPausa
+@onready var slider_musica: HSlider = $HUD/PanelPausa/SliderMusica
+@onready var slider_sfx: HSlider = $HUD/PanelPausa/SliderSFX
+@onready var btn_reanudar: Button = $HUD/PanelPausa/BtnReanudar
+@onready var btn_salir_pausa: Button = $HUD/PanelPausa/BtnSalirPausa
 
 var botones: Array = []
 var timer_fi: float = 0.0
@@ -60,6 +71,30 @@ func _ready() -> void:
 	btn_mejora.pressed.connect(_on_mejora_pressed)
 	_actualizar_btn_mejora()
 	actualizar_hud()
+	
+	panel_fin.hide()
+	btn_reintentar.pressed.connect(_on_reintentar_pressed)
+	btn_siguiente.pressed.connect(_on_siguiente_pressed)
+	btn_salir.pressed.connect(_on_salir_pressed)
+
+	# IMPORTANTE: que el panel funcione aunque el árbol esté en pausa
+	panel_fin.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_reintentar.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_siguiente.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_salir.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	panel_pausa.hide()
+	btn_pausa.pressed.connect(_on_pausa_pressed)
+	btn_reanudar.pressed.connect(_on_reanudar_pressed)
+	btn_salir_pausa.pressed.connect(_on_salir_pressed)
+	slider_musica.value_changed.connect(_on_volumen_musica_changed)
+	slider_sfx.value_changed.connect(_on_volumen_sfx_changed)
+
+	# Que funcionen en pausa
+	btn_pausa.process_mode = Node.PROCESS_MODE_ALWAYS
+	panel_pausa.process_mode = Node.PROCESS_MODE_ALWAYS
+	for hijo in panel_pausa.get_children():
+		hijo.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _cargar_configuracion() -> void:
 	# Cargar datos del hallazgo
@@ -122,6 +157,13 @@ func _process(delta: float) -> void:
 		btn_mejora.disabled = fondo_investigacion < costo_mejora_actual()
 
 func _input(event: InputEvent) -> void:
+# Dentro de _input(), AL PRINCIPIO, antes del check de juego_activo:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		if panel_pausa.visible:
+			_on_reanudar_pressed()
+		elif juego_activo:
+			_on_pausa_pressed()
+		return
 	if not event is InputEventKey or not event.pressed or not juego_activo:
 		return
 	var num = event.keycode - KEY_0
@@ -196,19 +238,58 @@ func _on_stats_actualizados(if_actual, if_maximo, ic_actual, ic_maximo) -> void:
 	label_ic.text = "IC: %d/%d" % [ic_actual, ic_maximo]
 
 func _on_hallazgo_destruido() -> void:
-	juego_activo = false
-	label_mensaje.text = "DERROTA\nEl hallazgo fue destruido"
+	_terminar_juego("DERROTA\nEl hallazgo fue destruido", false)
 
 func _on_contexto_perdido() -> void:
-	juego_activo = false
-	label_mensaje.text = "DERROTA\nEl contexto científico fue perdido"
+	_terminar_juego("DERROTA\nEl contexto científico fue perdido", false)
 
 func _victoria() -> void:
-	juego_activo = false
-	label_mensaje.text = "¡VICTORIA!\nHallazgo protegido"
+	_terminar_juego("¡VICTORIA!\nHallazgo protegido", true)
+
 	
 func _no_quedan_amenazas() -> bool:
 	for hijo in path.get_children():
 		if hijo.has_method("recibir_danio_de_tropa"):
 			return false
 	return true
+	
+func _terminar_juego(mensaje: String, gano: bool) -> void:
+	juego_activo = false
+	get_tree().paused = true
+	_mostrar_panel_fin(mensaje, gano)
+
+func _mostrar_panel_fin(mensaje: String, gano: bool) -> void:
+	label_resultado.text = mensaje
+	btn_siguiente.visible = gano  # solo mostrar "Siguiente" si ganó
+	panel_fin.show()
+
+func _on_reintentar_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_siguiente_pressed() -> void:
+	get_tree().paused = false
+	# Por ahora reinicia el mismo nivel; cuando tengas selector de niveles, cambia esto
+	get_tree().reload_current_scene()
+
+func _on_salir_pressed() -> void:
+	get_tree().paused = false
+	# Cuando tengas el menú principal, cambia esta ruta
+	get_tree().reload_current_scene()
+	
+func _on_pausa_pressed() -> void:
+	if juego_activo:
+		get_tree().paused = true
+		panel_pausa.show()
+
+func _on_reanudar_pressed() -> void:
+	get_tree().paused = false
+	panel_pausa.hide()
+
+func _on_volumen_musica_changed(valor: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_idx, linear_to_db(valor))
+
+func _on_volumen_sfx_changed(valor: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(bus_idx, linear_to_db(valor))
