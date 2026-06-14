@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://de2rlocykmnqn"]
+
+[ext_resource type="Script" uid="uid://dw05gchtnptxb" path="res://entities/specialists/specialist_base.gd" id="1_emsse"]
+
+[node name="SpecialistBase" type="Node2D" unique_id=532896790]
+script = ExtResource("1_emsse")

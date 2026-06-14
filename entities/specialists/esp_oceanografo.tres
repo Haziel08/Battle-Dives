@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://d4mf3lfkgc1m2"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_4naqx"]
+
+[resource]
+script = ExtResource("1_4naqx")
+nombre = "Oceanógrafo"
+costo = 75
+duracion = 25.0
+pasiva_reduce_prob_evento = 0.3
+tiene_activa = true
+nombre_activa = "Pronóstico"
+color_debug = Color(3.272891e-06, 0.946183, 0.9248272, 1)
+metadata/_custom_type_script = "uid://jp81cwh1fegm"

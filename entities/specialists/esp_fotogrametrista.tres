@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://dulf5jjqjf0mj"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_wy276"]
+
+[resource]
+script = ExtResource("1_wy276")
+nombre = "Fotogrametrista"
+costo = 85
+duracion = 20.0
+tiene_activa = true
+nombre_activa = "Escaneo 3D"
+cooldown_activa = 35.0
+activa_ic_instantaneo = 15.0
+activa_cura_efecto = "baja_visibilidad"
+color_debug = Color(0.64282286, 0.11871263, 0.39875656, 1)
+metadata/_custom_type_script = "uid://jp81cwh1fegm"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TechniqueData" format=3 uid="uid://cnio0m1nj2ixd"]
+
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="1_l1ngh"]
+
+[resource]
+script = ExtResource("1_l1ngh")
+nombre = "Vigilancia"
+costo = 60
+danio = 12.0
+velocidad = 50.0
+radio_deteccion = 100.0
+efectivo_contra = Array[String](["saqueador", "buceador"])
+color_debug = Color(0.50147754, 0.56512266, 0.09797313, 1)
+metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

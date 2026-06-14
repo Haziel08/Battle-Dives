@@ -1,18 +1,18 @@
 extends PathFollow2D
 
-var datos: SpecialistData = null
+var datos: TechniqueData = null
 var hp_actual: float = 0.0
 var objetivo = null
 var timer_ataque: float = 0.0
-var timer_curacion: float = 0.0
 var en_combate: bool = false
 var esta_vivo: bool = true
 var offset_golpe: float = 0.0
+var flash_danio: float = 0.0
 var ref_hallazgo = null
 var ref_nivel = null
 var timer_vida_estatico: float = 0.0
 
-func inicializar(ficha: SpecialistData, hallazgo, nivel) -> void:
+func inicializar(ficha: TechniqueData, hallazgo, nivel) -> void:
 	datos = ficha
 	hp_actual = ficha.hp
 	ref_hallazgo = hallazgo
@@ -23,16 +23,7 @@ func _process(delta: float) -> void:
 		return
 
 	offset_golpe = lerp(offset_golpe, 0.0, delta * 10.0)
-
-	if datos.curacion_fisica > 0.0 or datos.curacion_cientifica > 0.0:
-		timer_curacion += delta
-		if timer_curacion >= 1.0:
-			timer_curacion = 0.0
-			if ref_hallazgo != null:
-				if datos.curacion_fisica > 0.0:
-					ref_hallazgo.curar_fisico(datos.curacion_fisica)
-				if datos.curacion_cientifica > 0.0:
-					ref_hallazgo.curar_cientifico(datos.curacion_cientifica)
+	flash_danio = lerp(flash_danio, 0.0, delta * 15.0)
 
 	if datos.es_estatico:
 		timer_vida_estatico += delta
@@ -64,6 +55,10 @@ func _buscar_enemigo() -> void:
 		if hijo == self:
 			continue
 		if hijo.has_method("recibir_danio_de_tropa"):
+			# Si la amenaza ignora tropas, solo me ancho si soy su contador
+			if hijo.datos != null and hijo.datos.ignora_tropas:
+				if not datos.efectivo_contra.has(hijo.datos.tipo):
+					continue
 			var dist = global_position.distance_to(hijo.global_position)
 			if dist <= datos.radio_deteccion:
 				objetivo = hijo
@@ -84,19 +79,15 @@ func _atacar() -> void:
 
 	var danio_final = datos.danio
 
-	# Solo aplica ventaja si el objetivo es una amenaza (tiene threat_data con .tipo)
 	if objetivo.datos is ThreatData:
 		if datos.efectivo_contra.has(objetivo.datos.tipo):
 			danio_final *= datos.multiplicador_danio
-
-	if datos.genera_fi_bonus > 0.0 and objetivo.hp_actual - danio_final <= 0.0:
-		if ref_nivel != null:
-			ref_nivel.agregar_fi(datos.genera_fi_bonus)
 
 	objetivo.recibir_danio_de_tropa(danio_final, datos.fuerza_empuje)
 	offset_golpe = 8.0
 
 func recibir_danio(cantidad: float, fuerza_empuje_atacante: float = 0.0) -> void:
+	flash_danio = 1.0
 	hp_actual -= cantidad
 	offset_golpe = -6.0
 	if randf() < fuerza_empuje_atacante:
@@ -108,6 +99,7 @@ func recibir_danio(cantidad: float, fuerza_empuje_atacante: float = 0.0) -> void
 func _draw() -> void:
 	if datos == null:
 		return
-	draw_rect(Rect2(-16 + offset_golpe, -16, 32, 32), datos.color_debug)
+	var color = datos.color_debug.lerp(Color.WHITE, flash_danio)
+	draw_rect(Rect2(-16 + offset_golpe, -16, 32, 32), color)
 	if not datos.es_estatico:
 		draw_arc(Vector2.ZERO, datos.radio_deteccion, 0, TAU, 32, Color(datos.color_debug.r, datos.color_debug.g, datos.color_debug.b, 0.2))

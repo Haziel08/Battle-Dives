@@ -1,23 +1,37 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cnhbn04yv5h16"]
 
-[ext_resource type="Script" uid="uid://d04cl4yo35bla" path="res://entities/threats/threat_data.gd" id="1_7kr44"]
-[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/specialist_data.gd" id="2_071ma"]
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="2_071ma"]
+[ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="2_mfrsj"]
 [ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="3_2pu5b"]
-[ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="3_8ipkg"]
-[ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/espeleobuzo.tres" id="7_lc5sy"]
-[ext_resource type="Resource" uid="uid://mwr1khs78xw7" path="res://entities/specialists/oceanografo.tres" id="8_0w0fe"]
-[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/cient_materiales.tres" id="9_17xrd"]
-[ext_resource type="Resource" uid="uid://drp25ucsq8umd" path="res://entities/specialists/arqueologo.tres" id="10_ac7yr"]
-[ext_resource type="Resource" uid="uid://d38r41g5a533o" path="res://entities/specialists/conservador.tres" id="11_6ca8a"]
-[ext_resource type="Resource" uid="uid://c1u1ch451rlfh" path="res://entities/specialists/paleontologo.tres" id="12_hrrv1"]
-[ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/ingeniero.tres" id="13_r34bl"]
+[ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="3_8ipkg"]
+[ext_resource type="Resource" uid="uid://nuh7qkj2vbm5" path="res://entities/specialists/esp_divulgador.tres" id="4_cnso8"]
+[ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="5_ibu0c"]
+[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="6_lc5sy"]
+[ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="7_0w0fe"]
+[ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="8_cnso8"]
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="10_ac7yr"]
+[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="11_6ca8a"]
+[ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="12_hrrv1"]
+[ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="13_r34bl"]
+[ext_resource type="Resource" uid="uid://c1u1ch451rlfh" path="res://entities/specialists/tec_paleontologo.tres" id="14_l6nan"]
+[ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="15_ibu0c"]
+[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="16_lc5sy"]
+
+[sub_resource type="Resource" id="Resource_cnso8"]
+script = ExtResource("7_0w0fe")
+threat = ExtResource("8_cnso8")
+cantidad = 1
+intervalo_spawn = 30.0
+tiempo_inicio = 10.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
 
 [resource]
 script = ExtResource("3_2pu5b")
 nombre_nivel = "Nivel 1: Entrada a Hoyo Negro"
 nombre_hallazgo = "Marcas de Soga"
-especialistas_disponibles = Array[ExtResource("2_071ma")]([ExtResource("7_lc5sy"), ExtResource("8_0w0fe"), ExtResource("9_17xrd"), ExtResource("10_ac7yr"), ExtResource("11_6ca8a"), ExtResource("12_hrrv1"), ExtResource("13_r34bl")])
-amenazas_oleada = Array[ExtResource("1_7kr44")]([ExtResource("3_8ipkg")])
+tecnicas_disponibles = Array[ExtResource("10_ac7yr")]([ExtResource("11_6ca8a"), ExtResource("12_hrrv1"), ExtResource("13_r34bl"), ExtResource("14_l6nan"), ExtResource("15_ibu0c"), ExtResource("16_lc5sy")])
+especialistas_disponibles = Array[ExtResource("2_071ma")]([ExtResource("2_mfrsj"), ExtResource("3_8ipkg"), ExtResource("4_cnso8"), ExtResource("5_ibu0c"), ExtResource("6_lc5sy")])
+duracion_nivel = 120.0
+oleadas = Array[ExtResource("7_0w0fe")]([SubResource("Resource_cnso8")])
 es_tutorial = true
-pasos_tutorial = Array[String](["Bienvenido a Hoyo Negro. Tu misión es proteger el hallazgo.", "El FI (Fondo de Investigación) te permite desplegar especialistas.", "Presiona el Espeleobuzo para desplegarlo en el carril."])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

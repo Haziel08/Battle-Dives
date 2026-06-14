@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://ck7kb228mu81b"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_qyv4t"]
+
+[resource]
+script = ExtResource("1_qyv4t")
+nombre = "Conservador"
+costo = 70
+duracion = 20.0
+pasiva_if_por_seg = 2.0
+tiene_activa = true
+nombre_activa = "Estabilizar"
+cooldown_activa = 25.0
+activa_reduce_danio_pct = 0.5
+color_debug = Color(0.876136, 0.4504394, 0.15803328, 1)
+metadata/_custom_type_script = "uid://jp81cwh1fegm"

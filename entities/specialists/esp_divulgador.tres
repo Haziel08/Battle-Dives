@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://nuh7qkj2vbm5"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_wkbvd"]
+
+[resource]
+script = ExtResource("1_wkbvd")
+nombre = "Educador Comunitario"
+costo = 90
+duracion = 20.0
+reduce_prob_amenaza_tipo = "saqueador"
+reduce_prob_amenaza_pct = 0.3
+tiene_activa = true
+nombre_activa = "Campaña de Concientización"
+cooldown_activa = 25.0
+activa_reduce_danio_amenaza_pct = 0.5
+activa_aplica_a_tipos = Array[String](["saqueador", "buceador"])
+color_debug = Color(0.6970636, 0.7259581, 1.540184e-06, 1)
+metadata/_custom_type_script = "uid://jp81cwh1fegm"

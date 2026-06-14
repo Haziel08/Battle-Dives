@@ -1,22 +1,32 @@
-# specialist_data.gd
-# Esta es la "ficha" de cada especialista. Solo datos, cero lógica.
 class_name SpecialistData
 extends Resource
 
-@export var nombre: String = "Especialista"
+@export var nombre: String = ""
 @export var costo: int = 50
-@export var hp: float = 100.0
-@export var danio: float = 25.0
-@export var velocidad: float = 80.0
-@export var velocidad_ataque: float = 1.0
-@export var fuerza_empuje: float = 0.0
-@export var radio_deteccion: float = 60.0
-@export var es_estatico: bool = false
-@export var curacion_fisica: float = 0.0
-@export var curacion_cientifica: float = 0.0
-@export var genera_fi_bonus: float = 0.0
-@export var color_debug: Color = Color.CYAN
-@export var tecla_numero: int = 1  # qué tecla lo despliega (1-7)
-@export var efectivo_contra: Array[String] = []
-@export var multiplicador_danio: float = 2.0  # daño x2 contra esas amenazas
-@export var duracion_estatico: float = 10.0  # segundos que permanece curando
+@export var duracion: float = 15.0  # segundos activo sobre el hallazgo
+
+# --- PASIVA (constante mientras está activo) ---
+@export var pasiva_ic_por_seg: float = 0.0
+@export var pasiva_if_por_seg: float = 0.0
+@export var pasiva_reduce_prob_evento: float = 0.0  # 0.0 - 1.0
+
+# --- REDUCCIÓN DE PROBABILIDAD DE AMENAZA (Educador Comunitario) ---
+@export var reduce_prob_amenaza_tipo: String = ""
+@export var reduce_prob_amenaza_pct: float = 0.0
+
+# --- ACTIVA (botón con cooldown) ---
+@export var tiene_activa: bool = false
+@export var nombre_activa: String = ""
+@export var cooldown_activa: float = 20.0
+
+@export var activa_ic_instantaneo: float = 0.0
+@export var activa_if_instantaneo: float = 0.0
+@export var activa_reduce_danio_pct: float = 0.0   # próximo golpe (Conservador)
+@export var activa_cura_efecto: String = ""        # "baja_visibilidad", etc.
+
+# Campaña de Concientización (Educador)
+@export var activa_reduce_danio_amenaza_pct: float = 0.0
+@export var activa_aplica_a_tipos: Array[String] = []
+@export var activa_duracion_efecto: float = 10.0
+
+@export var color_debug: Color = Color.GREEN

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://be1kkelvh3dy4"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_fo64s"]
+
+[resource]
+script = ExtResource("1_fo64s")
+nombre = "Arqueólogo"
+costo = 60
+duracion = 20.0
+pasiva_ic_por_seg = 2.0
+tiene_activa = true
+nombre_activa = "Documentar"
+cooldown_activa = 30.0
+activa_ic_instantaneo = 20.0
+metadata/_custom_type_script = "uid://jp81cwh1fegm"
