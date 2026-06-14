@@ -101,6 +101,9 @@ var shake_timer: float = 0.0
 var shake_intensidad: float = 6.0
 
 func _ready() -> void:
+	if GameState.get_nivel_actual() != null:
+		nivel_actual = GameState.get_nivel_actual()
+	
 	if nivel_actual == null:
 		print("ERROR: No hay LevelData asignado")
 		return
@@ -503,6 +506,7 @@ func _on_contexto_perdido() -> void:
 	_terminar_juego("DERROTA\nEl contexto científico fue perdido", false)
 
 func _victoria() -> void:
+	GameState.desbloquear_siguiente()
 	_terminar_juego("¡VICTORIA!\nHallazgo protegido", true)
 
 func _terminar_juego(mensaje: String, gano: bool) -> void:
@@ -531,11 +535,15 @@ func _on_reintentar_pressed() -> void:
 
 func _on_siguiente_pressed() -> void:
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	if GameState.hay_siguiente_nivel():
+		GameState.ir_a_siguiente_nivel()
+		get_tree().reload_current_scene()
+	else:
+		get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
 func _on_salir_pressed() -> void:
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
 # ============================================================
 # PAUSA

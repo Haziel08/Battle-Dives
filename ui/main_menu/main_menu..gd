@@ -1,0 +1,19 @@
+extends Node2D
+
+@onready var btn_jugar: Button = $UI/BtnJugar
+@onready var btn_almanaque: Button = $UI/BtnAlmanaque
+@onready var btn_salir: Button = $UI/BtnSalir
+
+func _ready() -> void:
+	btn_jugar.pressed.connect(_on_jugar)
+	btn_almanaque.pressed.connect(_on_almanaque)
+	btn_salir.pressed.connect(_on_salir)
+
+func _on_jugar() -> void:
+	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
+
+func _on_almanaque() -> void:
+	print("Almanaque: pendiente de implementar")
+
+func _on_salir() -> void:
+	get_tree().quit()

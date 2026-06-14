@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="BattleDives"
-run/main_scene="uid://brppgvu4756t3"
+run/main_scene="res://ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+
+GameState="*uid://bbdi3adud7pto"
 
 [input]
 
