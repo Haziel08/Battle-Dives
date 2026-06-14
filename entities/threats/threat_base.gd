@@ -47,7 +47,10 @@ func _process(delta: float) -> void:
 
 func _process_avanza_y_pega(delta: float) -> void:
 	if pegada_al_hallazgo:
-		timer_danio_continuo += delta
+		var mod_vel = 1.0
+		if ref_nivel != null:
+			mod_vel = ref_nivel.get_modificador_velocidad_amenazas()
+		progress += velocidad_actual * mod_vel * delta
 		if timer_danio_continuo >= INTERVALO_ATAQUE_HALLAZGO:
 			timer_danio_continuo = 0.0
 			_atacar_hallazgo()
@@ -75,7 +78,10 @@ func _process_roba_y_huye(delta: float) -> void:
 
 	if huyendo:
 		# Avanza hacia el inicio del path (escapando)
-		progress -= velocidad_actual * delta
+		var mod_vel = 1.0
+		if ref_nivel != null:
+			mod_vel = ref_nivel.get_modificador_velocidad_amenazas()
+		progress -= velocidad_actual * mod_vel * delta
 		if progress <= 0.0:
 			# Escapó con la pieza. La pérdida de IC ya se aplicó al robar.
 			esta_viva = false

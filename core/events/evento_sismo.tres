@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://k5ye8tk3bx3l"]
+
+[ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="1_eiqr3"]
+
+[resource]
+script = ExtResource("1_eiqr3")
+nombre = "Sismo"
+tipo = "sismo"
+duracion = 3.0
+danio_fisico_instantaneo = 30.0
+metadata/_custom_type_script = "uid://cwvvi5ypt3s24"

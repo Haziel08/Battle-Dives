@@ -20,7 +20,7 @@ extends Resource
 @export var oleadas: Array[WaveEntry] = []
 
 # --- EVENTOS (Bloque D) ---
-#@export var eventos_posibles: Array[EventData] = []
+@export var eventos_posibles: Array[EventData] = []
 @export var prob_evento_por_minuto: float = 0.3
 @export var danio_if_por_tiempo: float = 0.5
 

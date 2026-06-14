@@ -60,7 +60,10 @@ func _buscar_enemigo() -> void:
 				if not datos.efectivo_contra.has(hijo.datos.tipo):
 					continue
 			var dist = global_position.distance_to(hijo.global_position)
-			if dist <= datos.radio_deteccion:
+			var radio_efectivo = datos.radio_deteccion
+			if ref_nivel != null:
+				radio_efectivo *= ref_nivel.get_modificador_radio_deteccion()
+			if dist <= radio_efectivo:
 				objetivo = hijo
 				en_combate = true
 				hijo.entrar_en_combate(self)

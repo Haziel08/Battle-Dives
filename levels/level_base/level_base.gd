@@ -69,6 +69,10 @@ var timer_erosion: float = 0.0
 @onready var label_tutorial: Label = $HUD/PanelTutorial/LabelTexto
 @onready var btn_tutorial_siguiente: Button = $HUD/PanelTutorial/BtnContinuar
 
+@onready var overlay_evento: ColorRect = $HUD/OverlayEvento
+@onready var label_evento: Label = $HUD/TopPanel/LabelEvento
+@onready var fondo_layer: CanvasLayer = $FondoLayer
+
 # --- BOTONES ---
 var botones_tecnicas: Array = []
 var botones_especialistas: Array = []
@@ -82,6 +86,19 @@ var juego_activo: bool = true
 var tutorial_activo: bool = false
 var paso_tutorial_actual: int = 0
 var esperando_accion_tutorial: bool = false
+
+# --- EVENTOS ---
+var evento_actual: EventData = null
+var timer_evento_actual: float = 0.0
+var timer_chequeo_evento: float = 0.0
+const INTERVALO_CHEQUEO_EVENTO: float = 10.0  # revisa 1 vez por minuto
+
+var modificador_radio_deteccion: float = 1.0
+var modificador_velocidad_amenazas: float = 1.0
+
+# --- SHAKE DE PANTALLA ---
+var shake_timer: float = 0.0
+var shake_intensidad: float = 6.0
 
 func _ready() -> void:
 	if nivel_actual == null:
@@ -111,6 +128,8 @@ func _ready() -> void:
 	btn_mejora.pressed.connect(_on_mejora_pressed)
 	_actualizar_btn_mejora()
 	actualizar_hud()
+	overlay_evento.hide()
+	label_evento.text = ""
 
 func _cargar_configuracion() -> void:
 	finding.nombre_hallazgo = nivel_actual.nombre_hallazgo
@@ -183,6 +202,14 @@ func _reconectar_boton_especialista(i: int) -> void:
 # ============================================================
 
 func _process(delta: float) -> void:
+	if shake_timer > 0.0:
+		shake_timer -= delta
+		var offset = Vector2(randf_range(-shake_intensidad, shake_intensidad), randf_range(-shake_intensidad, shake_intensidad))
+		position = offset
+		fondo_layer.offset = offset
+		if shake_timer <= 0.0:
+			position = Vector2.ZERO
+			fondo_layer.offset = Vector2.ZERO
 	if not juego_activo:
 		return
 
@@ -198,6 +225,7 @@ func _process(delta: float) -> void:
 
 	# --- Abandono ---
 	_procesar_abandono(delta)
+	_procesar_eventos(delta)
 	
 	# Erosión natural: el tiempo degrada la integridad física
 	if nivel_actual.danio_if_por_tiempo > 0.0:
@@ -394,8 +422,8 @@ func aplicar_escudo_hallazgo(porcentaje: float) -> void:
 	print("Escudo aplicado: -", porcentaje * 100, "% próximo daño físico")
 
 func curar_efecto_nivel(efecto: String) -> void:
-	efectos_activos[efecto] = false
-	print("Efecto curado: ", efecto)
+	if evento_actual != null and evento_actual.tipo == efecto:
+		_terminar_evento()
 
 func aplicar_efecto_campania(especialista, tipos: Array, porcentaje: float) -> void:
 	campania_tipos = tipos
@@ -606,3 +634,79 @@ func _tutorial_verificar_accion(accion: String) -> void:
 	var paso: TutorialStep = nivel_actual.pasos_tutorial[paso_tutorial_actual]
 	if paso.accion_esperada == accion:
 		_tutorial_siguiente_paso()
+		
+# ============================================================
+# EVENTOS ALEATORIOS
+# ============================================================
+
+func _procesar_eventos(delta: float) -> void:
+	if evento_actual != null:
+		timer_evento_actual += delta
+		if timer_evento_actual >= evento_actual.duracion:
+			_terminar_evento()
+		return
+
+	timer_chequeo_evento += delta
+	if timer_chequeo_evento >= INTERVALO_CHEQUEO_EVENTO:
+		timer_chequeo_evento = 0.0
+		_intentar_lanzar_evento()
+
+func _intentar_lanzar_evento() -> void:
+	if nivel_actual.eventos_posibles.is_empty():
+		return
+
+	var prob = nivel_actual.prob_evento_por_minuto
+
+	# Reducción por especialistas activos (ej. Oceanógrafo)
+	for esp in especialistas_activos:
+		if is_instance_valid(esp) and esp.datos.pasiva_reduce_prob_evento > 0.0:
+			prob *= (1.0 - esp.datos.pasiva_reduce_prob_evento)
+
+	if randf() > prob:
+		return  # no ocurre evento esta vez
+
+	var evento = nivel_actual.eventos_posibles[randi() % nivel_actual.eventos_posibles.size()]
+	_iniciar_evento(evento)
+
+func _iniciar_evento(evento: EventData) -> void:
+	evento_actual = evento
+	timer_evento_actual = 0.0
+	efectos_activos[evento.tipo] = true
+
+	if evento.oculta_pantalla:
+		overlay_evento.show()
+
+	if evento.reduce_radio_deteccion_pct > 0.0:
+		modificador_radio_deteccion = 1.0 - evento.reduce_radio_deteccion_pct
+
+	if evento.multiplica_velocidad_amenazas != 1.0:
+		modificador_velocidad_amenazas = evento.multiplica_velocidad_amenazas
+
+	if evento.danio_fisico_instantaneo > 0.0:
+		finding.recibir_danio_fisico(evento.danio_fisico_instantaneo)
+		iniciar_shake(0.5, 8.0)
+
+	label_evento.text = "⚠ " + evento.nombre
+		
+
+func _terminar_evento() -> void:
+	if evento_actual != null:
+		efectos_activos[evento_actual.tipo] = false
+
+	evento_actual = null
+	timer_evento_actual = 0.0
+	overlay_evento.hide()
+	modificador_radio_deteccion = 1.0
+	modificador_velocidad_amenazas = 1.0
+	label_evento.text = ""
+
+func get_modificador_radio_deteccion() -> float:
+	return modificador_radio_deteccion
+
+func get_modificador_velocidad_amenazas() -> float:
+	return modificador_velocidad_amenazas
+	
+func iniciar_shake(duracion: float = 0.5, intensidad: float = 6.0) -> void:
+	shake_timer = duracion
+	shake_intensidad = intensidad
+	
