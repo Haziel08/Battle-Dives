@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://clqky4qih0bbq"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_7fosl"]
+
+[resource]
+script = ExtResource("1_7fosl")
+texto = "¡Listo! Ahora protege Marcas de Soga. Sobrevive el tiempo del nivel manteniendo tu Integridad. ¡Buena suerte!"
+pausar_oleadas = false
+metadata/_custom_type_script = "uid://y421pwqha5yv"

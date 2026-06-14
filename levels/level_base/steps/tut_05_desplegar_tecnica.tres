@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://wh8cl7riilsy"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_dlk3l"]
+
+[resource]
+script = ExtResource("1_dlk3l")
+texto = "Presiona el botón de la primera técnica (o la tecla 1) para desplegarla."
+tipo = "esperar_accion"
+accion_esperada = "tecnica_1"
+metadata/_custom_type_script = "uid://y421pwqha5yv"

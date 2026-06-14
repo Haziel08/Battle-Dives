@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://bqlwmabc53ee7"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_aodmk"]
+
+[resource]
+script = ExtResource("1_aodmk")
+texto = "Las Técnicas (panel inferior) son acciones de respuesta: avanzan por la cueva e interceptan amenazas automáticamente."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

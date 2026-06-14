@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://ca8d3v2jt2j8e"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_mkxks"]
+
+[resource]
+script = ExtResource("1_mkxks")
+texto = "Bienvenido a Hoyo Negro. Aquí descansan 'Marcas de Soga': evidencia directa de que humanos antiguos buscaron agua en estas cuevas. Tu misión es protegerlas."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

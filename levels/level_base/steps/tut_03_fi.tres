@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://bwc6uotgqkrhm"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_hjmu8"]
+
+[resource]
+script = ExtResource("1_hjmu8")
+texto = "El FI (Fondo de Investigación) es tu recurso. Sube solo con el tiempo y lo usas para desplegar Técnicas y Especialistas."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://c84ifmd0nv86x"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_2u62j"]
+
+[resource]
+script = ExtResource("1_2u62j")
+texto = "Los Especialistas (panel derecho) NO combaten. Aportan habilidades: curan, documentan o anticipan riesgos mientras están activos."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

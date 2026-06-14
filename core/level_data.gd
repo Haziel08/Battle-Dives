@@ -31,7 +31,7 @@ extends Resource
 
 # --- TUTORIAL ---
 @export var es_tutorial: bool = false
-#@export var pasos_tutorial: Array[TutorialStep] = []
+@export var pasos_tutorial: Array[TutorialStep] = []
 
 # --- EXTRACCIÓN (Bloque futuro, Nivel 3/4) ---
 @export var permite_extraccion: bool = false

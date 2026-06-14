@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://c0qwhuaosrok5"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_48k20"]
+
+[resource]
+script = ExtResource("1_48k20")
+texto = "El botón 'Mejorar Gen.' aumenta tu generación pasiva de FI permanentemente. Cuesta más cada vez que lo usas. Presiónalo."
+tipo = "esperar_accion"
+accion_esperada = "click_mejora"
+metadata/_custom_type_script = "uid://y421pwqha5yv"

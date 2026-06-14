@@ -123,7 +123,7 @@ func _ready() -> void:
 	_setup_botones_especialistas()
 	_setup_panel_fin()
 	_setup_panel_pausa()
-	#_setup_tutorial()
+	_setup_tutorial()
 
 	btn_mejora.pressed.connect(_on_mejora_pressed)
 	_actualizar_btn_mejora()
@@ -594,17 +594,19 @@ func _input(event: InputEvent) -> void:
 # ============================================================
 
 func _setup_tutorial() -> void:
+	print("Setup tutorial. es_tutorial=", nivel_actual.es_tutorial, " pasos=", nivel_actual.pasos_tutorial.size())
 	panel_tutorial.hide()
 	btn_tutorial_siguiente.pressed.connect(_tutorial_siguiente_paso)
 
 	if nivel_actual.es_tutorial and nivel_actual.pasos_tutorial.size() > 0:
 		tutorial_activo = true
 		paso_tutorial_actual = -1
+		print("Tutorial activado, llamando primer paso")
 		_tutorial_siguiente_paso()
 
 func _tutorial_siguiente_paso() -> void:
 	paso_tutorial_actual += 1
-
+	print("Paso tutorial: ", paso_tutorial_actual, " / ", nivel_actual.pasos_tutorial.size())
 	if paso_tutorial_actual >= nivel_actual.pasos_tutorial.size():
 		tutorial_activo = false
 		panel_tutorial.hide()

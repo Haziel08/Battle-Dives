@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://csgnbdkd11f6b"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_4ksbi"]
+
+[resource]
+script = ExtResource("1_4ksbi")
+texto = "Presiona el botón del primer especialista en el panel derecho para desplegarlo."
+tipo = "esperar_accion"
+accion_esperada = "especialista_1"
+metadata/_custom_type_script = "uid://y421pwqha5yv"
