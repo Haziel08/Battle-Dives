@@ -183,6 +183,29 @@ func recibir_danio_de_tropa(cantidad: float, fuerza_empuje_atacante: float = 0.0
 			if ref_hallazgo != null:
 				ref_hallazgo.curar_cientifico(datos.ic_robado)
 		queue_free()
+		
+func _ready() -> void:
+	if has_node("HoverArea"):
+		$HoverArea.mouse_entered.connect(_on_hover_enter)
+		$HoverArea.mouse_exited.connect(_on_hover_exit)
+
+func _on_hover_enter() -> void:
+	if ref_nivel == null or datos == null:
+		return
+	var texto = "%s (Amenaza)\nHP: %.0f / %.0f\n" % [datos.nombre, hp_actual, datos.hp]
+	if datos.comportamiento == "roba_y_huye":
+		texto += "\nRoba %.0f IC y huye" % datos.ic_robado
+		if huyendo:
+			texto += "\n¡Huyendo con la pieza!"
+	else:
+		texto += "\nDaño Físico: %.0f\nDaño Científico: %.0f" % [datos.danio_fisico, datos.danio_cientifico]
+	if datos.ignora_tropas:
+		texto += "\n(Ignora técnicas normales)"
+	ref_nivel.mostrar_tooltip(texto, global_position + Vector2(20, -60))
+
+func _on_hover_exit() -> void:
+	if ref_nivel != null:
+		ref_nivel.ocultar_tooltip()
 
 func _draw() -> void:
 	if datos == null:

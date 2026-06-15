@@ -99,6 +99,23 @@ func recibir_danio(cantidad: float, fuerza_empuje_atacante: float = 0.0) -> void
 		esta_vivo = false
 		queue_free()
 
+func _ready() -> void:
+	if has_node("HoverArea"):
+		$HoverArea.mouse_entered.connect(_on_hover_enter)
+		$HoverArea.mouse_exited.connect(_on_hover_exit)
+		
+func _on_hover_enter() -> void:
+	if ref_nivel == null or datos == null:
+		return
+	var texto = "%s (Técnica)\nHP: %.0f / %.0f\nDaño: %.0f" % [datos.nombre, hp_actual, datos.hp, datos.danio]
+	if en_combate:
+		texto += "\n¡En combate!"
+	ref_nivel.mostrar_tooltip(texto, global_position + Vector2(20, -60))
+
+func _on_hover_exit() -> void:
+	if ref_nivel != null:
+		ref_nivel.ocultar_tooltip()
+
 func _draw() -> void:
 	if datos == null:
 		return

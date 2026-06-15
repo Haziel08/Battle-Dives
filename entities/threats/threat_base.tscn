@@ -4,6 +4,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6jv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr5rv"]
+
 [node name="ThreatBase" type="PathFollow2D" unique_id=878067196]
 loop = false
 script = ExtResource("1_gr5rv")
@@ -14,3 +16,8 @@ script = ExtResource("1_gr5rv")
 
 [node name="Shape" type="CollisionShape2D" parent="Collision" unique_id=1857260864]
 shape = SubResource("RectangleShape2D_6x6jv")
+
+[node name="HoverArea" type="Area2D" parent="." unique_id=1328366127]
+
+[node name="Shape" type="CollisionShape2D" parent="HoverArea" unique_id=2063695559]
+shape = SubResource("RectangleShape2D_gr5rv")

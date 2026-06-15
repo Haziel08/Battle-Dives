@@ -6,6 +6,7 @@ extends Node2D
 
 var if_max: float
 var ic_max: float
+var ref_nivel = null
 
 signal hallazgo_destruido
 signal contexto_perdido
@@ -15,6 +16,9 @@ func _ready() -> void:
 	if_max = integridad_fisica
 	ic_max = integridad_cientifica
 	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
+	if has_node("HoverArea"):
+		$HoverArea.mouse_entered.connect(_on_hover_enter)
+		$HoverArea.mouse_exited.connect(_on_hover_exit)
 
 func recibir_danio_fisico(cantidad: float) -> void:
 	integridad_fisica = max(0.0, integridad_fisica - cantidad)
@@ -44,6 +48,16 @@ func get_if_max() -> float:
 
 func get_ic_max() -> float:
 	return ic_max
+
+func _on_hover_enter() -> void:
+	if ref_nivel == null:
+		return
+	var texto = "%s\nIF: %.0f / %.0f\nIC: %.0f / %.0f" % [nombre_hallazgo, integridad_fisica, if_max, integridad_cientifica, ic_max]
+	ref_nivel.mostrar_tooltip(texto, global_position + Vector2(40, -80))
+
+func _on_hover_exit() -> void:
+	if ref_nivel != null:
+		ref_nivel.ocultar_tooltip()
 
 func _draw() -> void:
 	draw_rect(Rect2(-32, -32, 64, 64), Color.YELLOW)

@@ -73,6 +73,9 @@ var timer_erosion: float = 0.0
 @onready var label_evento: Label = $HUD/TopPanel/LabelEvento
 @onready var fondo_layer: CanvasLayer = $FondoLayer
 
+@onready var tooltip_panel: Panel = $HUD/TooltipPanel
+@onready var tooltip_label: Label = $HUD/TooltipPanel/TooltipLabel
+
 # --- BOTONES ---
 var botones_tecnicas: Array = []
 var botones_especialistas: Array = []
@@ -127,6 +130,7 @@ func _ready() -> void:
 	_setup_panel_fin()
 	_setup_panel_pausa()
 	_setup_tutorial()
+	tooltip_panel.hide()
 
 	btn_mejora.pressed.connect(_on_mejora_pressed)
 	_actualizar_btn_mejora()
@@ -142,6 +146,7 @@ func _cargar_configuracion() -> void:
 
 	fondo_investigacion = nivel_actual.fi_inicial
 	fi_pasivo_base = nivel_actual.fi_pasivo_base
+	finding.ref_nivel = self
 
 	# Resetear estado runtime de oleadas (por si se reinicia el nivel)
 	for ola in nivel_actual.oleadas:
@@ -168,6 +173,9 @@ func _setup_botones_tecnicas() -> void:
 			var idx = idx_boton
 			botones_tecnicas[i].pressed.connect(func(): desplegar_tecnica(idx))
 			idx_boton += 1
+			var ficha_tt = ficha
+			botones_tecnicas[i].mouse_entered.connect(func(): _tooltip_tecnica(ficha_tt, botones_tecnicas[i]))
+			botones_tecnicas[i].mouse_exited.connect(ocultar_tooltip)
 		else:
 			botones_tecnicas[i].hide()
 
@@ -178,6 +186,12 @@ func _setup_botones_especialistas() -> void:
 	for i in botones_especialistas.size():
 		if i < especialistas.size():
 			botones_especialistas[i].show()
+
+			var ficha_tt = especialistas[i]
+			var btn_tt = botones_especialistas[i]
+			btn_tt.mouse_entered.connect(func(): _tooltip_especialista(ficha_tt, btn_tt))
+			btn_tt.mouse_exited.connect(ocultar_tooltip)
+
 			_reconectar_boton_especialista(i)
 		else:
 			botones_especialistas[i].hide()
@@ -720,3 +734,37 @@ func iniciar_shake(duracion: float = 0.5, intensidad: float = 6.0) -> void:
 	shake_timer = duracion
 	shake_intensidad = intensidad
 	
+func mostrar_tooltip(texto: String, posicion: Vector2) -> void:
+	tooltip_label.text = texto
+	# Evita que el tooltip se salga de la pantalla
+	posicion.x = clamp(posicion.x, 10, 1152 - 290)
+	posicion.y = clamp(posicion.y, 10, 648 - 160)
+	tooltip_panel.position = posicion
+	tooltip_panel.show()
+
+func ocultar_tooltip() -> void:
+	tooltip_panel.hide()
+	
+func _tooltip_tecnica(ficha: TechniqueData, btn: Button) -> void:
+	var texto = "%s\nCosto: %d FI\n\nHP: %d   Daño: %d\nVelocidad: %.0f\nVel. Ataque: %.1f/s" \
+		% [ficha.nombre, ficha.costo, ficha.hp, ficha.danio, ficha.velocidad, ficha.velocidad_ataque]
+	if ficha.efectivo_contra.size() > 0:
+		texto += "\n\nEfectivo contra:\n%s (x%.1f)" % [", ".join(ficha.efectivo_contra), ficha.multiplicador_danio]
+	mostrar_tooltip(texto, btn.global_position + Vector2(0, -160))
+	
+func _tooltip_especialista(ficha: SpecialistData, btn: Button) -> void:
+	var texto = "%s\nCosto: %d FI | Duración: %ds" % [ficha.nombre, ficha.costo, int(ficha.duracion)]
+
+	if ficha.pasiva_ic_por_seg > 0:
+		texto += "\n\nPasiva: +%.1f IC/seg" % ficha.pasiva_ic_por_seg
+	if ficha.pasiva_if_por_seg > 0:
+		texto += "\n\nPasiva: +%.1f IF/seg" % ficha.pasiva_if_por_seg
+	if ficha.pasiva_reduce_prob_evento > 0:
+		texto += "\n\nPasiva: -%.0f%% prob. eventos" % (ficha.pasiva_reduce_prob_evento * 100)
+	if ficha.reduce_prob_amenaza_tipo != "":
+		texto += "\n\nPasiva: -%.0f%% prob. %s" % [ficha.reduce_prob_amenaza_pct * 100, ficha.reduce_prob_amenaza_tipo]
+
+	if ficha.tiene_activa:
+		texto += "\n\nActiva: %s\n(Cooldown %ds)" % [ficha.nombre_activa, int(ficha.cooldown_activa)]
+
+	mostrar_tooltip(texto, btn.global_position + Vector2(-300, 0))

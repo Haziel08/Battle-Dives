@@ -100,6 +100,24 @@ func get_porcentaje_cooldown() -> float:
 
 func get_tiempo_restante() -> float:
 	return datos.duracion - timer_vida
+	
+func _ready() -> void:
+	if has_node("HoverArea"):
+		$HoverArea.mouse_entered.connect(_on_hover_enter)
+		$HoverArea.mouse_exited.connect(_on_hover_exit)
+
+func _on_hover_enter() -> void:
+	if ref_nivel == null or datos == null:
+		return
+	var texto = "%s\nActivo: %.0fs restantes" % [datos.nombre, get_tiempo_restante()]
+	if datos.tiene_activa:
+		var estado = "Listo" if activa_disponible else "En cooldown"
+		texto += "\n%s: %s" % [datos.nombre_activa, estado]
+	ref_nivel.mostrar_tooltip(texto, global_position + Vector2(20, -60))
+
+func _on_hover_exit() -> void:
+	if ref_nivel != null:
+		ref_nivel.ocultar_tooltip()
 
 func _draw() -> void:
 	if datos == null:

@@ -4,6 +4,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6hm3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i81c"]
+
 [node name="EntityBase" type="PathFollow2D" unique_id=1189305223]
 loop = false
 script = ExtResource("1_1i81c")
@@ -12,3 +14,8 @@ script = ExtResource("1_1i81c")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=2103561378]
 shape = SubResource("RectangleShape2D_h6hm3")
+
+[node name="HoverArea" type="Area2D" parent="." unique_id=372836729]
+
+[node name="Shape" type="CollisionShape2D" parent="HoverArea" unique_id=836221537]
+shape = SubResource("RectangleShape2D_1i81c")

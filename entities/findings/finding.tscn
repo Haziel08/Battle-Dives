@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://chr48sixv7qeh" path="res://entities/findings/finding.gd" id="1_qb5re"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb5re"]
+
 [node name="Finding" type="Node2D" unique_id=1624516279]
 script = ExtResource("1_qb5re")
+nombre_hallazgo = null
+integridad_fisica = null
+integridad_cientifica = null
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1356876344]
 
@@ -14,3 +19,8 @@ script = ExtResource("1_qb5re")
 [node name="StatsLabel" type="Label" parent="." unique_id=1504463343]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="HoverArea" type="Area2D" parent="." unique_id=341851320]
+
+[node name="Shape" type="CollisionShape2D" parent="HoverArea" unique_id=658743419]
+shape = SubResource("RectangleShape2D_qb5re")
