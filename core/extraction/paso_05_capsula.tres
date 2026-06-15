@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ExtractionStepData" format=3 uid="uid://d3pcdvxg8lcyg"]
+
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="1_coisl"]
+
+[resource]
+script = ExtResource("1_coisl")
+nombre = "Embalaje/Cápsula de resguardo"
+descripcion = "Botón directo"
+accion_id = "capsula"
+costo_fi = 60
+metadata/_custom_type_script = "uid://hk2socci21sf"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ExtractionStepData" format=3 uid="uid://dwi5gm6hkbi64"]
+
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="1_x0x7g"]
+
+[resource]
+script = ExtResource("1_x0x7g")
+nombre = "Autorización científica"
+descripcion = "Botón directo"
+accion_id = "autorizacion"
+costo_fi = 40
+metadata/_custom_type_script = "uid://hk2socci21sf"

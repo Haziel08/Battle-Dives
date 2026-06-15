@@ -12,5 +12,6 @@ tiene_activa = true
 nombre_activa = "Estabilizar"
 cooldown_activa = 25.0
 activa_reduce_danio_pct = 0.5
+accion_extraccion_id = "estabilizar"
 color_debug = Color(0.876136, 0.4504394, 0.15803328, 1)
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

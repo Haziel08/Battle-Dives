@@ -28,5 +28,7 @@ extends Resource
 @export var activa_reduce_danio_amenaza_pct: float = 0.0
 @export var activa_aplica_a_tipos: Array[String] = []
 @export var activa_duracion_efecto: float = 10.0
+# Si esta activa completa un paso de extracción, su ID va aquí
+@export var accion_extraccion_id: String = ""
 
 @export var color_debug: Color = Color.GREEN

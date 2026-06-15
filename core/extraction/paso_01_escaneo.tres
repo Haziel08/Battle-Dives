@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ExtractionStepData" format=3 uid="uid://dsmyn7xspxxn7"]
+
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="1_1nlq6"]
+
+[resource]
+script = ExtResource("1_1nlq6")
+nombre = "Fotografía/Escaneo previo"
+descripcion = "Escaneo 3D\" del Fotogrametrista"
+accion_id = "escaneo_3d"
+metadata/_custom_type_script = "uid://hk2socci21sf"

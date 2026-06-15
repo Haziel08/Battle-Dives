@@ -12,5 +12,6 @@ nombre_activa = "Escaneo 3D"
 cooldown_activa = 35.0
 activa_ic_instantaneo = 15.0
 activa_cura_efecto = "baja_visibilidad"
+accion_extraccion_id = "escaneo_3d"
 color_debug = Color(0.64282286, 0.11871263, 0.39875656, 1)
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

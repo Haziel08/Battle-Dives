@@ -12,4 +12,5 @@ tiene_activa = true
 nombre_activa = "Documentar"
 cooldown_activa = 30.0
 activa_ic_instantaneo = 20.0
+accion_extraccion_id = "documentar"
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

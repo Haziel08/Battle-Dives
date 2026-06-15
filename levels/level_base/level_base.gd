@@ -76,6 +76,21 @@ var timer_erosion: float = 0.0
 @onready var tooltip_panel: Panel = $HUD/TooltipPanel
 @onready var tooltip_label: Label = $HUD/TooltipPanel/TooltipLabel
 
+@onready var panel_extraccion: Panel = $HUD/PanelExtraccion
+@onready var labels_pasos_extraccion: Array = [
+	$HUD/PanelExtraccion/LabelPaso1, $HUD/PanelExtraccion/LabelPaso2,
+	$HUD/PanelExtraccion/LabelPaso3, $HUD/PanelExtraccion/LabelPaso4,
+	$HUD/PanelExtraccion/LabelPaso5
+]
+@onready var btn_autorizacion: Button = $HUD/PanelExtraccion/BtnAutorizacion
+@onready var btn_capsula: Button = $HUD/PanelExtraccion/BtnCapsula
+@onready var btn_extraer: Button = $HUD/PanelExtraccion/BtnExtraer
+@onready var label_aviso: Label = $HUD/TopPanel/LabelAviso
+@onready var btn_colapsar_extraccion: Button = $HUD/PanelExtraccion/BtnColapsar
+
+var pasos_extraccion_completados: Array[bool] = []
+var timer_aviso: float = 0.0
+
 # --- BOTONES ---
 var botones_tecnicas: Array = []
 var botones_especialistas: Array = []
@@ -102,6 +117,8 @@ var modificador_velocidad_amenazas: float = 1.0
 # --- SHAKE DE PANTALLA ---
 var shake_timer: float = 0.0
 var shake_intensidad: float = 6.0
+
+var panel_extraccion_colapsado: bool = false
 
 func _ready() -> void:
 	if GameState.get_nivel_actual() != null:
@@ -131,12 +148,27 @@ func _ready() -> void:
 	_setup_panel_pausa()
 	_setup_tutorial()
 	tooltip_panel.hide()
+	
+
 
 	btn_mejora.pressed.connect(_on_mejora_pressed)
 	_actualizar_btn_mejora()
 	actualizar_hud()
 	overlay_evento.hide()
 	label_evento.text = ""
+	
+	label_aviso.hide()
+	if nivel_actual.permite_extraccion:
+		panel_extraccion.show()
+		for p in nivel_actual.pasos_extraccion:
+			pasos_extraccion_completados.append(false)
+		btn_autorizacion.pressed.connect(_on_btn_autorizacion_pressed)
+		btn_capsula.pressed.connect(_on_btn_capsula_pressed)
+		btn_extraer.pressed.connect(_on_extraer_pressed)
+		btn_colapsar_extraccion.pressed.connect(_on_colapsar_extraccion_pressed)
+		_actualizar_panel_extraccion()
+	else:
+		panel_extraccion.hide()
 
 func _cargar_configuracion() -> void:
 	finding.nombre_hallazgo = nivel_actual.nombre_hallazgo
@@ -264,6 +296,11 @@ func _process(delta: float) -> void:
 	if nivel_generacion < MAX_NIVEL_GENERACION:
 		btn_mejora.disabled = fondo_investigacion < costo_mejora_actual()
 	_actualizar_botones_especialistas()
+	
+	if timer_aviso > 0.0:
+		timer_aviso -= delta
+		if timer_aviso <= 0.0:
+			label_aviso.hide()
 
 # ============================================================
 # OLEADAS POR TIEMPO
@@ -768,3 +805,95 @@ func _tooltip_especialista(ficha: SpecialistData, btn: Button) -> void:
 		texto += "\n\nActiva: %s\n(Cooldown %ds)" % [ficha.nombre_activa, int(ficha.cooldown_activa)]
 
 	mostrar_tooltip(texto, btn.global_position + Vector2(-300, 0))
+
+# ============================================================
+# PROTOCOLO DE EXTRACCIÓN
+# ============================================================
+
+func registrar_paso_extraccion(accion_id: String) -> void:
+	if accion_id == "" or not nivel_actual.permite_extraccion:
+		return
+	var pasos = nivel_actual.pasos_extraccion
+	for i in pasos.size():
+		if pasos[i].accion_id == accion_id:
+			_completar_paso(i)
+			return
+
+func _on_btn_autorizacion_pressed() -> void:
+	_intentar_paso_directo("autorizacion")
+
+func _on_btn_capsula_pressed() -> void:
+	_intentar_paso_directo("capsula")
+
+func _intentar_paso_directo(accion_id: String) -> void:
+	var pasos = nivel_actual.pasos_extraccion
+	for i in pasos.size():
+		if pasos[i].accion_id == accion_id:
+			if pasos_extraccion_completados[i]:
+				return
+			if i > 0 and not pasos_extraccion_completados[i - 1]:
+				_mostrar_aviso("Completa el paso anterior primero")
+				return
+			if pasos[i].costo_fi > 0:
+				if fondo_investigacion < pasos[i].costo_fi:
+					_mostrar_aviso("FI insuficiente")
+					return
+				fondo_investigacion -= pasos[i].costo_fi
+				actualizar_hud()
+			_completar_paso(i)
+			return
+
+func _completar_paso(i: int) -> void:
+	if pasos_extraccion_completados[i]:
+		return
+	if i > 0 and not pasos_extraccion_completados[i - 1]:
+		_mostrar_aviso("Completa el paso anterior primero")
+		return
+	pasos_extraccion_completados[i] = true
+	_actualizar_panel_extraccion()
+
+func _actualizar_panel_extraccion() -> void:
+	var pasos = nivel_actual.pasos_extraccion
+	for i in pasos.size():
+		var check = "✅" if pasos_extraccion_completados[i] else "⬜"
+		labels_pasos_extraccion[i].text = "%s %s" % [check, pasos[i].nombre]
+
+func _on_extraer_pressed() -> void:
+	var completo = true
+	for c in pasos_extraccion_completados:
+		if not c:
+			completo = false
+			break
+
+	if completo:
+		GameState.desbloquear_siguiente()
+		_terminar_juego("¡EXTRACCIÓN EXITOSA!\nEl hallazgo fue resguardado\nsiguiendo el protocolo completo", true)
+	else:
+		finding.recibir_danio_cientifico(nivel_actual.ic_penalizacion_extraccion)
+		_mostrar_aviso("¡Protocolo incompleto! -%.0f IC" % nivel_actual.ic_penalizacion_extraccion)
+
+func _mostrar_aviso(texto: String) -> void:
+	label_aviso.text = texto
+	label_aviso.show()
+	timer_aviso = 2.5
+	
+func _on_colapsar_extraccion_pressed() -> void:
+	panel_extraccion_colapsado = not panel_extraccion_colapsado
+
+	# Oculta todo excepto el título y el botón de colapsar
+	var ocultar = panel_extraccion_colapsado
+
+	for lbl in labels_pasos_extraccion:
+		lbl.visible = not ocultar
+	btn_autorizacion.visible = not ocultar
+	btn_capsula.visible = not ocultar
+	btn_extraer.visible = not ocultar
+
+	if panel_extraccion_colapsado:
+		btn_colapsar_extraccion.text = "+"
+		panel_extraccion.custom_minimum_size = Vector2(320, 45)
+		panel_extraccion.size = Vector2(320, 45)
+	else:
+		btn_colapsar_extraccion.text = "−"
+		panel_extraccion.custom_minimum_size = Vector2(320, 360)
+		panel_extraccion.size = Vector2(320, 360)

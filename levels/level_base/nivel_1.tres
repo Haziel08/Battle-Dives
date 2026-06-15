@@ -13,15 +13,21 @@
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="10_ac7yr"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="11_0w0fe"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="11_6ca8a"]
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="11_7qovx"]
 [ext_resource type="Resource" uid="uid://k5ye8tk3bx3l" path="res://core/events/evento_sismo.tres" id="11_r34bl"]
 [ext_resource type="Resource" uid="uid://ca8d3v2jt2j8e" path="res://levels/level_base/steps/tut_01_bienvenida.tres" id="12_13myj"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="12_hrrv1"]
+[ext_resource type="Resource" uid="uid://dsmyn7xspxxn7" path="res://core/extraction/paso_01_escaneo.tres" id="12_iop3j"]
 [ext_resource type="Resource" uid="uid://dk5t488brwhad" path="res://levels/level_base/steps/tut_02_indicadores.tres" id="13_0r3ql"]
+[ext_resource type="Resource" uid="uid://hujjredxtu5c" path="res://core/extraction/paso_02_registro.tres" id="13_gqlbc"]
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="13_r34bl"]
+[ext_resource type="Resource" uid="uid://6ot8obkcmss6" path="res://core/extraction/paso_03_riesgo.tres" id="14_6rfr5"]
 [ext_resource type="Resource" uid="uid://bwc6uotgqkrhm" path="res://levels/level_base/steps/tut_03_fi.tres" id="14_irst7"]
 [ext_resource type="Resource" uid="uid://c1u1ch451rlfh" path="res://entities/specialists/tec_paleontologo.tres" id="14_l6nan"]
+[ext_resource type="Resource" uid="uid://dwi5gm6hkbi64" path="res://core/extraction/paso_04_autorizacion.tres" id="15_58sh2"]
 [ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="15_ibu0c"]
 [ext_resource type="Resource" uid="uid://bqlwmabc53ee7" path="res://levels/level_base/steps/tut_04_tecnicas_intro.tres" id="15_ow33n"]
+[ext_resource type="Resource" uid="uid://d3pcdvxg8lcyg" path="res://core/extraction/paso_05_capsula.tres" id="16_gce17"]
 [ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="16_lc5sy"]
 [ext_resource type="Resource" uid="uid://wh8cl7riilsy" path="res://levels/level_base/steps/tut_05_desplegar_tecnica.tres" id="16_mdo4h"]
 [ext_resource type="Resource" uid="uid://c84ifmd0nv86x" path="res://levels/level_base/steps/tut_06_especialistas_intro.tres" id="17_u7fhq"]
@@ -50,4 +56,6 @@ eventos_posibles = Array[ExtResource("7_ibu0c")]([ExtResource("11_r34bl")])
 prob_evento_por_minuto = 1.0
 es_tutorial = true
 pasos_tutorial = Array[ExtResource("11_0w0fe")]([ExtResource("12_13myj"), ExtResource("13_0r3ql"), ExtResource("14_irst7"), ExtResource("15_ow33n"), ExtResource("16_mdo4h"), ExtResource("17_u7fhq"), ExtResource("18_7qovx"), ExtResource("19_iop3j"), ExtResource("20_gqlbc"), ExtResource("21_6rfr5")])
+permite_extraccion = true
+pasos_extraccion = Array[ExtResource("11_7qovx")]([ExtResource("12_iop3j"), ExtResource("13_gqlbc"), ExtResource("14_6rfr5"), ExtResource("15_58sh2"), ExtResource("16_gce17")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

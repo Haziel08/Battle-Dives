@@ -35,4 +35,5 @@ extends Resource
 
 # --- EXTRACCIÓN (Bloque futuro, Nivel 3/4) ---
 @export var permite_extraccion: bool = false
-@export var pasos_extraccion: Array[String] = []
+@export var pasos_extraccion: Array[ExtractionStepData] = []
+@export var ic_penalizacion_extraccion: float = 30.0

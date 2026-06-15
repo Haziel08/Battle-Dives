@@ -121,10 +121,18 @@ offset_bottom = 45.0
 
 [node name="LabelEvento" type="Label" parent="HUD/TopPanel" unique_id=546642610]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 19.0
-offset_right = 416.0
-offset_bottom = 49.0
+offset_left = 185.0
+offset_top = 20.0
+offset_right = 485.0
+offset_bottom = 50.0
+
+[node name="LabelAviso" type="Label" parent="HUD/TopPanel" unique_id=2013320201]
+visible = false
+layout_mode = 0
+offset_left = 380.0
+offset_top = 45.0
+offset_right = 780.0
+offset_bottom = 70.0
 
 [node name="BottomPanel" type="ColorRect" parent="HUD" unique_id=42704498]
 anchors_preset = 12
@@ -408,3 +416,84 @@ offset_top = 10.0
 offset_right = 270.0
 offset_bottom = 140.0
 autowrap_mode = 2
+
+[node name="PanelExtraccion" type="Panel" parent="HUD" unique_id=914275418]
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 330.0
+offset_bottom = 430.0
+
+[node name="BtnColapsar" type="Button" parent="HUD/PanelExtraccion" unique_id=1324075757]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 5.0
+offset_right = 310.0
+offset_bottom = 35.0
+text = "−"
+
+[node name="LabelTitulo" type="Label" parent="HUD/PanelExtraccion" unique_id=810164717]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 35.0
+text = "Protocolo de Extracción"
+
+[node name="LabelPaso1" type="Label" parent="HUD/PanelExtraccion" unique_id=1945094098]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 310.0
+offset_bottom = 68.0
+
+[node name="LabelPaso2" type="Label" parent="HUD/PanelExtraccion" unique_id=962499704]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 310.0
+offset_bottom = 93.0
+
+[node name="LabelPaso3" type="Label" parent="HUD/PanelExtraccion" unique_id=2123737738]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 95.0
+offset_right = 310.0
+offset_bottom = 118.0
+
+[node name="LabelPaso4" type="Label" parent="HUD/PanelExtraccion" unique_id=528307889]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 310.0
+offset_bottom = 143.0
+
+[node name="LabelPaso5" type="Label" parent="HUD/PanelExtraccion" unique_id=1576383280]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 145.0
+offset_right = 310.0
+offset_bottom = 168.0
+
+[node name="BtnAutorizacion" type="Button" parent="HUD/PanelExtraccion" unique_id=568389285]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 180.0
+offset_right = 310.0
+offset_bottom = 220.0
+text = "Solicitar Autorización (40 FI)"
+
+[node name="BtnCapsula" type="Button" parent="HUD/PanelExtraccion" unique_id=1001110861]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 230.0
+offset_right = 310.0
+offset_bottom = 270.0
+text = "Preparar Cápsula (60 FI)"
+
+[node name="BtnExtraer" type="Button" parent="HUD/PanelExtraccion" unique_id=1457222552]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 290.0
+offset_right = 310.0
+offset_bottom = 340.0
+text = "Extraer"

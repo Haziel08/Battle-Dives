@@ -72,6 +72,7 @@ func usar_activa() -> bool:
 
 	if datos.activa_if_instantaneo > 0.0 and ref_hallazgo != null:
 		ref_hallazgo.curar_fisico(datos.activa_if_instantaneo)
+	
 
 	# Escudo (Conservador "Estabilizar")
 	if datos.activa_reduce_danio_pct > 0.0:
@@ -88,6 +89,9 @@ func usar_activa() -> bool:
 		campania_activa = true
 		timer_campania = 0.0
 		ref_nivel.aplicar_efecto_campania(self, datos.activa_aplica_a_tipos, datos.activa_reduce_danio_amenaza_pct)
+	
+	if datos.accion_extraccion_id != "" and ref_nivel != null and ref_nivel.has_method("registrar_paso_extraccion"):
+		ref_nivel.registrar_paso_extraccion(datos.accion_extraccion_id)
 
 	return true
 
