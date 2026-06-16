@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://cathf3gev17fc"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_35xck"]
+
+[resource]
+script = ExtResource("1_35xck")
+nombre = "Paleontólogo"
+costo = 100
+duracion = 2.0
+tiene_activa = true
+nombre_activa = "Identificación de Hallazgo"
+cooldown_activa = 45.0
+pasiva_fi_por_seg = 0.5
+activa_fi_instantaneo = 5.0
+activa_duracion_efecto = 1.0
+color_debug = Color(0.680403, 0.061220236, 0.40249294, 1)
+metadata/_custom_type_script = "uid://jp81cwh1fegm"

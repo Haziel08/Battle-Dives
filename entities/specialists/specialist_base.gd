@@ -35,8 +35,10 @@ func _process(delta: float) -> void:
 		return
 
 	# --- Pasiva: curación/generación constante ---
-	if datos.pasiva_ic_por_seg > 0.0 or datos.pasiva_if_por_seg > 0.0:
+	if datos.pasiva_ic_por_seg > 0.0 or datos.pasiva_if_por_seg > 0.0 or datos.pasiva_fi_por_seg > 0.0:
 		timer_pasiva += delta
+		if datos.pasiva_fi_por_seg > 0.0 and ref_nivel != null:
+			ref_nivel.agregar_fi(datos.pasiva_fi_por_seg)
 		if timer_pasiva >= 1.0:
 			timer_pasiva = 0.0
 			if ref_hallazgo != null:
@@ -60,6 +62,7 @@ func _process(delta: float) -> void:
 				ref_nivel.quitar_efecto_campania(self)
 
 func usar_activa() -> bool:
+	print("Activa usada: ", datos.nombre_activa, " | activa_cura_efecto: '", datos.activa_cura_efecto, "'")
 	if not datos.tiene_activa or not activa_disponible:
 		return false
 
@@ -92,6 +95,9 @@ func usar_activa() -> bool:
 	
 	if datos.accion_extraccion_id != "" and ref_nivel != null and ref_nivel.has_method("registrar_paso_extraccion"):
 		ref_nivel.registrar_paso_extraccion(datos.accion_extraccion_id)
+	
+	if datos.activa_fi_instantaneo > 0.0 and ref_nivel != null:
+		ref_nivel.agregar_fi(datos.activa_fi_instantaneo)
 
 	return true
 

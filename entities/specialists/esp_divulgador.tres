@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_wkbvd")
-nombre = "Educador Comunitario"
+nombre = "Voluntario"
 costo = 90
 duracion = 20.0
 reduce_prob_amenaza_tipo = "saqueador"
@@ -12,6 +12,7 @@ reduce_prob_amenaza_pct = 0.3
 tiene_activa = true
 nombre_activa = "Campaña de Concientización"
 cooldown_activa = 25.0
+activa_reduce_danio_pct = 0.3
 activa_reduce_danio_amenaza_pct = 0.5
 activa_aplica_a_tipos = Array[String](["saqueador", "buceador"])
 color_debug = Color(0.6970636, 0.7259581, 1.540184e-06, 1)

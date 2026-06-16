@@ -23,6 +23,8 @@ extends Resource
 @export var activa_if_instantaneo: float = 0.0
 @export var activa_reduce_danio_pct: float = 0.0   # próximo golpe (Conservador)
 @export var activa_cura_efecto: String = ""        # "baja_visibilidad", etc.
+@export var pasiva_fi_por_seg: float = 0.0
+@export var activa_fi_instantaneo: float = 0.0
 
 # Campaña de Concientización (Educador)
 @export var activa_reduce_danio_amenaza_pct: float = 0.0

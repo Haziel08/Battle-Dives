@@ -109,7 +109,7 @@ var esperando_accion_tutorial: bool = false
 var evento_actual: EventData = null
 var timer_evento_actual: float = 0.0
 var timer_chequeo_evento: float = 0.0
-const INTERVALO_CHEQUEO_EVENTO: float = 10.0  # revisa 1 vez por minuto
+const INTERVALO_CHEQUEO_EVENTO: float = 5.0  # revisa 1 vez por minuto
 
 var modificador_radio_deteccion: float = 1.0
 var modificador_velocidad_amenazas: float = 1.0
@@ -174,13 +174,15 @@ func _cargar_configuracion() -> void:
 	finding.nombre_hallazgo = nivel_actual.nombre_hallazgo
 	finding.integridad_fisica = nivel_actual.hallazgo_if
 	finding.integridad_cientifica = nivel_actual.hallazgo_ic
-	finding._ready()
+	finding.ref_nivel = self
+	# Reinicializar sin llamar _ready() para evitar señales duplicadas
+	finding.if_max = nivel_actual.hallazgo_if
+	finding.ic_max = nivel_actual.hallazgo_ic
 
 	fondo_investigacion = nivel_actual.fi_inicial
 	fi_pasivo_base = nivel_actual.fi_pasivo_base
-	finding.ref_nivel = self
 
-	# Resetear estado runtime de oleadas (por si se reinicia el nivel)
+	# Resetear estado runtime de oleadas
 	for ola in nivel_actual.oleadas:
 		ola.spawneados = 0
 		ola.timer_spawn = 0.0
@@ -206,8 +208,8 @@ func _setup_botones_tecnicas() -> void:
 			botones_tecnicas[i].pressed.connect(func(): desplegar_tecnica(idx))
 			idx_boton += 1
 			var ficha_tt = ficha
-			botones_tecnicas[i].mouse_entered.connect(func(): _tooltip_tecnica(ficha_tt, botones_tecnicas[i]))
-			botones_tecnicas[i].mouse_exited.connect(ocultar_tooltip)
+			var btn_tt = botones_tecnicas[i]
+			btn_tt.gui_input.connect(func(event): _input_tooltip_tecnica(event, ficha_tt, btn_tt))
 		else:
 			botones_tecnicas[i].hide()
 
@@ -221,8 +223,7 @@ func _setup_botones_especialistas() -> void:
 
 			var ficha_tt = especialistas[i]
 			var btn_tt = botones_especialistas[i]
-			btn_tt.mouse_entered.connect(func(): _tooltip_especialista(ficha_tt, btn_tt))
-			btn_tt.mouse_exited.connect(ocultar_tooltip)
+			btn_tt.gui_input.connect(func(event): _input_tooltip_especialista(event, ficha_tt, btn_tt))
 
 			_reconectar_boton_especialista(i)
 		else:
@@ -476,6 +477,7 @@ func aplicar_escudo_hallazgo(porcentaje: float) -> void:
 	print("Escudo aplicado: -", porcentaje * 100, "% próximo daño físico")
 
 func curar_efecto_nivel(efecto: String) -> void:
+	print("Intentando curar: '", efecto, "' | Evento actual: '", evento_actual.tipo if evento_actual else "ninguno", "'")
 	if evento_actual != null and evento_actual.tipo == efecto:
 		_terminar_evento()
 
@@ -588,9 +590,10 @@ func _on_siguiente_pressed() -> void:
 	get_tree().paused = false
 	if GameState.hay_siguiente_nivel():
 		GameState.ir_a_siguiente_nivel()
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://levels/level_base/level_base.tscn")
 	else:
 		get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
+		
 
 func _on_salir_pressed() -> void:
 	get_tree().paused = false
@@ -736,6 +739,16 @@ func _iniciar_evento(evento: EventData) -> void:
 
 	if evento.oculta_pantalla:
 		overlay_evento.show()
+		var mat = overlay_evento.material as ShaderMaterial
+		if mat:
+			if evento.tipo == "baja_visibilidad":
+				mat.set_shader_parameter("intensidad", 0.88)
+				mat.set_shader_parameter("velocidad", 0.6)
+				mat.set_shader_parameter("tinte_agua", Color(0.25, 0.22, 0.12, 1.0))
+			elif evento.tipo == "huracan":
+				mat.set_shader_parameter("intensidad", 0.75)
+				mat.set_shader_parameter("velocidad", 2.5)
+				mat.set_shader_parameter("tinte_agua", Color(0.08, 0.12, 0.22, 1.0))
 
 	if evento.reduce_radio_deteccion_pct > 0.0:
 		modificador_radio_deteccion = 1.0 - evento.reduce_radio_deteccion_pct
@@ -748,7 +761,6 @@ func _iniciar_evento(evento: EventData) -> void:
 		iniciar_shake(0.5, 8.0)
 
 	label_evento.text = "⚠ " + evento.nombre
-		
 
 func _terminar_evento() -> void:
 	if evento_actual != null:
@@ -897,3 +909,21 @@ func _on_colapsar_extraccion_pressed() -> void:
 		btn_colapsar_extraccion.text = "−"
 		panel_extraccion.custom_minimum_size = Vector2(320, 360)
 		panel_extraccion.size = Vector2(320, 360)
+
+func _input_tooltip_tecnica(event: InputEvent, ficha: TechniqueData, btn: Button) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			if tooltip_panel.visible and tooltip_label.text.begins_with(ficha.nombre):
+				ocultar_tooltip()
+			else:
+				_tooltip_tecnica(ficha, btn)
+
+func _input_tooltip_especialista(event: InputEvent, ficha: SpecialistData, btn: Button) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			if tooltip_panel.visible and tooltip_label.text.begins_with(ficha.nombre):
+				ocultar_tooltip()
+			else:
+				_tooltip_especialista(ficha, btn)
+				
+				

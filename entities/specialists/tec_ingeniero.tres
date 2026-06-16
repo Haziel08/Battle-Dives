@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://bbbwcfhe43j23"]
+[gd_resource type="Resource" script_class="TechniqueData" format=3 uid="uid://bbbwcfhe43j23"]
 
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="1_idu7o"]
 
@@ -10,7 +10,6 @@ hp = 120.0
 danio = 20.0
 velocidad_ataque = 0.7
 fuerza_empuje = 0.6
+efectivo_contra = Array[String](["sedimento", "contaminacion"])
 color_debug = Color(0.46347243, 0.7177514, 0.18079364, 1)
-tecla_numero = 7
-efectivo_contra = Array[String](["sedimento", "buceador"])
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

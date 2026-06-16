@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://br1oresyk07ib"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_auijx"]
+[ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_1unb8"]
+[ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_pirlv"]
+[ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_2m08x"]
+[ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_mbhxp"]
+[ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_e2cu6"]
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_lxgh0"]
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_4vjqo"]
+[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_cs4mp"]
+[ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="6_imr8d"]
+[ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="6_ueydt"]
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="7_eqf5r"]
+[ext_resource type="Resource" uid="uid://nuh7qkj2vbm5" path="res://entities/specialists/esp_divulgador.tres" id="7_l7582"]
+[ext_resource type="Resource" uid="uid://nb0majpveny8" path="res://core/events/evento_baja_visibilidad.tres" id="9_imr8d"]
+[ext_resource type="Resource" uid="uid://cyif8ufmod8gq" path="res://core/events/evento_corrientes.tres" id="10_l7582"]
+[ext_resource type="Resource" uid="uid://dd4queq3q41u6" path="res://core/events/evento_huracan.tres" id="11_3xqyi"]
+[ext_resource type="Resource" uid="uid://k5ye8tk3bx3l" path="res://core/events/evento_sismo.tres" id="12_ffxlo"]
+[ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="14_3xqyi"]
+[ext_resource type="Resource" uid="uid://cox33n1ev3ogr" path="res://entities/threats/sedimento.tres" id="14_ffxlo"]
+[ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="15_ayxj7"]
+[ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="15_ffxlo"]
+[ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="16_ayxj7"]
+[ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="16_ibdbi"]
+[ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="17_ayxj7"]
+[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="17_ibdbi"]
+[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="18_ilfq1"]
+
+[sub_resource type="Resource" id="Resource_ilfq1"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("14_ffxlo")
+intervalo_spawn = 20.0
+tiempo_inicio = 5.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_qxvgr"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("15_ayxj7")
+cantidad = 2
+intervalo_spawn = 35.0
+tiempo_inicio = 15.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_3i4ag"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("16_ibdbi")
+intervalo_spawn = 25.0
+tiempo_inicio = 30.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_alxmk"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("17_ayxj7")
+cantidad = 2
+intervalo_spawn = 35.0
+tiempo_inicio = 50.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_wh8i5"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("17_ayxj7")
+intervalo_spawn = 25.0
+tiempo_inicio = 110.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_d8upj"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("14_ffxlo")
+cantidad = 2
+intervalo_spawn = 15.0
+tiempo_inicio = 150.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_78nxs"]
+script = ExtResource("3_mbhxp")
+threat = ExtResource("16_ibdbi")
+cantidad = 2
+intervalo_spawn = 15.0
+tiempo_inicio = 160.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[resource]
+script = ExtResource("6_ueydt")
+nombre_nivel = "Naia"
+nombre_hallazgo = "Naia"
+hallazgo_if = 50.0
+hallazgo_ic = 500.0
+tecnicas_disponibles = Array[ExtResource("7_eqf5r")]([ExtResource("14_3xqyi"), ExtResource("15_ffxlo"), ExtResource("16_ayxj7"), ExtResource("17_ibdbi"), ExtResource("18_ilfq1")])
+especialistas_disponibles = Array[ExtResource("1_auijx")]([ExtResource("2_1unb8"), ExtResource("3_2m08x"), ExtResource("4_e2cu6"), ExtResource("5_cs4mp"), ExtResource("6_imr8d"), ExtResource("7_l7582")])
+oleadas = Array[ExtResource("3_mbhxp")]([SubResource("Resource_ilfq1"), SubResource("Resource_qxvgr"), SubResource("Resource_3i4ag"), SubResource("Resource_alxmk"), SubResource("Resource_wh8i5"), SubResource("Resource_d8upj"), SubResource("Resource_78nxs")])
+eventos_posibles = Array[ExtResource("2_pirlv")]([ExtResource("9_imr8d"), ExtResource("10_l7582"), ExtResource("11_3xqyi"), ExtResource("12_ffxlo")])
+prob_evento_por_minuto = 0.6
+danio_if_por_tiempo = 0.7
+metadata/_custom_type_script = "uid://dbmq8y8dxronl"

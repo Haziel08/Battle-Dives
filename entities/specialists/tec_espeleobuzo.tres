@@ -5,11 +5,10 @@
 [resource]
 script = ExtResource("1_lgj73")
 nombre = "Espeleobuzo"
-hp = 80.0
-danio = 15.0
+hp = 50.0
+danio = 10.0
 velocidad = 120.0
-velocidad_ataque = 1.2
 fuerza_empuje = 0.2
-efectivo_contra = Array[String](["sedimento"])
+efectivo_contra = Array[String](["sedimento", "buceador"])
 color_debug = Color(0, 0.2509804, 1, 1)
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

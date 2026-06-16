@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpecialistData" format=3 uid="uid://basdxl0cb76qc"]
+[gd_resource type="Resource" script_class="TechniqueData" format=3 uid="uid://basdxl0cb76qc"]
 
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="1_sitp1"]
 
@@ -9,7 +9,7 @@ costo = 100
 hp = 200.0
 danio = 10.0
 velocidad_ataque = 0.8
+efectivo_contra = Array[String](["contaminacion"])
+multiplicador_danio = 2.5
 color_debug = Color(0.24705882, 0.99215686, 0.4392157, 1)
-tecla_numero = 3
-efectivo_contra = Array[String](["saqueador", "contaminacion"])
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

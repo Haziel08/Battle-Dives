@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://5w0e07fa3gxk"]
+
+[ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_5tmrs"]
+[ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_fjyne"]
+[ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_txr5h"]
+[ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_0jaqp"]
+[ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_xjoya"]
+[ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_a1rhe"]
+[ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_y60mo"]
+[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_h0o0n"]
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_w1hvu"]
+[ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="6_3ld76"]
+[ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="6_44s2u"]
+[ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="7_dtucr"]
+[ext_resource type="Resource" uid="uid://nb0majpveny8" path="res://core/events/evento_baja_visibilidad.tres" id="8_a1rhe"]
+[ext_resource type="Resource" uid="uid://cyif8ufmod8gq" path="res://core/events/evento_corrientes.tres" id="9_h0o0n"]
+[ext_resource type="Resource" uid="uid://cox33n1ev3ogr" path="res://entities/threats/sedimento.tres" id="11_3ld76"]
+[ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="12_11qgs"]
+[ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="13_11qgs"]
+[ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="14_q0b7u"]
+[ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="15_5bny7"]
+[ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="16_bfthc"]
+[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="17_va31t"]
+
+[sub_resource type="Resource" id="Resource_q0b7u"]
+script = ExtResource("3_0jaqp")
+threat = ExtResource("11_3ld76")
+cantidad = 4
+intervalo_spawn = 15.0
+tiempo_inicio = 5.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_5bny7"]
+script = ExtResource("3_0jaqp")
+threat = ExtResource("12_11qgs")
+cantidad = 2
+intervalo_spawn = 35.0
+tiempo_inicio = 20.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_3ld76"]
+script = ExtResource("3_0jaqp")
+threat = ExtResource("11_3ld76")
+intervalo_spawn = 15.0
+tiempo_inicio = 70.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_11qgs"]
+script = ExtResource("3_0jaqp")
+threat = ExtResource("12_11qgs")
+cantidad = 2
+intervalo_spawn = 30.0
+tiempo_inicio = 90.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_bfthc"]
+script = ExtResource("3_0jaqp")
+threat = ExtResource("11_3ld76")
+cantidad = 2
+intervalo_spawn = 10.0
+tiempo_inicio = 130.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[resource]
+script = ExtResource("6_44s2u")
+nombre_nivel = "Zona de Sedimentos"
+nombre_hallazgo = "Restos de Gonfoterio"
+tecnicas_disponibles = Array[ExtResource("7_dtucr")]([ExtResource("13_11qgs"), ExtResource("14_q0b7u"), ExtResource("15_5bny7"), ExtResource("16_bfthc"), ExtResource("17_va31t")])
+especialistas_disponibles = Array[ExtResource("1_5tmrs")]([ExtResource("2_fjyne"), ExtResource("3_xjoya"), ExtResource("4_a1rhe"), ExtResource("5_h0o0n"), ExtResource("6_3ld76")])
+duracion_nivel = 150.0
+oleadas = Array[ExtResource("3_0jaqp")]([SubResource("Resource_q0b7u"), SubResource("Resource_5bny7"), SubResource("Resource_3ld76"), SubResource("Resource_11qgs"), SubResource("Resource_bfthc")])
+eventos_posibles = Array[ExtResource("2_txr5h")]([ExtResource("8_a1rhe"), ExtResource("9_h0o0n")])
+prob_evento_por_minuto = 0.4
+metadata/_custom_type_script = "uid://dbmq8y8dxronl"

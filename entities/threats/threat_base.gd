@@ -15,7 +15,7 @@ var velocidad_actual: float = 0.0
 
 # Estado: pegada al hallazgo (solo "avanza_y_pega")
 var pegada_al_hallazgo: bool = false
-const RADIO_HALLAZGO: float = 40.0
+const RADIO_HALLAZGO: float = 80.0
 const INTERVALO_ATAQUE_HALLAZGO: float = 1.0
 
 # Estado: roba y huye (Saqueador)
@@ -47,25 +47,30 @@ func _process(delta: float) -> void:
 
 func _process_avanza_y_pega(delta: float) -> void:
 	if pegada_al_hallazgo:
-		var mod_vel = 1.0
-		if ref_nivel != null:
-			mod_vel = ref_nivel.get_modificador_velocidad_amenazas()
-		progress += velocidad_actual * mod_vel * delta
+		timer_danio_continuo += delta
 		if timer_danio_continuo >= INTERVALO_ATAQUE_HALLAZGO:
 			timer_danio_continuo = 0.0
 			_atacar_hallazgo()
 		return
 
 	if _combate_con_tecnica(delta):
+		# Aunque esté en combate, si está cerca del hallazgo también daña
+		if ref_hallazgo != null:
+			var dist = global_position.distance_to(ref_hallazgo.global_position)
+			if dist < RADIO_HALLAZGO:
+				pegada_al_hallazgo = true
+				timer_danio_continuo = INTERVALO_ATAQUE_HALLAZGO
 		return
 
 	progress += velocidad_actual * delta
 
-	if ref_hallazgo != null:
-		var dist = global_position.distance_to(ref_hallazgo.global_position)
-		if dist < RADIO_HALLAZGO:
-			pegada_al_hallazgo = true
-			timer_danio_continuo = INTERVALO_ATAQUE_HALLAZGO
+	# Detectar llegada por progress_ratio O por distancia
+	var llego_por_ratio = progress_ratio >= 0.95
+	var llego_por_distancia = ref_hallazgo != null and global_position.distance_to(ref_hallazgo.global_position) < RADIO_HALLAZGO
+
+	if llego_por_ratio or llego_por_distancia:
+		pegada_al_hallazgo = true
+		timer_danio_continuo = INTERVALO_ATAQUE_HALLAZGO
 
 # ============================================================
 # COMPORTAMIENTO: roba_y_huye (Saqueador)
@@ -91,10 +96,8 @@ func _process_roba_y_huye(delta: float) -> void:
 	# Aún no ha robado: avanza hacia el hallazgo
 	progress += velocidad_actual * delta
 
-	if ref_hallazgo != null and not robo_realizado:
-		var dist = global_position.distance_to(ref_hallazgo.global_position)
-		if dist < RADIO_HALLAZGO:
-			_robar_pieza()
+	if not robo_realizado and progress_ratio >= 0.95:
+		_robar_pieza()
 
 func _robar_pieza() -> void:
 	robo_realizado = true

@@ -2,27 +2,25 @@
 
 [ext_resource type="Script" uid="uid://y47v0xe8rh55" path="res://levels/level_base/level_base.gd" id="1_6gbj8"]
 [ext_resource type="PackedScene" uid="uid://b7ksoswosjirl" path="res://entities/findings/finding.tscn" id="2_5v68e"]
-[ext_resource type="Resource" uid="uid://cnhbn04yv5h16" path="res://levels/level_base/nivel_1.tres" id="2_7sxc7"]
+[ext_resource type="Resource" uid="uid://cnhbn04yv5h16" path="res://levels/nivel_1.tres" id="2_7sxc7"]
 [ext_resource type="Texture2D" uid="uid://brjd3lr5jeebs" path="res://assets/fondo1.png" id="3_17c11"]
+[ext_resource type="Shader" uid="uid://3o58vrtpydm2" path="res://ui/hud/shaders/evento.gdshader" id="5_bbnqp"]
 
 [sub_resource type="Curve2D" id="Curve2D_fhjk5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 500, 0, 0, 0, 0, 1152, 500)
+"points": PackedVector2Array(0, 0, 0, 0, -1, 500, 0, 0, 0, 0, 875, 500)
 }
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qqpq"]
+shader = ExtResource("5_bbnqp")
+shader_parameter/intensidad = 0.5
+shader_parameter/velocidad = 1.5
+shader_parameter/tinte_agua = Color(0.15, 0.25, 0.2, 1)
 
 [node name="LevelBase" type="Node2D" unique_id=982060970]
 script = ExtResource("1_6gbj8")
 nivel_actual = ExtResource("2_7sxc7")
-
-[node name="FindingZone" type="Node2D" parent="." unique_id=1478852481]
-position = Vector2(922, 496)
-
-[node name="Finding" parent="FindingZone" unique_id=1624516279 instance=ExtResource("2_5v68e")]
-position = Vector2(-2, 0)
-nombre_hallazgo = "Marcas de Soga"
-integridad_fisica = 1000.0
-integridad_cientifica = 200.0
 
 [node name="FondoLayer" type="CanvasLayer" parent="." unique_id=2026540142]
 layer = -1
@@ -44,6 +42,15 @@ stretch_mode = 5
 [node name="Path2D" type="Path2D" parent="." unique_id=880993261]
 curve = SubResource("Curve2D_fhjk5")
 
+[node name="FindingZone" type="Node2D" parent="." unique_id=1478852481]
+position = Vector2(921, 500)
+
+[node name="Finding" parent="FindingZone" unique_id=1624516279 instance=ExtResource("2_5v68e")]
+position = Vector2(-2, 0)
+nombre_hallazgo = "Marcas de Soga"
+integridad_fisica = 1000.0
+integridad_cientifica = 200.0
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1002676374]
 
 [node name="LabelMensaje" type="Label" parent="HUD" unique_id=1138197011]
@@ -54,6 +61,7 @@ offset_bottom = 311.0
 
 [node name="OverlayEvento" type="ColorRect" parent="HUD" unique_id=1222713850]
 visible = false
+material = SubResource("ShaderMaterial_5qqpq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -342,7 +350,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -160.0
 offset_top = 60.0
-offset_bottom = -178.0
+offset_bottom = -98.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -380,6 +388,13 @@ offset_left = 5.0
 offset_top = 325.0
 offset_right = 155.0
 offset_bottom = 400.0
+
+[node name="BtnEsp6" type="Button" parent="HUD/SidePanel" unique_id=1330327694]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 405.0
+offset_right = 155.0
+offset_bottom = 480.0
 
 [node name="PanelTutorial" type="Panel" parent="HUD" unique_id=1438701777]
 visible = false
