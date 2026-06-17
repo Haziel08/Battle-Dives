@@ -34,3 +34,6 @@ extends Resource
 @export var accion_extraccion_id: String = ""
 
 @export var color_debug: Color = Color.GREEN
+
+@export_multiline var info_real: String = ""
+@export_multiline var descripcion_graciosa: String = ""

@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cfelsvt0oi2s1"]
+
+[ext_resource type="Script" uid="uid://ckx6sen5idsu" path="res://ui/almanac/almanac.gd" id="1_glhfh"]
+
+[node name="Almanac" type="Node2D" unique_id=1578229596]
+script = ExtResource("1_glhfh")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1551384219]
+
+[node name="BtnVolver" type="Button" parent="UI" unique_id=1174336677]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 50.0
+
+[node name="TabTecnicas" type="Button" parent="UI" unique_id=1038657537]
+offset_left = 130.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 50.0
+
+[node name="TabEspecialistas" type="Button" parent="UI" unique_id=1034680908]
+offset_left = 320.0
+offset_top = 10.0
+offset_right = 500.0
+offset_bottom = 50.0
+
+[node name="TabAmenazas" type="Button" parent="UI" unique_id=2037339861]
+offset_left = 510.0
+offset_top = 10.0
+offset_right = 690.0
+offset_bottom = 50.0
+
+[node name="TabEventos" type="Button" parent="UI" unique_id=973166094]
+offset_left = 700.0
+offset_top = 10.0
+offset_right = 880.0
+offset_bottom = 50.0
+
+[node name="TabHallazgos" type="Button" parent="UI" unique_id=571972711]
+offset_left = 890.0
+offset_top = 10.0
+offset_right = 1070.0
+offset_bottom = 50.0
+
+[node name="ListaScroll" type="ScrollContainer" parent="UI" unique_id=1486080620]
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 330.0
+offset_bottom = 640.0
+
+[node name="ListaContainer" type="VBoxContainer" parent="UI/ListaScroll" unique_id=1397802043]
+layout_mode = 2
+
+[node name="DetallePanel" type="Panel" parent="UI" unique_id=1351508600]
+offset_left = 340.0
+offset_top = 60.0
+offset_right = 1140.0
+offset_bottom = 640.0
+
+[node name="DetalleColor" type="ColorRect" parent="UI/DetallePanel" unique_id=1896206833]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="DetalleNombre" type="Label" parent="UI/DetallePanel" unique_id=884920987]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 20.0
+offset_right = 700.0
+offset_bottom = 60.0
+
+[node name="DetalleStats" type="Label" parent="UI/DetallePanel" unique_id=2031256586]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 780.0
+offset_bottom = 220.0
+
+[node name="DetalleInfoReal" type="Label" parent="UI/DetallePanel" unique_id=554726432]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 240.0
+offset_right = 780.0
+offset_bottom = 400.0
+autowrap_mode = 2
+
+[node name="DetalleCurioso" type="Label" parent="UI/DetallePanel" unique_id=139950105]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 420.0
+offset_right = 780.0
+offset_bottom = 540.0
+autowrap_mode = 2

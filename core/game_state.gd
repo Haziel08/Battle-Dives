@@ -35,3 +35,9 @@ func hay_siguiente_nivel() -> bool:
 func ir_a_siguiente_nivel() -> void:
 	if hay_siguiente_nivel():
 		indice_nivel_actual += 1
+		
+var hallazgos_descubiertos: Array[bool] = [false, false, false, false, false]
+
+func marcar_hallazgo_descubierto(indice: int) -> void:
+	if indice >= 0 and indice < hallazgos_descubiertos.size():
+		hallazgos_descubiertos[indice] = true

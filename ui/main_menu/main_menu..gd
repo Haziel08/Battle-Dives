@@ -13,7 +13,7 @@ func _on_jugar() -> void:
 	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
 func _on_almanaque() -> void:
-	print("Almanaque: pendiente de implementar")
+	get_tree().change_scene_to_file("res://ui/almanac/almanac.tscn")
 
 func _on_salir() -> void:
 	get_tree().quit()

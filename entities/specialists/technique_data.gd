@@ -16,3 +16,6 @@ extends Resource
 @export var multiplicador_danio: float = 2.0
 
 @export var color_debug: Color = Color.CYAN
+
+@export_multiline var info_real: String = ""
+@export_multiline var descripcion_graciosa: String = ""

@@ -37,3 +37,6 @@ extends Resource
 @export var permite_extraccion: bool = false
 @export var pasos_extraccion: Array[ExtractionStepData] = []
 @export var ic_penalizacion_extraccion: float = 30.0
+
+@export_multiline var hallazgo_info_real: String = ""
+@export_multiline var hallazgo_descripcion_graciosa: String = ""

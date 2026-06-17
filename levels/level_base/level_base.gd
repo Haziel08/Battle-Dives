@@ -560,6 +560,7 @@ func _on_contexto_perdido() -> void:
 
 func _victoria() -> void:
 	GameState.desbloquear_siguiente()
+	GameState.marcar_hallazgo_descubierto(GameState.indice_nivel_actual)
 	_terminar_juego("¡VICTORIA!\nHallazgo protegido", true)
 
 func _terminar_juego(mensaje: String, gano: bool) -> void:
@@ -879,6 +880,7 @@ func _on_extraer_pressed() -> void:
 
 	if completo:
 		GameState.desbloquear_siguiente()
+		GameState.marcar_hallazgo_descubierto(GameState.indice_nivel_actual)
 		_terminar_juego("¡EXTRACCIÓN EXITOSA!\nEl hallazgo fue resguardado\nsiguiendo el protocolo completo", true)
 	else:
 		finding.recibir_danio_cientifico(nivel_actual.ic_penalizacion_extraccion)
