@@ -27,15 +27,17 @@ const SFX_POOL_SIZE: int = 6
 var sfx_index: int = 0
 
 const SFX: Dictionary = {
-	"seleccionar_carta": "res://assets/audio/sfx/seleccionar_carta.ogg",
-	"colocar_tecnica": "res://assets/audio/sfx/colocar_tecnica.ogg",
-	"error_fi": "res://assets/audio/sfx/error_fi.ogg",
-	"inicio_oleada": "res://assets/audio/sfx/inicio_oleada.ogg",
-	"evento_especial": "res://assets/audio/sfx/evento_especial.ogg",
-	"danio_hallazgo": "res://assets/audio/sfx/danio_hallazgo.ogg",
-	"amenaza_derrotada": "res://assets/audio/sfx/amenaza_derrotada.ogg",
-	"victoria": "res://assets/audio/sfx/victoria.ogg",
-	"derrota": "res://assets/audio/sfx/derrota.ogg",
+	"seleccionar_carta": "res://assets/audio/sfx/seleccionar_carta.wav",
+	"falta_fi": "res://assets/audio/sfx/falta_fi.wav",
+	"abandono": "res://assets/audio/sfx/abandono.wav",
+	"victoria": "res://assets/audio/sfx/victoria.wav",
+	"derrota": "res://assets/audio/sfx/derrota.wav",
+	"sismo": "res://assets/audio/sfx/sismo.wav",
+	"huracan": "res://assets/audio/sfx/huracan.wav",
+	"baja_visibilidad": "res://assets/audio/sfx/baja_visibilidad.wav",
+	"corrientes_marinas": "res://assets/audio/sfx/corrientes_marinas.wav",
+	"golpe_hallazgo": "res://assets/audio/sfx/golpe_hallazgo.wav",
+	"boton": "res://assets/audio/sfx/boton.wav",
 }
 
 func _ready() -> void:

@@ -48,17 +48,38 @@ var eventos: Array[EventData] = [
 func _ready() -> void:
 	AudioManager.cambiar_musica("main_menu")
 	btn_volver.pressed.connect(_on_volver)
-	tab_tecnicas.pressed.connect(func(): _cambiar_categoria("tecnicas"))
-	tab_especialistas.pressed.connect(func(): _cambiar_categoria("especialistas"))
-	tab_amenazas.pressed.connect(func(): _cambiar_categoria("amenazas"))
-	tab_eventos.pressed.connect(func(): _cambiar_categoria("eventos"))
-	tab_hallazgos.pressed.connect(func(): _cambiar_categoria("hallazgos"))
+	tab_tecnicas.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		_cambiar_categoria("tecnicas")
+	)
+
+	tab_especialistas.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		_cambiar_categoria("especialistas")
+	)
+
+	tab_amenazas.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		_cambiar_categoria("amenazas")
+	)
+
+	tab_eventos.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		_cambiar_categoria("eventos")
+	)
+
+	tab_hallazgos.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		_cambiar_categoria("hallazgos")
+	)
 	_cambiar_categoria("tecnicas")
 
 func _on_volver() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 
 func _cambiar_categoria(cat: String) -> void:
+	
 	for c in lista_container.get_children():
 		c.queue_free()
 
@@ -89,7 +110,12 @@ func _agregar_item(texto: String, callback: Callable) -> void:
 	var btn = Button.new()
 	btn.text = texto
 	btn.custom_minimum_size = Vector2(300, 50)
-	btn.pressed.connect(callback)
+
+	btn.pressed.connect(func():
+		AudioManager.play_sfx("boton")
+		callback.call()
+	)
+
 	lista_container.add_child(btn)
 
 func _limpiar_detalle() -> void:

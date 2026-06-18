@@ -341,8 +341,12 @@ func _spawnear_amenaza(ficha: ThreatData) -> void:
 
 func _procesar_abandono(delta: float) -> void:
 	if fondo_investigacion < FI_UMBRAL_ABANDONO:
+		if not en_abandono:
+			AudioManager.play_sfx("abandono")
+
 		en_abandono = true
 		timer_abandono += delta
+
 		if timer_abandono >= 1.0:
 			timer_abandono = 0.0
 			finding.recibir_danio_cientifico(DANIO_IC_ABANDONO)
@@ -384,9 +388,11 @@ func desplegar_tecnica(indice: int) -> void:
 		return
 	var ficha = tecnicas[indice]
 	if fondo_investigacion < ficha.costo:
+		AudioManager.play_sfx("falta_fi")
 		return
 
 	fondo_investigacion -= ficha.costo
+	AudioManager.play_sfx("seleccionar_carta")
 	var tecnica = technique_scene.instantiate()
 	path.add_child(tecnica)
 	tecnica.inicializar(ficha, finding, self)
@@ -420,9 +426,11 @@ func desplegar_especialista(indice: int) -> void:
 		return
 	var ficha = especialistas[indice]
 	if fondo_investigacion < ficha.costo:
+		AudioManager.play_sfx("falta_fi")
 		return
 
 	fondo_investigacion -= ficha.costo
+	AudioManager.play_sfx("seleccionar_carta")
 	var esp = specialist_scene.instantiate()
 	# Se coloca cerca del hallazgo (offset pequeño para no superponerse exacto)
 	esp.position = finding.position + Vector2(-40, especialistas_activos.size() * 20 - 20)
@@ -518,6 +526,7 @@ func costo_mejora_actual() -> float:
 	return COSTO_MEJORA_BASE * nivel_generacion
 
 func _on_mejora_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	if tutorial_activo and esperando_accion_tutorial:
 		_tutorial_verificar_accion("click_mejora")
 
@@ -569,7 +578,14 @@ func _victoria() -> void:
 func _terminar_juego(mensaje: String, gano: bool) -> void:
 	if not juego_activo:
 		return
+
 	juego_activo = false
+
+	if gano:
+		AudioManager.play_sfx("victoria")
+	else:
+		AudioManager.play_sfx("derrota")
+
 	get_tree().paused = true
 	label_resultado.text = mensaje
 	btn_siguiente.visible = gano
@@ -587,10 +603,12 @@ func _setup_panel_fin() -> void:
 	btn_salir.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_reintentar_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_siguiente_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().paused = false
 	if GameState.hay_siguiente_nivel():
 		GameState.ir_a_siguiente_nivel()
@@ -600,6 +618,7 @@ func _on_siguiente_pressed() -> void:
 		
 
 func _on_salir_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
@@ -621,11 +640,13 @@ func _setup_panel_pausa() -> void:
 		hijo.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_pausa_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	if juego_activo and not tutorial_activo:
 		get_tree().paused = true
 		panel_pausa.show()
 
 func _on_reanudar_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().paused = false
 	panel_pausa.hide()
 
@@ -736,6 +757,20 @@ func _iniciar_evento(evento: EventData) -> void:
 	evento_actual = evento
 	timer_evento_actual = 0.0
 	efectos_activos[evento.tipo] = true
+	
+	match evento.tipo:
+		"sismo":
+			AudioManager.play_sfx("sismo")
+		"inestabilidad", "huracan":
+			AudioManager.play_sfx("huracan")
+		"baja_visibilidad":
+			AudioManager.play_sfx("baja_visibilidad")
+		"corrientes_marinas":
+			AudioManager.play_sfx("corrientes_marinas")
+		"abandono":
+			AudioManager.play_sfx("abandono")
+		_:
+			AudioManager.play_sfx("boton")
 
 	if evento.oculta_pantalla:
 		overlay_evento.show()
@@ -832,9 +867,11 @@ func registrar_paso_extraccion(accion_id: String) -> void:
 			return
 
 func _on_btn_autorizacion_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	_intentar_paso_directo("autorizacion")
 
 func _on_btn_capsula_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	_intentar_paso_directo("capsula")
 
 func _intentar_paso_directo(accion_id: String) -> void:
@@ -871,6 +908,7 @@ func _actualizar_panel_extraccion() -> void:
 		labels_pasos_extraccion[i].text = "%s %s" % [check, pasos[i].nombre]
 
 func _on_extraer_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	var completo = true
 	for c in pasos_extraccion_completados:
 		if not c:
@@ -891,6 +929,7 @@ func _mostrar_aviso(texto: String) -> void:
 	timer_aviso = 2.5
 	
 func _on_colapsar_extraccion_pressed() -> void:
+	AudioManager.play_sfx("boton")
 	panel_extraccion_colapsado = not panel_extraccion_colapsado
 
 	# Oculta todo excepto el título y el botón de colapsar

@@ -11,10 +11,13 @@ func _ready() -> void:
 	btn_salir.pressed.connect(_on_salir)
 
 func _on_jugar() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
 func _on_almanaque() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().change_scene_to_file("res://ui/almanac/almanac.tscn")
 
 func _on_salir() -> void:
+	AudioManager.play_sfx("boton")
 	get_tree().quit()

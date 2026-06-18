@@ -109,6 +109,7 @@ func _robar_pieza() -> void:
 
 	if ref_hallazgo != null:
 		ref_hallazgo.recibir_danio_cientifico(datos.ic_robado * mult)
+		AudioManager.play_sfx("golpe_hallazgo")
 
 	# Reinicia estado de combate para la huida
 	objetivo_tropa = null
@@ -148,10 +149,19 @@ func _atacar_hallazgo() -> void:
 	if ref_nivel != null and ref_nivel.has_method("obtener_modificador_danio"):
 		mult = ref_nivel.obtener_modificador_danio(datos.tipo)
 
+	var hizo_danio := false
+
 	if datos.danio_fisico > 0.0:
 		ref_hallazgo.recibir_danio_fisico(datos.danio_fisico * mult)
+		hizo_danio = true
+
 	if datos.danio_cientifico > 0.0:
 		ref_hallazgo.recibir_danio_cientifico(datos.danio_cientifico * mult)
+		hizo_danio = true
+
+	if hizo_danio:
+		AudioManager.play_sfx("golpe_hallazgo")
+
 	offset_golpe = 6.0
 
 # ============================================================
