@@ -46,6 +46,7 @@ var eventos: Array[EventData] = [
 ]
 
 func _ready() -> void:
+	AudioManager.cambiar_musica("main_menu")
 	btn_volver.pressed.connect(_on_volver)
 	tab_tecnicas.pressed.connect(func(): _cambiar_categoria("tecnicas"))
 	tab_especialistas.pressed.connect(func(): _cambiar_categoria("especialistas"))

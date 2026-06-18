@@ -5,6 +5,7 @@ extends Node2D
 @onready var btn_salir: Button = $UI/BtnSalir
 
 func _ready() -> void:
+	AudioManager.cambiar_musica("main_menu")
 	btn_jugar.pressed.connect(_on_jugar)
 	btn_almanaque.pressed.connect(_on_almanaque)
 	btn_salir.pressed.connect(_on_salir)

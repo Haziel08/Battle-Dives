@@ -17,6 +17,7 @@ func _ready() -> void:
 			botones_nivel[i].text = "🔒 Nivel %d" % (i + 1)
 
 	btn_volver.pressed.connect(_on_volver)
+	AudioManager.cambiar_musica("level_select")
 
 func _seleccionar(indice: int) -> void:
 	GameState.seleccionar_nivel(indice)

@@ -187,6 +187,9 @@ func _cargar_configuracion() -> void:
 		ola.spawneados = 0
 		ola.timer_spawn = 0.0
 		ola.iniciada = false
+		
+	var clave_musica = "nivel_%d" % (GameState.indice_nivel_actual + 1)
+	AudioManager.cambiar_musica(clave_musica)
 
 # ============================================================
 # SETUP BOTONES
@@ -627,14 +630,10 @@ func _on_reanudar_pressed() -> void:
 	panel_pausa.hide()
 
 func _on_volumen_musica_changed(valor: float) -> void:
-	var bus_idx = AudioServer.get_bus_index("Music")
-	if bus_idx >= 0:
-		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(max(valor, 0.001)))
+	AudioManager.set_volumen_musica(valor)
 
 func _on_volumen_sfx_changed(valor: float) -> void:
-	var bus_idx = AudioServer.get_bus_index("SFX")
-	if bus_idx >= 0:
-		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(max(valor, 0.001)))
+	AudioManager.set_volumen_sfx(valor)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:

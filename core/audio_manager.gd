@@ -1,0 +1,103 @@
+extends Node
+
+# --- BUSES ---
+# Asegúrate de tener en Project > Audio Buses: Master, Music, SFX
+
+# --- MÚSICA ---
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+
+var musica_actual: String = ""
+
+# Mapa de escena → archivo de música
+# Llena las rutas cuando tengas los archivos de tu compañero
+const MUSICA_POR_ESCENA: Dictionary = {
+	"main_menu": "res://assets/audio/music/menu.ogg",
+	"level_select": "res://assets/audio/music/menu.ogg",  # misma que menú
+	"nivel_1": "res://assets/audio/music/nivel_1.ogg",
+	"nivel_2": "res://assets/audio/music/nivel_2.ogg",
+	"nivel_3": "res://assets/audio/music/nivel_3.ogg",
+	"nivel_4": "res://assets/audio/music/nivel_4.ogg",
+	"nivel_5": "res://assets/audio/music/nivel_5.ogg",
+}
+
+# --- SFX ---
+# Un pool de 6 players para evitar que se encimen
+var sfx_players: Array[AudioStreamPlayer] = []
+const SFX_POOL_SIZE: int = 6
+var sfx_index: int = 0
+
+const SFX: Dictionary = {
+	"seleccionar_carta": "res://assets/audio/sfx/seleccionar_carta.ogg",
+	"colocar_tecnica": "res://assets/audio/sfx/colocar_tecnica.ogg",
+	"error_fi": "res://assets/audio/sfx/error_fi.ogg",
+	"inicio_oleada": "res://assets/audio/sfx/inicio_oleada.ogg",
+	"evento_especial": "res://assets/audio/sfx/evento_especial.ogg",
+	"danio_hallazgo": "res://assets/audio/sfx/danio_hallazgo.ogg",
+	"amenaza_derrotada": "res://assets/audio/sfx/amenaza_derrotada.ogg",
+	"victoria": "res://assets/audio/sfx/victoria.ogg",
+	"derrota": "res://assets/audio/sfx/derrota.ogg",
+}
+
+func _ready() -> void:
+	# Crear MusicPlayer si no existe
+	if not has_node("MusicPlayer"):
+		var mp = AudioStreamPlayer.new()
+		mp.name = "MusicPlayer"
+		mp.bus = "Music"
+		add_child(mp)
+
+	# Crear pool de SFX players
+	for i in SFX_POOL_SIZE:
+		var sp = AudioStreamPlayer.new()
+		sp.bus = "SFX"
+		add_child(sp)
+		sfx_players.append(sp)
+
+# ============================================================
+# MÚSICA
+# ============================================================
+
+func cambiar_musica(clave: String) -> void:
+	if clave == musica_actual:
+		return  # misma canción, no reiniciar
+	if not MUSICA_POR_ESCENA.has(clave):
+		return
+
+	var ruta = MUSICA_POR_ESCENA[clave]
+	if not ResourceLoader.exists(ruta):
+		print("AudioManager: archivo no encontrado: ", ruta)
+		return
+
+	musica_actual = clave
+	var stream = load(ruta)
+	$MusicPlayer.stream = stream
+	$MusicPlayer.play()
+
+func detener_musica() -> void:
+	$MusicPlayer.stop()
+	musica_actual = ""
+
+func set_volumen_musica(valor: float) -> void:
+	var bus = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus, linear_to_db(max(valor, 0.001)))
+
+func set_volumen_sfx(valor: float) -> void:
+	var bus = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(bus, linear_to_db(max(valor, 0.001)))
+
+# ============================================================
+# SFX
+# ============================================================
+
+func play_sfx(clave: String) -> void:
+	if not SFX.has(clave):
+		return
+	var ruta = SFX[clave]
+	if not ResourceLoader.exists(ruta):
+		return  # archivo no existe aún, no crashea
+
+	# Usar el siguiente player del pool (round-robin)
+	var player = sfx_players[sfx_index]
+	sfx_index = (sfx_index + 1) % SFX_POOL_SIZE
+	player.stream = load(ruta)
+	player.play()
