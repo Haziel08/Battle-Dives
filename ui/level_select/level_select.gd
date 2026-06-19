@@ -4,7 +4,7 @@ extends Node2D
 	$UI/BtnNivel1, $UI/BtnNivel2, $UI/BtnNivel3, $UI/BtnNivel4, $UI/BtnNivel5
 ]
 
-@onready var btn_volver: Button = $UI/BtnVolver
+@onready var btn_volver: TextureButton = $UI/BtnVolver
 
 func _ready() -> void:
 	for i in botones_nivel.size():

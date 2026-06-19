@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var btn_jugar: Button = $UI/BtnJugar
+@onready var btn_jugar: TextureButton = $UI/BtnJugar
 @onready var btn_almanaque: Button = $UI/BtnAlmanaque
-@onready var btn_salir: Button = $UI/BtnSalir
+@onready var btn_salir: TextureButton = $UI/BtnSalir
 
 func _ready() -> void:
 	AudioManager.cambiar_musica("main_menu")

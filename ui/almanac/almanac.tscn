@@ -1,17 +1,23 @@
-[gd_scene format=3 uid="uid://cfelsvt0oi2s1"]
+[gd_scene load_steps=4 format=3 uid="uid://cfelsvt0oi2s1"]
 
 [ext_resource type="Script" uid="uid://ckx6sen5idsu" path="res://ui/almanac/almanac.gd" id="1_glhfh"]
+[ext_resource type="Texture2D" uid="uid://uj0q0qjxcy4q" path="res://assets/botones/BackButton.png" id="2_fffqq"]
+[ext_resource type="Texture2D" uid="uid://bwuld2qtx6y8t" path="res://assets/botones/BackButtonHover.png" id="3_njakx"]
 
 [node name="Almanac" type="Node2D" unique_id=1578229596]
 script = ExtResource("1_glhfh")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1551384219]
 
-[node name="BtnVolver" type="Button" parent="UI" unique_id=1174336677]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 110.0
-offset_bottom = 50.0
+[node name="BtnVolver" type="TextureButton" parent="UI" unique_id=1174336677]
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 118.0
+offset_bottom = 107.0
+texture_normal = ExtResource("2_fffqq")
+texture_hover = ExtResource("3_njakx")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="TabTecnicas" type="Button" parent="UI" unique_id=1038657537]
 offset_left = 130.0
@@ -45,7 +51,7 @@ offset_bottom = 50.0
 
 [node name="ListaScroll" type="ScrollContainer" parent="UI" unique_id=1486080620]
 offset_left = 10.0
-offset_top = 60.0
+offset_top = 111.0
 offset_right = 330.0
 offset_bottom = 640.0
 

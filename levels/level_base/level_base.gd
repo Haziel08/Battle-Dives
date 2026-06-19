@@ -62,12 +62,12 @@ var cartas_volteadas: Dictionary = {}
 @onready var btn_siguiente: Button = $HUD/PanelFin/BtnSiguiente
 @onready var btn_salir: Button = $HUD/PanelFin/BtnSalir
 
-@onready var btn_pausa: Button = $HUD/BtnPausa
+@onready var btn_pausa: TextureButton = $HUD/BtnPausa
 @onready var panel_pausa: Panel = $HUD/PanelPausa
 @onready var slider_musica: HSlider = $HUD/PanelPausa/SliderMusica
 @onready var slider_sfx: HSlider = $HUD/PanelPausa/SliderSFX
-@onready var btn_reanudar: Button = $HUD/PanelPausa/BtnReanudar
-@onready var btn_salir_pausa: Button = $HUD/PanelPausa/BtnSalirPausa
+@onready var btn_reanudar: TextureButton = $HUD/PanelPausa/BtnReanudar
+@onready var btn_salir_pausa: TextureButton = $HUD/PanelPausa/BtnSalirPausa
 
 @onready var panel_tutorial = $HUD/PanelTutorial
 @onready var label_tutorial: Label = $HUD/PanelTutorial/LabelTexto

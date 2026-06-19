@@ -1,40 +1,89 @@
-[gd_scene format=3 uid="uid://duweosmqcktef"]
+[gd_scene load_steps=13 format=3 uid="uid://duweosmqcktef"]
 
 [ext_resource type="Script" uid="uid://d0rqh530jeoqj" path="res://ui/main_menu/main_menu..gd" id="1_uhj5c"]
+[ext_resource type="Texture2D" uid="uid://cmvdff74j3pcc" path="res://assets/botones/Boton 1.png" id="2_i5wg5"]
+[ext_resource type="Texture2D" uid="uid://dghweyd08ki87" path="res://assets/menuPrincipal/fondoMenu.png" id="2_mu8pm"]
+[ext_resource type="Texture2D" uid="uid://5hrtb0nyyrs" path="res://assets/botones/Boton 2.png" id="3_3c04x"]
+[ext_resource type="Texture2D" uid="uid://drx0rnr8rkra4" path="res://assets/botones/ButtonClicked2.png" id="3_xio0d"]
+[ext_resource type="Texture2D" uid="uid://dadbo3s0wup2t" path="res://assets/texto/JugarTexto.png" id="4_6mijq"]
+[ext_resource type="Texture2D" uid="uid://5i04ki4qmrqx" path="res://assets/botones/ButtonHover2.png" id="4_tf5ef"]
+[ext_resource type="Texture2D" uid="uid://blvtu5of8k7ys" path="res://assets/texto/salir.png" id="4_w2r0d"]
+[ext_resource type="Texture2D" uid="uid://8afe5sprgaxg" path="res://assets/menuPrincipal/Logo.png" id="5_3c04x"]
+[ext_resource type="Texture2D" uid="uid://cy8gvy0nbgp6g" path="res://assets/botones/ButtonHover1.png" id="5_4e78x"]
+[ext_resource type="Texture2D" uid="uid://bkttoh6r5rbdu" path="res://assets/botones/Almanaque.png" id="7_w2r0d"]
+[ext_resource type="Texture2D" uid="uid://cqqmf2lp64mj5" path="res://assets/texto/AlmanaqueTexto.png" id="8_4e78x"]
 
-[node name="MainMenu" type="Node2D" unique_id=1311533087]
+[node name="MainMenu" type="Node2D"]
 script = ExtResource("1_uhj5c")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1458712605]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Titulo" type="Label" parent="UI" unique_id=665885527]
-offset_left = 326.0
-offset_top = 100.0
-offset_right = 826.0
-offset_bottom = 180.0
-text = "Battle Dives
-Guardianes de Hoyo Negro"
-horizontal_alignment = 1
-autowrap_mode = 2
-uppercase = true
+[node name="BtnSalir" type="TextureButton" parent="UI"]
+anchors_preset = -1
+anchor_right = 1.804
+anchor_bottom = 1.3
+offset_left = 754.0
+offset_top = 346.44
+offset_right = -929.208
+offset_bottom = -383.96
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_3c04x")
+texture_pressed = ExtResource("3_xio0d")
+texture_hover = ExtResource("4_tf5ef")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="BtnJugar" type="Button" parent="UI" unique_id=82948246]
-offset_left = 476.0
-offset_top = 280.0
-offset_right = 676.0
-offset_bottom = 340.0
-text = "Jugar"
+[node name="JugarTexto" type="Sprite2D" parent="UI/BtnSalir"]
+position = Vector2(195, 56)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_w2r0d")
 
-[node name="BtnAlmanaque" type="Button" parent="UI" unique_id=1725779963]
-offset_left = 476.0
-offset_top = 360.0
-offset_right = 676.0
-offset_bottom = 420.0
+[node name="BtnJugar" type="TextureButton" parent="UI"]
+anchors_preset = -1
+anchor_right = 1.804
+anchor_bottom = 1.3
+offset_left = 712.0
+offset_top = 215.44
+offset_right = -971.208
+offset_bottom = -514.96
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_i5wg5")
+texture_pressed = ExtResource("3_3c04x")
+texture_hover = ExtResource("5_4e78x")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="JugarTexto" type="Sprite2D" parent="UI/BtnJugar"]
+position = Vector2(195, 56)
+scale = Vector2(0.482, 0.5)
+texture = ExtResource("4_6mijq")
+
+[node name="BtnAlmanaque" type="Button" parent="UI"]
+offset_left = 929.0
+offset_top = 56.44
+offset_right = 1041.0
+offset_bottom = 175.44
 text = "Almanaque"
 
-[node name="BtnSalir" type="Button" parent="UI" unique_id=1829183049]
-offset_left = 476.0
-offset_top = 440.0
-offset_right = 676.0
-offset_bottom = 500.0
-text = "Salir"
+[node name="Almanaque" type="Sprite2D" parent="UI/BtnAlmanaque"]
+position = Vector2(56.9999, 61)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("7_w2r0d")
+
+[node name="AlmanaqueTexto" type="Sprite2D" parent="UI/BtnAlmanaque"]
+z_index = 2
+position = Vector2(54.0001, 76)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_4e78x")
+
+[node name="FondoMenu" type="Sprite2D" parent="UI"]
+z_index = -1
+position = Vector2(578, 323)
+texture = ExtResource("2_mu8pm")
+
+[node name="Logo" type="Sprite2D" parent="UI"]
+position = Vector2(358, 293)
+texture = ExtResource("5_3c04x")

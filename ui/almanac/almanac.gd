@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var btn_volver: Button = $UI/BtnVolver
+@onready var btn_volver: TextureButton = $UI/BtnVolver
 @onready var tab_tecnicas: Button = $UI/TabTecnicas
 @onready var tab_especialistas: Button = $UI/TabEspecialistas
 @onready var tab_amenazas: Button = $UI/TabAmenazas
