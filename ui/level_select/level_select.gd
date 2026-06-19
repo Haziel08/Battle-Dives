@@ -10,18 +10,15 @@ func _ready() -> void:
 	for i in botones_nivel.size():
 		var idx = i
 		botones_nivel[i].pressed.connect(func(): _seleccionar(idx))
-
 		var desbloqueado = GameState.niveles_desbloqueados[i]
 		botones_nivel[i].disabled = not desbloqueado
-
 		if desbloqueado:
 			botones_nivel[i].text = "Nivel %d" % (i + 1)
 		else:
 			botones_nivel[i].text = "🔒 Nivel %d" % (i + 1)
 
 	btn_volver.pressed.connect(_on_volver)
-
-	AudioManager.cambiar_musica("level_select")
+	AudioManager.cambiar_musica("main_menu")
 
 
 func _seleccionar(indice: int) -> void:

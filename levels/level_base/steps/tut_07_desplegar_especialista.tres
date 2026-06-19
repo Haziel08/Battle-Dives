@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_4ksbi")
-texto = "Presiona el botón del primer especialista en el panel derecho para desplegarlo."
+texto = "\"Primero cambia al tab 'Especialistas' en el panel inferior, 
+luego presiona el botón del primer especialista.\""
 tipo = "esperar_accion"
 accion_esperada = "especialista_1"
 metadata/_custom_type_script = "uid://y421pwqha5yv"

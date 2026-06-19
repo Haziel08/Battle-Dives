@@ -37,6 +37,8 @@ var campania_reduccion: float = 0.0
 var efectos_activos: Dictionary = {}  # "baja_visibilidad" -> true/false
 var timer_erosion: float = 0.0
 
+var cartas_volteadas: Dictionary = {}
+
 # --- REFERENCIAS ---
 @onready var path: Path2D = $Path2D
 @onready var label_fi: Label = $HUD/TopPanel/LabelFI
@@ -44,13 +46,15 @@ var timer_erosion: float = 0.0
 @onready var finding = $FindingZone/Finding
 @onready var label_nombre: Label = $HUD/TopPanel/LabelNombre
 @onready var barra_fisica: ProgressBar = $HUD/TopPanel/BarraFisica
-@onready var label_if: Label = $HUD/TopPanel/LabelIF
 @onready var barra_cientifica: ProgressBar = $HUD/TopPanel/BarraCientifica
-@onready var label_ic: Label = $HUD/TopPanel/LabelIC
 @onready var label_mensaje: Label = $HUD/LabelMensaje
 @onready var bottom_bar = $HUD/BottomPanel
+@onready var contenedor_tecnicas = $HUD/BottomPanel/ContenedorTecnicas
+@onready var contenedor_especialistas = $HUD/BottomPanel/ContenedorEspecialistas
+@onready var btn_tab_tecnicas: Button = $HUD/BottomPanel/BtnTabTecnicas
+@onready var btn_tab_especialistas: Button = $HUD/BottomPanel/BtnTabEspecialistas
 @onready var btn_mejora: Button = $HUD/BottomPanel/BtnMejoraFI
-@onready var side_panel = $HUD/SidePanel
+
 
 @onready var panel_fin: Panel = $HUD/PanelFin
 @onready var label_resultado: Label = $HUD/PanelFin/LabelResultado
@@ -149,6 +153,10 @@ func _ready() -> void:
 	_setup_tutorial()
 	tooltip_panel.hide()
 	
+	btn_tab_tecnicas.pressed.connect(func(): _cambiar_tab("tecnicas"))
+	btn_tab_especialistas.pressed.connect(func(): _cambiar_tab("especialistas"))
+	_cambiar_tab("tecnicas")  # inicia mostrando técnicas
+	
 
 
 	btn_mejora.pressed.connect(_on_mejora_pressed)
@@ -196,48 +204,57 @@ func _cargar_configuracion() -> void:
 # ============================================================
 
 func _setup_botones_tecnicas() -> void:
-	botones_tecnicas = bottom_bar.get_children()
+	botones_tecnicas = contenedor_tecnicas.get_children()
 	var tecnicas = nivel_actual.tecnicas_disponibles
 
 	var idx_boton = 0
 	for i in botones_tecnicas.size():
-		if botones_tecnicas[i] == btn_mejora:
-			continue
 		if idx_boton < tecnicas.size():
 			var ficha = tecnicas[idx_boton]
 			botones_tecnicas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
 			botones_tecnicas[i].show()
-			var idx = idx_boton
-			botones_tecnicas[i].pressed.connect(func(): desplegar_tecnica(idx))
-			idx_boton += 1
 			var ficha_tt = ficha
 			var btn_tt = botones_tecnicas[i]
 			btn_tt.gui_input.connect(func(event): _input_tooltip_tecnica(event, ficha_tt, btn_tt))
+			var idx = idx_boton
+			botones_tecnicas[i].pressed.connect(func(): desplegar_tecnica(idx))
+			idx_boton += 1
 		else:
 			botones_tecnicas[i].hide()
 
 func _setup_botones_especialistas() -> void:
-	botones_especialistas = side_panel.get_children()
+	botones_especialistas = contenedor_especialistas.get_children()
 	var especialistas = nivel_actual.especialistas_disponibles
 
 	for i in botones_especialistas.size():
 		if i < especialistas.size():
 			botones_especialistas[i].show()
-
 			var ficha_tt = especialistas[i]
 			var btn_tt = botones_especialistas[i]
 			btn_tt.gui_input.connect(func(event): _input_tooltip_especialista(event, ficha_tt, btn_tt))
-
 			_reconectar_boton_especialista(i)
 		else:
 			botones_especialistas[i].hide()
 
 func _reconectar_boton_especialista(i: int) -> void:
 	var btn = botones_especialistas[i]
+	
+	# Desconectar pressed
 	for c in btn.pressed.get_connections():
 		btn.pressed.disconnect(c["callable"])
+	
+	# Desconectar gui_input también (evita duplicados del flip)
+	for c in btn.gui_input.get_connections():
+		btn.gui_input.disconnect(c["callable"])
 
 	var ficha = nivel_actual.especialistas_disponibles[i]
+	
+	# Reconectar gui_input para el flip
+	var ficha_tt = ficha
+	var btn_tt = btn
+	btn.gui_input.connect(func(event): _input_tooltip_especialista(event, ficha_tt, btn_tt))
+
+	# Reconectar pressed según estado
 	var instancia_activa = null
 	for esp in especialistas_activos:
 		if esp.datos == ficha:
@@ -392,7 +409,7 @@ func desplegar_tecnica(indice: int) -> void:
 		return
 
 	fondo_investigacion -= ficha.costo
-	AudioManager.play_sfx("seleccionar_carta")
+	AudioManager.play_sfx("despliegue_tecnica")
 	var tecnica = technique_scene.instantiate()
 	path.add_child(tecnica)
 	tecnica.inicializar(ficha, finding, self)
@@ -430,7 +447,7 @@ func desplegar_especialista(indice: int) -> void:
 		return
 
 	fondo_investigacion -= ficha.costo
-	AudioManager.play_sfx("seleccionar_carta")
+	AudioManager.play_sfx("despliegue_especialista")
 	var esp = specialist_scene.instantiate()
 	# Se coloca cerca del hallazgo (offset pequeño para no superponerse exacto)
 	esp.position = finding.position + Vector2(-40, especialistas_activos.size() * 20 - 20)
@@ -468,7 +485,7 @@ func _actualizar_botones_especialistas() -> void:
 					botones_especialistas[i].text = "%s\n[%.0fs] LISTO" % [ficha.nombre_activa, restante]
 					botones_especialistas[i].disabled = false
 				else:
-					botones_especialistas[i].text = "%s\nCD %.0fs (%.0fs)" % [ficha.nombre_activa, (1.0-cd)*ficha.cooldown_activa, restante]
+					botones_especialistas[i].text = "%s\nCD %.0fs" % [ficha.nombre_activa, (1.0-cd)*ficha.cooldown_activa]
 					botones_especialistas[i].disabled = true
 			else:
 				botones_especialistas[i].text = "%s\nActivo (%.0fs)" % [ficha.nombre, restante]
@@ -526,7 +543,7 @@ func costo_mejora_actual() -> float:
 	return COSTO_MEJORA_BASE * nivel_generacion
 
 func _on_mejora_pressed() -> void:
-	AudioManager.play_sfx("boton")
+	AudioManager.play_sfx("mejora_dinero")
 	if tutorial_activo and esperando_accion_tutorial:
 		_tutorial_verificar_accion("click_mejora")
 
@@ -556,9 +573,8 @@ func actualizar_hud() -> void:
 
 func _on_stats_actualizados(if_actual, if_maximo, ic_actual, ic_maximo) -> void:
 	barra_fisica.value = if_actual
-	label_if.text = "IF: %d/%d" % [if_actual, if_maximo]
 	barra_cientifica.value = ic_actual
-	label_ic.text = "IC: %d/%d" % [ic_actual, ic_maximo]
+
 
 # ============================================================
 # FIN DE JUEGO
@@ -951,19 +967,48 @@ func _on_colapsar_extraccion_pressed() -> void:
 		panel_extraccion.size = Vector2(320, 360)
 
 func _input_tooltip_tecnica(event: InputEvent, ficha: TechniqueData, btn: Button) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			if tooltip_panel.visible and tooltip_label.text.begins_with(ficha.nombre):
-				ocultar_tooltip()
-			else:
-				_tooltip_tecnica(ficha, btn)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		var volteada = cartas_volteadas.get(btn, false)
+		cartas_volteadas[btn] = not volteada
+		if cartas_volteadas[btn]:
+			_mostrar_reverso_tecnica(ficha, btn)
+		else:
+			_mostrar_frente_tecnica(ficha, btn)
+
+func _mostrar_frente_tecnica(ficha: TechniqueData, btn: Button) -> void:
+	btn.text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+
+func _mostrar_reverso_tecnica(ficha: TechniqueData, btn: Button) -> void:
+	var contra = ", ".join(PackedStringArray(ficha.efectivo_contra)) if ficha.efectivo_contra.size() > 0 else "—"
+	btn.text = "HP:%d DMG:%d\nVS: %s" % [int(ficha.hp), int(ficha.danio), contra]
 
 func _input_tooltip_especialista(event: InputEvent, ficha: SpecialistData, btn: Button) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			if tooltip_panel.visible and tooltip_label.text.begins_with(ficha.nombre):
-				ocultar_tooltip()
-			else:
-				_tooltip_especialista(ficha, btn)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		var volteada = cartas_volteadas.get(btn, false)
+		cartas_volteadas[btn] = not volteada
+		if cartas_volteadas[btn]:
+			_mostrar_reverso_especialista(ficha, btn)
+		else:
+			_mostrar_frente_especialista(ficha, btn)
+
+func _mostrar_frente_especialista(ficha: SpecialistData, btn: Button) -> void:
+	btn.text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+
+func _mostrar_reverso_especialista(ficha: SpecialistData, btn: Button) -> void:
+	var pasiva = ""
+	if ficha.pasiva_ic_por_seg > 0: pasiva = "+%.0fIC/s" % ficha.pasiva_ic_por_seg
+	elif ficha.pasiva_if_por_seg > 0: pasiva = "+%.0fIF/s" % ficha.pasiva_if_por_seg
+	elif ficha.pasiva_fi_por_seg > 0: pasiva = "+%.0fFI/s" % ficha.pasiva_fi_por_seg
+	elif ficha.pasiva_reduce_prob_evento > 0: pasiva = "-%.0f%%eventos" % (ficha.pasiva_reduce_prob_evento*100)
+	elif ficha.reduce_prob_amenaza_tipo != "": pasiva = "-%.0f%%%s" % [ficha.reduce_prob_amenaza_pct*100, ficha.reduce_prob_amenaza_tipo]
+	btn.text = "%ds | %s\n%s" % [int(ficha.duracion), pasiva, ficha.nombre_activa if ficha.tiene_activa else "Sin activa"]
 				
 				
+func _cambiar_tab(tab: String) -> void:
+	contenedor_tecnicas.visible = (tab == "tecnicas")
+	contenedor_especialistas.visible = (tab == "especialistas")
+	# Resaltar tab activo
+	btn_tab_tecnicas.modulate = Color.WHITE if tab == "tecnicas" else Color(0.6, 0.6, 0.6)
+	btn_tab_especialistas.modulate = Color.WHITE if tab == "especialistas" else Color(0.6, 0.6, 0.6)
+	
+	

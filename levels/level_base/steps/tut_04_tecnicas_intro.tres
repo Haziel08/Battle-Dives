@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_aodmk")
-texto = "Las Técnicas (panel inferior) son acciones de respuesta: avanzan por la cueva e interceptan amenazas automáticamente."
+texto = "\"Las Técnicas están en el panel inferior (tab 'Técnicas'). 
+Avanzan por la cueva e interceptan amenazas automáticamente.\""
 metadata/_custom_type_script = "uid://y421pwqha5yv"

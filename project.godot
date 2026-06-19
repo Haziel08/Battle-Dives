@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 GameState="*uid://bbdi3adud7pto"
 AudioManager="*uid://hbid360f0614"
 
+[gui]
+
+theme/custom="uid://d0dblq458wm53"
+
 [input]
 
 desplegar_tropa_1={
