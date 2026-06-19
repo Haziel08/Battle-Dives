@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://3o58vrtpydm2" path="res://ui/hud/shaders/evento.gdshader" id="5_bbnqp"]
 [ext_resource type="Texture2D" uid="uid://bi1eiu44jnqav" path="res://assets/ui/hud/top_bar.png" id="6_5qqpq"]
 [ext_resource type="Texture2D" uid="uid://cwche3bwqvp3k" path="res://assets/ui/hud/bottom_bar.png" id="7_c1bvk"]
+[ext_resource type="Texture2D" uid="uid://j7svndbqkui2" path="res://assets/ui/hud/panel_tutorial.png" id="8_1gksf"]
 
 [sub_resource type="Curve2D" id="Curve2D_fhjk5"]
 _data = {
@@ -54,6 +55,12 @@ integridad_fisica = 1000.0
 integridad_cientifica = 200.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1002676374]
+
+[node name="LabelEvento" type="Label" parent="HUD" unique_id=546642610]
+offset_left = 460.0
+offset_top = 88.0
+offset_right = 760.0
+offset_bottom = 118.0
 
 [node name="LabelMensaje" type="Label" parent="HUD" unique_id=1138197011]
 offset_left = 572.0
@@ -118,13 +125,6 @@ offset_left = 150.0
 offset_top = 15.0
 offset_right = 350.0
 offset_bottom = 45.0
-
-[node name="LabelEvento" type="Label" parent="HUD/TopPanel" unique_id=546642610]
-layout_mode = 0
-offset_left = 185.0
-offset_top = 20.0
-offset_right = 485.0
-offset_bottom = 50.0
 
 [node name="LabelAviso" type="Label" parent="HUD/TopPanel" unique_id=2013320201]
 visible = false
@@ -373,6 +373,7 @@ offset_right = 325.0
 offset_bottom = 195.0
 max_value = 1.0
 step = 0.05
+value = 0.8
 
 [node name="SliderMusica" type="HSlider" parent="HUD/PanelPausa" unique_id=1302503714]
 layout_mode = 0
@@ -382,13 +383,15 @@ offset_right = 325.0
 offset_bottom = 120.0
 max_value = 1.0
 step = 0.05
+value = 0.8
 
-[node name="PanelTutorial" type="Panel" parent="HUD" unique_id=1438701777]
+[node name="PanelTutorial" type="TextureRect" parent="HUD" unique_id=466692400]
 visible = false
 offset_left = 176.0
 offset_top = 350.0
 offset_right = 976.0
 offset_bottom = 490.0
+texture = ExtResource("8_1gksf")
 
 [node name="LabelTexto" type="Label" parent="HUD/PanelTutorial" unique_id=754168550]
 layout_mode = 0

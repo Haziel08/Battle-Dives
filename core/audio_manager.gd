@@ -40,17 +40,17 @@ const SFX: Dictionary = {
 }
 
 func _ready() -> void:
-	# Crear MusicPlayer
 	music_player = AudioStreamPlayer.new()
 	music_player.name = "MusicPlayer"
 	music_player.bus = "Music"
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS  # ← agregar
 	add_child(music_player)
 	music_player.finished.connect(_on_musica_terminada)
 
-	# Crear pool de SFX players
 	for i in SFX_POOL_SIZE:
 		var sp = AudioStreamPlayer.new()
 		sp.bus = "SFX"
+		sp.process_mode = Node.PROCESS_MODE_ALWAYS  # ← agregar
 		add_child(sp)
 		sfx_players.append(sp)
 

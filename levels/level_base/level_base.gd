@@ -69,12 +69,12 @@ var cartas_volteadas: Dictionary = {}
 @onready var btn_reanudar: Button = $HUD/PanelPausa/BtnReanudar
 @onready var btn_salir_pausa: Button = $HUD/PanelPausa/BtnSalirPausa
 
-@onready var panel_tutorial: Panel = $HUD/PanelTutorial
+@onready var panel_tutorial = $HUD/PanelTutorial
 @onready var label_tutorial: Label = $HUD/PanelTutorial/LabelTexto
 @onready var btn_tutorial_siguiente: Button = $HUD/PanelTutorial/BtnContinuar
 
 @onready var overlay_evento: ColorRect = $HUD/OverlayEvento
-@onready var label_evento: Label = $HUD/TopPanel/LabelEvento
+@onready var label_evento: Label = $HUD/LabelEvento
 @onready var fondo_layer: CanvasLayer = $FondoLayer
 
 @onready var tooltip_panel: Panel = $HUD/TooltipPanel
@@ -594,18 +594,23 @@ func _victoria() -> void:
 func _terminar_juego(mensaje: String, gano: bool) -> void:
 	if not juego_activo:
 		return
-
 	juego_activo = false
 
+	# Detener música del nivel
+	AudioManager.detener_musica()
+
+	# Reproducir SFX de resultado
 	if gano:
 		AudioManager.play_sfx("victoria")
 	else:
 		AudioManager.play_sfx("derrota")
 
-	get_tree().paused = true
 	label_resultado.text = mensaje
 	btn_siguiente.visible = gano
 	panel_fin.show()
+
+	# Pausar el árbol después de un frame
+	get_tree().paused = true
 
 func _setup_panel_fin() -> void:
 	panel_fin.hide()
@@ -619,23 +624,25 @@ func _setup_panel_fin() -> void:
 	btn_salir.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_reintentar_pressed() -> void:
-	AudioManager.play_sfx("boton")
 	get_tree().paused = false
+	for player in AudioManager.sfx_players:
+		player.stop()
 	get_tree().reload_current_scene()
 
 func _on_siguiente_pressed() -> void:
-	AudioManager.play_sfx("boton")
 	get_tree().paused = false
+	for player in AudioManager.sfx_players:
+		player.stop()
 	if GameState.hay_siguiente_nivel():
 		GameState.ir_a_siguiente_nivel()
 		get_tree().change_scene_to_file("res://levels/level_base/level_base.tscn")
 	else:
 		get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
-		
 
 func _on_salir_pressed() -> void:
-	AudioManager.play_sfx("boton")
 	get_tree().paused = false
+	for player in AudioManager.sfx_players:
+		player.stop()
 	get_tree().change_scene_to_file("res://ui/level_select/level_select.tscn")
 
 # ============================================================
@@ -649,6 +656,12 @@ func _setup_panel_pausa() -> void:
 	btn_salir_pausa.pressed.connect(_on_salir_pressed)
 	slider_musica.value_changed.connect(_on_volumen_musica_changed)
 	slider_sfx.value_changed.connect(_on_volumen_sfx_changed)
+
+	# Inicializar valores en 80%
+	slider_musica.value = 0.8
+	slider_sfx.value = 0.8
+	AudioManager.set_volumen_musica(0.8)
+	AudioManager.set_volumen_sfx(0.8)
 
 	btn_pausa.process_mode = Node.PROCESS_MODE_ALWAYS
 	panel_pausa.process_mode = Node.PROCESS_MODE_ALWAYS
