@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="BattleDives"
+config/name="Deep Dives: Guardianes de Hoyo Negro"
 run/main_scene="res://ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
@@ -18,6 +18,13 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 GameState="*uid://bbdi3adud7pto"
 AudioManager="*uid://hbid360f0614"
+
+[display]
+
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 
 [gui]
 

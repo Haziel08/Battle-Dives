@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duweosmqcktef"]
+[gd_scene format=3 uid="uid://duweosmqcktef"]
 
 [ext_resource type="Script" uid="uid://d0rqh530jeoqj" path="res://ui/main_menu/main_menu..gd" id="1_uhj5c"]
 [ext_resource type="Texture2D" uid="uid://cmvdff74j3pcc" path="res://assets/botones/Boton 1.png" id="2_i5wg5"]
@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://bkttoh6r5rbdu" path="res://assets/botones/Almanaque.png" id="7_w2r0d"]
 [ext_resource type="Texture2D" uid="uid://cqqmf2lp64mj5" path="res://assets/texto/AlmanaqueTexto.png" id="8_4e78x"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=502576784]
 script = ExtResource("1_uhj5c")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=872939920]
 
-[node name="BtnSalir" type="TextureButton" parent="UI"]
+[node name="BtnSalir" type="TextureButton" parent="UI" unique_id=755464049]
 anchors_preset = -1
 anchor_right = 1.804
 anchor_bottom = 1.3
@@ -35,12 +35,12 @@ texture_hover = ExtResource("4_tf5ef")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="JugarTexto" type="Sprite2D" parent="UI/BtnSalir"]
+[node name="JugarTexto" type="Sprite2D" parent="UI/BtnSalir" unique_id=2096491371]
 position = Vector2(195, 56)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_w2r0d")
 
-[node name="BtnJugar" type="TextureButton" parent="UI"]
+[node name="BtnJugar" type="TextureButton" parent="UI" unique_id=2133995908]
 anchors_preset = -1
 anchor_right = 1.804
 anchor_bottom = 1.3
@@ -56,34 +56,34 @@ texture_hover = ExtResource("5_4e78x")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="JugarTexto" type="Sprite2D" parent="UI/BtnJugar"]
+[node name="JugarTexto" type="Sprite2D" parent="UI/BtnJugar" unique_id=1725671206]
 position = Vector2(195, 56)
 scale = Vector2(0.482, 0.5)
 texture = ExtResource("4_6mijq")
 
-[node name="BtnAlmanaque" type="Button" parent="UI"]
+[node name="BtnAlmanaque" type="Button" parent="UI" unique_id=2114013055]
 offset_left = 929.0
 offset_top = 56.44
 offset_right = 1041.0
 offset_bottom = 175.44
 text = "Almanaque"
 
-[node name="Almanaque" type="Sprite2D" parent="UI/BtnAlmanaque"]
+[node name="Almanaque" type="Sprite2D" parent="UI/BtnAlmanaque" unique_id=1576903476]
 position = Vector2(56.9999, 61)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("7_w2r0d")
 
-[node name="AlmanaqueTexto" type="Sprite2D" parent="UI/BtnAlmanaque"]
+[node name="AlmanaqueTexto" type="Sprite2D" parent="UI/BtnAlmanaque" unique_id=463860167]
 z_index = 2
 position = Vector2(54.0001, 76)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_4e78x")
 
-[node name="FondoMenu" type="Sprite2D" parent="UI"]
+[node name="FondoMenu" type="Sprite2D" parent="UI" unique_id=1806382208]
 z_index = -1
 position = Vector2(578, 323)
 texture = ExtResource("2_mu8pm")
 
-[node name="Logo" type="Sprite2D" parent="UI"]
+[node name="Logo" type="Sprite2D" parent="UI" unique_id=1848779715]
 position = Vector2(358, 293)
 texture = ExtResource("5_3c04x")
