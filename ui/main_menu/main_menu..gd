@@ -36,4 +36,5 @@ func _on_salir() -> void:
 	get_tree().quit()
 	
 func _on_ajustes() -> void:
+	AudioManager.play_sfx("boton")
 	panel_ajustes.visible = not panel_ajustes.visible
