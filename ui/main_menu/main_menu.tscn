@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cy8gvy0nbgp6g" path="res://assets/botones/ButtonHover1.png" id="5_4e78x"]
 [ext_resource type="Texture2D" uid="uid://bkttoh6r5rbdu" path="res://assets/botones/Almanaque.png" id="7_w2r0d"]
 [ext_resource type="Texture2D" uid="uid://cqqmf2lp64mj5" path="res://assets/texto/AlmanaqueTexto.png" id="8_4e78x"]
+[ext_resource type="Texture2D" uid="uid://boo7f7wgd45r4" path="res://assets/texto/Musica.png" id="13_qao3l"]
+[ext_resource type="Texture2D" uid="uid://bgowatrmhr68i" path="res://assets/texto/efectos.png" id="14_lknku"]
 
 [node name="MainMenu" type="Node2D" unique_id=502576784]
 script = ExtResource("1_uhj5c")
@@ -87,3 +89,61 @@ texture = ExtResource("2_mu8pm")
 [node name="Logo" type="Sprite2D" parent="UI" unique_id=1848779715]
 position = Vector2(358, 293)
 texture = ExtResource("5_3c04x")
+
+[node name="BtnAjustes" type="Button" parent="UI" unique_id=2147096274]
+offset_left = 1102.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 50.0
+text = "⚙"
+
+[node name="PanelAjustes" type="Panel" parent="UI" unique_id=1633069]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -150.0
+offset_right = 175.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelMusica" type="Sprite2D" parent="UI/PanelAjustes" unique_id=60649068]
+position = Vector2(81, 71)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("13_qao3l")
+
+[node name="LabelSFX" type="Sprite2D" parent="UI/PanelAjustes" unique_id=992573253]
+position = Vector2(84.149994, 158.65)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("14_lknku")
+
+[node name="SliderSFX" type="HSlider" parent="UI/PanelAjustes" unique_id=780937343]
+layout_mode = 0
+offset_left = 25.149994
+offset_top = 181.65
+offset_right = 325.15
+offset_bottom = 206.65
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="SliderMusica" type="HSlider" parent="UI/PanelAjustes" unique_id=1651850875]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 95.0
+offset_right = 325.0
+offset_bottom = 120.0
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="BtnCerrar" type="Button" parent="UI/PanelAjustes" unique_id=1509155568]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 234.0
+offset_right = 154.0
+offset_bottom = 242.0
+text = "Cerrar"

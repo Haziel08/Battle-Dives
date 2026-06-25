@@ -654,12 +654,12 @@ func _setup_panel_pausa() -> void:
 	btn_pausa.pressed.connect(_on_pausa_pressed)
 	btn_reanudar.pressed.connect(_on_reanudar_pressed)
 	btn_salir_pausa.pressed.connect(_on_salir_pressed)
-	slider_musica.value_changed.connect(_on_volumen_musica_changed)
-	slider_sfx.value_changed.connect(_on_volumen_sfx_changed)
+	slider_musica.value_changed.connect(func(v): ConfigManager.set_musica(v))
+	slider_sfx.value_changed.connect(func(v): ConfigManager.set_sfx(v))
 
 	# Inicializar valores en 80%
-	slider_musica.value = 0.8
-	slider_sfx.value = 0.8
+	slider_musica.value = ConfigManager.volumen_musica
+	slider_sfx.value = ConfigManager.volumen_sfx
 	AudioManager.set_volumen_musica(0.8)
 	AudioManager.set_volumen_sfx(0.8)
 
