@@ -54,15 +54,7 @@ es_tutorial = true
 pasos_tutorial = Array[ExtResource("13_vbyxe")]([ExtResource("14_0gwae"), ExtResource("15_lfua0"), ExtResource("16_ew18s"), ExtResource("17_bbmk1"), ExtResource("18_eqex1"), ExtResource("19_ew31r"), ExtResource("20_gryup"), ExtResource("21_klcdh"), ExtResource("22_rdryl"), ExtResource("23_dx0xt")])
 pasos_extraccion = Array[ExtResource("7_c715l")]([ExtResource("8_um13t"), ExtResource("9_j05mq"), ExtResource("10_li3eh"), ExtResource("11_8qugv"), ExtResource("12_pjatk")])
 hallazgo_imagen = ExtResource("5_eeibl")
-hallazgo_info_real = "Las marcas de soga encontradas en Hoyo Negro son evidencia 
-directa de que humanos del Pleistoceno tardío (hace ~10,000 años) 
-descendieron intencionalmente a la caverna usando cuerdas para 
-buscar agua dulce durante períodos de sequía extrema. Esta 
-evidencia conecta la actividad humana prehistórica con el 
-aprovechamiento de recursos hídricos subterráneos en la 
-Península de Yucatán."
-hallazgo_descripcion_graciosa = "Antes de que existiera el GPS, Uber y los mapas de Google, 
-nuestros ancestros bajaban a cuevas oscuras de 55 metros 
-de profundidad con una cuerda y mucha fe. Respeto."
+hallazgo_info_real = "Las marcas de soga encontradas en Hoyo Negro son evidencia directa de que humanos del Pleistoceno tardío (hace ~10,000 años) descendieron intencionalmente a la caverna usando cuerdas para buscar agua dulce durante períodos de sequía extrema. Esta evidencia conecta la actividad humana prehistórica con el aprovechamiento de recursos hídricos subterráneos en la Península de Yucatán."
+hallazgo_descripcion_graciosa = "Antes de que existiera el GPS, Uber y los mapas de Google, nuestros ancestros bajaban a cuevas oscuras de 55 metros de profundidad con una cuerda y mucha fe. Respeto."
 entradas_almanaque = Array[ExtResource("1_fno00")]([ExtResource("2_vnwh0"), ExtResource("3_hm4qr")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

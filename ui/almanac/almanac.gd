@@ -8,11 +8,12 @@ extends Node2D
 @onready var tab_hallazgos: Button = $UI/TabHallazgos
 
 @onready var lista_container: VBoxContainer = $UI/ListaScroll/ListaContainer
-@onready var detalle_color: ColorRect = $UI/DetallePanel/DetalleColor
 @onready var detalle_nombre: Label = $UI/DetallePanel/DetalleNombre
+@onready var detalle_sprite: TextureRect = $UI/DetallePanel/DetalleSprite
 @onready var detalle_stats: Label = $UI/DetallePanel/DetalleStats
 @onready var detalle_info_real: Label = $UI/DetallePanel/DetalleInfoReal
 @onready var detalle_curioso: Label = $UI/DetallePanel/DetalleCurioso
+
 
 var tecnicas: Array[TechniqueData] = [
 	preload("res://entities/specialists/tec_espeleobuzo.tres"),
@@ -45,8 +46,24 @@ var eventos: Array[EventData] = [
 	preload("res://core/events/evento_corrientes.tres"),
 ]
 
+func _setup_hover_scale(btn: Button) -> void:
+	btn.pivot_offset = Vector2(90, 35)
+	btn.mouse_entered.connect(func():
+		var tw = create_tween()
+		tw.tween_property(btn, "scale", Vector2(1.1, 1.1), 0.1).set_trans(Tween.TRANS_CUBIC)
+	)
+	btn.mouse_exited.connect(func():
+		var tw = create_tween()
+		tw.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.12).set_trans(Tween.TRANS_CUBIC)
+	)
+
 func _ready() -> void:
 	AudioManager.cambiar_musica("main_menu")
+	_setup_hover_scale(tab_tecnicas)
+	_setup_hover_scale(tab_especialistas)
+	_setup_hover_scale(tab_amenazas)
+	_setup_hover_scale(tab_eventos)
+	_setup_hover_scale(tab_hallazgos)
 	btn_volver.pressed.connect(_on_volver)
 	tab_tecnicas.pressed.connect(func():
 		AudioManager.play_sfx("boton")
@@ -79,7 +96,6 @@ func _on_volver() -> void:
 	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 
 func _cambiar_categoria(cat: String) -> void:
-	
 	for c in lista_container.get_children():
 		c.queue_free()
 
@@ -87,15 +103,23 @@ func _cambiar_categoria(cat: String) -> void:
 		"tecnicas":
 			for f in tecnicas:
 				_agregar_item(f.nombre, func(): _mostrar_tecnica(f))
+			if tecnicas.size() > 0:
+				_mostrar_tecnica(tecnicas[0])
 		"especialistas":
 			for f in especialistas:
 				_agregar_item(f.nombre, func(): _mostrar_especialista(f))
+			if especialistas.size() > 0:
+				_mostrar_especialista(especialistas[0])
 		"amenazas":
 			for f in amenazas:
 				_agregar_item(f.nombre, func(): _mostrar_amenaza(f))
+			if amenazas.size() > 0:
+				_mostrar_amenaza(amenazas[0])
 		"eventos":
 			for f in eventos:
 				_agregar_item(f.nombre, func(): _mostrar_evento(f))
+			if eventos.size() > 0:
+				_mostrar_evento(eventos[0])
 		"hallazgos":
 			for i in GameState.niveles.size():
 				var nivel = GameState.niveles[i]
@@ -131,19 +155,35 @@ func _limpiar_detalle() -> void:
 	detalle_stats.text = ""
 	detalle_info_real.text = ""
 	detalle_curioso.text = ""
-	detalle_color.color = Color.DARK_GRAY
+	detalle_sprite.texture = null
+
+func _cargar_sprite_detalle(sprite_path: String, hframes: int) -> void:
+	if sprite_path == "":
+		detalle_sprite.texture = null
+		return
+	var tex = load(sprite_path) as Texture2D
+	if tex == null:
+		detalle_sprite.texture = null
+		return
+	var src = tex.get_image()
+	if src == null:
+		detalle_sprite.texture = null
+		return
+	var frame_w = src.get_width() / hframes
+	var cropped = src.get_region(Rect2i(0, 0, frame_w, src.get_height()))
+	detalle_sprite.texture = ImageTexture.create_from_image(cropped)
 
 func _mostrar_tecnica(f: TechniqueData) -> void:
-	detalle_color.color = f.color_debug
 	detalle_nombre.text = f.nombre + " (Técnica)"
+	_cargar_sprite_detalle(f.spritesheet_path, f.spritesheet_hframes)
 	detalle_stats.text = "En el juego:\nCosto: %d FI | HP: %d | Daño: %d\nVelocidad: %.0f | Vel. Ataque: %.1f/s\nContrarresta: %s (x%.1f)" \
 		% [f.costo, f.hp, f.danio, f.velocidad, f.velocidad_ataque, ", ".join(PackedStringArray(f.efectivo_contra)), f.multiplicador_danio]
 	detalle_info_real.text = "En la vida real:\n" + f.info_real
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
 
 func _mostrar_especialista(f: SpecialistData) -> void:
-	detalle_color.color = f.color_debug
 	detalle_nombre.text = f.nombre + " (Especialista)"
+	_cargar_sprite_detalle(f.spritesheet_path, f.spritesheet_hframes)
 	var pasiva = ""
 	if f.pasiva_ic_por_seg > 0: pasiva += "+%.1f IC/seg  " % f.pasiva_ic_por_seg
 	if f.pasiva_if_por_seg > 0: pasiva += "+%.1f IF/seg  " % f.pasiva_if_por_seg
@@ -156,8 +196,8 @@ func _mostrar_especialista(f: SpecialistData) -> void:
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
 
 func _mostrar_amenaza(f: ThreatData) -> void:
-	detalle_color.color = f.color_debug
 	detalle_nombre.text = f.nombre + " (Amenaza)"
+	_cargar_sprite_detalle(f.spritesheet_path, f.spritesheet_hframes)
 	detalle_stats.text = "En el juego:\nHP: %d | Velocidad: %.0f\nDaño Físico: %.0f | Daño Científico: %.0f\nDaño a Técnicas: %.0f" \
 		% [f.hp, f.velocidad, f.danio_fisico, f.danio_cientifico, f.danio_a_tropas]
 	if f.comportamiento == "roba_y_huye":
@@ -166,8 +206,8 @@ func _mostrar_amenaza(f: ThreatData) -> void:
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
 
 func _mostrar_evento(f: EventData) -> void:
-	detalle_color.color = f.color_debug
 	detalle_nombre.text = f.nombre + " (Evento)"
+	detalle_sprite.texture = null
 	detalle_stats.text = "En el juego:\nDuración: %.0fs" % f.duracion
 	if f.oculta_pantalla: detalle_stats.text += "\nReduce visibilidad"
 	if f.multiplica_velocidad_amenazas != 1.0: detalle_stats.text += "\nAmenazas x%.1f velocidad" % f.multiplica_velocidad_amenazas
@@ -177,23 +217,22 @@ func _mostrar_evento(f: EventData) -> void:
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
 
 func _mostrar_hallazgo(indice: int) -> void:
+	detalle_sprite.texture = null
 	var nivel = GameState.niveles[indice]
 	
 	if not GameState.hallazgos_descubiertos[indice]:
-		detalle_color.color = Color.DARK_GRAY
+		
 		detalle_nombre.text = "??? (Nivel %d bloqueado)" % (indice + 1)
 		detalle_stats.text = "Completa el Nivel %d para descubrir este hallazgo." % (indice + 1)
 		detalle_info_real.text = ""
 		detalle_curioso.text = ""
 		return
 	
-	# Hallazgo desbloqueado
-	detalle_color.color = Color.GOLD
+	
 	detalle_nombre.text = nivel.nombre_hallazgo
 	detalle_stats.text = "Profundidad: ~55m | Sitio: Hoyo Negro, Tulum, Q. Roo\nIF: %.0f | IC: %.0f" % [nivel.hallazgo_if, nivel.hallazgo_ic]
 	
 	# Imagen real
-
 	
 	detalle_info_real.text = "📍 Información real:\n" + nivel.hallazgo_info_real
 	detalle_curioso.text = "💡 Dato curioso:\n" + nivel.hallazgo_descripcion_graciosa
@@ -204,7 +243,7 @@ func _mostrar_descubrimiento(ficha: SpecialistData, desbloqueado: bool) -> void:
 		detalle_stats.text = "Despliega a este especialista en su nivel para desbloquear."
 		detalle_info_real.text = ""
 		detalle_curioso.text = ""
-		detalle_color.color = Color.DARK_GRAY
+		
 		# Ocultar imagen
 		
 		return
@@ -213,7 +252,7 @@ func _mostrar_descubrimiento(ficha: SpecialistData, desbloqueado: bool) -> void:
 	detalle_stats.text = ""
 	detalle_info_real.text = ficha.texto_entrada
 	detalle_curioso.text = ficha.descripcion_graciosa
-	detalle_color.color = ficha.color_debug
+	
 
 	# Mostrar imagen real
 	
@@ -223,5 +262,4 @@ func _mostrar_entrada(entrada: AlmanacEntryData) -> void:
 	detalle_stats.text = ""
 	detalle_info_real.text = entrada.contenido
 	detalle_curioso.text = ""
-	detalle_color.color = Color(0.1, 0.3, 0.4)
 	

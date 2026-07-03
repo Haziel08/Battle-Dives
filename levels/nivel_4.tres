@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://oyvybtoicefc"]
 
 [ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_17x2a"]
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_fa4v6"]
+[ext_resource type="Resource" uid="uid://g1m5cfflfmw5" path="res://assets/almanac/entries/entry_n4_arqueologo.tres" id="2_blr2u"]
 [ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_q74wt"]
 [ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_sf74g"]
 [ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_svvik"]
 [ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_sx6ao"]
+[ext_resource type="Resource" uid="uid://cj5akcqmu3yec" path="res://assets/almanac/entries/entry_n4_paleontologo.tres" id="3_vcxif"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_720li"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_rqix3"]
 [ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_70jch"]
@@ -92,8 +95,8 @@ danio_if_por_tiempo = 0.6
 permite_extraccion = true
 pasos_extraccion = Array[ExtResource("4_rqix3")]([ExtResource("16_3h08x"), ExtResource("17_volvt"), ExtResource("18_ns50c"), ExtResource("19_lurwe"), ExtResource("20_fa4v6")])
 hallazgo_imagen = ExtResource("11_volvt")
-hallazgo_info_real = "
-El Nohochichak xibalbahkah ('animal de grandes garras que vivía en el inframundo' en maya) es una nueva especie y género de perezoso terrestre gigante descubierta en Hoyo Negro. Su sinsacro fue extraído mediante un procedimiento meticuloso: fotografía previa, registro 3D de ubicación y profundidad, evaluación del conservador, autorización científica y embalaje especializado. Todo el proceso fue filmado. Sus restos están resguardados en el Laboratorio de Arqueozoología del INAH. 
+hallazgo_info_real = "El Nohochichak xibalbahkah ('animal de grandes garras que vivía en el inframundo' en maya) es una nueva especie y género de perezoso terrestre gigante descubierta en Hoyo Negro. Su sinsacro fue extraído mediante un procedimiento meticuloso: fotografía previa, registro 3D de ubicación y profundidad, evaluación del conservador, autorización científica y embalaje especializado. Todo el proceso fue filmado. Sus restos están resguardados en el Laboratorio de Arqueozoología del INAH. 
 "
 hallazgo_descripcion_graciosa = "Su nombre en maya ya advertía que era intimidante."
+entradas_almanaque = Array[ExtResource("1_fa4v6")]([ExtResource("2_blr2u"), ExtResource("3_vcxif")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

@@ -3,9 +3,22 @@
 [ext_resource type="Script" uid="uid://ckx6sen5idsu" path="res://ui/almanac/almanac.gd" id="1_glhfh"]
 [ext_resource type="Texture2D" uid="uid://uj0q0qjxcy4q" path="res://assets/botones/BackButton.png" id="2_fffqq"]
 [ext_resource type="Texture2D" uid="uid://bwuld2qtx6y8t" path="res://assets/botones/BackButtonHover.png" id="3_njakx"]
+[ext_resource type="Texture2D" uid="uid://dmpfhh2k8jbw4" path="res://assets/almanac/tecnicas.png" id="4_tab_tec"]
+[ext_resource type="Texture2D" uid="uid://buyrymvmb025q" path="res://assets/almanac/especialistas.png" id="5_tab_esp"]
+[ext_resource type="Texture2D" uid="uid://crxhwt1gnfa65" path="res://assets/almanac/amenazas.png" id="6_tab_ame"]
+[ext_resource type="Texture2D" uid="uid://creksg0cdl4m6" path="res://assets/almanac/eventos.png" id="7_tab_evt"]
+[ext_resource type="Texture2D" uid="uid://dgmabk2kgarxt" path="res://assets/almanac/hallazgos.png" id="8_tab_hal"]
+[ext_resource type="Texture2D" uid="uid://dghweyd08ki87" path="res://assets/menuPrincipal/fondoMenu.png" id="9_qrl2r"]
+[ext_resource type="FontFile" uid="uid://ds3lunxd7lxee" path="res://assets/fonts/Nunito-VariableFont_wght.ttf" id="10_nunito"]
+[ext_resource type="Texture2D" uid="uid://blkei0dua2hns" path="res://assets/almanac/fondo_papel.png" id="11_papel"]
 
 [node name="Almanac" type="Node2D" unique_id=1578229596]
 script = ExtResource("1_glhfh")
+
+[node name="FondoMenu" type="Sprite2D" parent="." unique_id=1795340063]
+z_index = -1
+position = Vector2(578, 323)
+texture = ExtResource("9_qrl2r")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1551384219]
 
@@ -20,38 +33,103 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TabTecnicas" type="Button" parent="UI" unique_id=1038657537]
+clip_contents = true
 offset_left = 130.0
-offset_top = 10.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 50.0
+offset_bottom = 75.0
+
+[node name="Img" type="TextureRect" parent="UI/TabTecnicas" unique_id=1373847659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_tab_tec")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TabEspecialistas" type="Button" parent="UI" unique_id=1034680908]
+clip_contents = true
 offset_left = 320.0
-offset_top = 10.0
+offset_top = 5.0
 offset_right = 500.0
-offset_bottom = 50.0
+offset_bottom = 75.0
+
+[node name="Img" type="TextureRect" parent="UI/TabEspecialistas" unique_id=2098277139]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_tab_esp")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TabAmenazas" type="Button" parent="UI" unique_id=2037339861]
+clip_contents = true
 offset_left = 510.0
-offset_top = 10.0
+offset_top = 5.0
 offset_right = 690.0
-offset_bottom = 50.0
+offset_bottom = 75.0
+
+[node name="Img" type="TextureRect" parent="UI/TabAmenazas" unique_id=1951261607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_tab_ame")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TabEventos" type="Button" parent="UI" unique_id=973166094]
+clip_contents = true
 offset_left = 700.0
-offset_top = 10.0
+offset_top = 5.0
 offset_right = 880.0
-offset_bottom = 50.0
+offset_bottom = 75.0
+
+[node name="Img" type="TextureRect" parent="UI/TabEventos" unique_id=1993990401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_tab_evt")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TabHallazgos" type="Button" parent="UI" unique_id=571972711]
+clip_contents = true
 offset_left = 890.0
-offset_top = 10.0
+offset_top = 5.0
 offset_right = 1070.0
-offset_bottom = 50.0
+offset_bottom = 75.0
+
+[node name="Img" type="TextureRect" parent="UI/TabHallazgos" unique_id=1982556771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_tab_hal")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="ListaScroll" type="ScrollContainer" parent="UI" unique_id=1486080620]
 offset_left = 10.0
-offset_top = 111.0
+offset_top = 105.0
 offset_right = 330.0
 offset_bottom = 640.0
 
@@ -60,45 +138,62 @@ layout_mode = 2
 
 [node name="DetallePanel" type="Panel" parent="UI" unique_id=1351508600]
 offset_left = 340.0
-offset_top = 60.0
-offset_right = 1140.0
-offset_bottom = 640.0
+offset_top = 82.0
+offset_right = 1144.0
+offset_bottom = 642.0
 
-[node name="DetalleColor" type="ColorRect" parent="UI/DetallePanel" unique_id=1896206833]
+[node name="FondoPapel" type="TextureRect" parent="UI/DetallePanel" unique_id=1549741410]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 80.0
+offset_right = 804.0
+offset_bottom = 560.0
+mouse_filter = 2
+texture = ExtResource("11_papel")
+stretch_mode = 1
 
 [node name="DetalleNombre" type="Label" parent="UI/DetallePanel" unique_id=884920987]
 layout_mode = 0
-offset_left = 85.0
+offset_left = 50.0
 offset_top = 20.0
-offset_right = 775.0
-offset_bottom = 65.0
+offset_right = 590.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 25
 autowrap_mode = 3
+
+[node name="DetalleSprite" type="TextureRect" parent="UI/DetallePanel" unique_id=-1282120091]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 10.0
+offset_right = 750.0
+offset_bottom = 210.0
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DetalleStats" type="Label" parent="UI/DetallePanel" unique_id=2031256586]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 80.0
-offset_right = 780.0
-offset_bottom = 180.0
+offset_left = 50.0
+offset_top = 65.0
+offset_right = 590.0
+offset_bottom = 210.0
+theme_override_fonts/font = ExtResource("10_nunito")
+theme_override_font_sizes/font_size = 16
 autowrap_mode = 3
 
 [node name="DetalleInfoReal" type="Label" parent="UI/DetallePanel" unique_id=554726432]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 195.0
-offset_right = 780.0
-offset_bottom = 355.0
-autowrap_mode = 3
+offset_left = 50.0
+offset_top = 220.0
+offset_right = 750.0
+offset_bottom = 385.0
+theme_override_fonts/font = ExtResource("10_nunito")
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
 
 [node name="DetalleCurioso" type="Label" parent="UI/DetallePanel" unique_id=1062659237]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 390.0
-offset_right = 780.0
-offset_bottom = 510.0
-autowrap_mode = 3
+offset_left = 50.0
+offset_top = 395.0
+offset_right = 750.0
+offset_bottom = 530.0
+theme_override_fonts/font = ExtResource("10_nunito")
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2

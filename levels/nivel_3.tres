@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://5w0e07fa3gxk"]
 
 [ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_5tmrs"]
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_bfthc"]
 [ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_fjyne"]
 [ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_txr5h"]
+[ext_resource type="Resource" uid="uid://b6blb1foa5uep" path="res://assets/almanac/entries/entry_n3_oceanografo.tres" id="2_va31t"]
 [ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_0jaqp"]
+[ext_resource type="Resource" uid="uid://tqynysi2u4gv" path="res://assets/almanac/entries/entry_n3_paleontologo.tres" id="3_hqn81"]
 [ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_xjoya"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_a1rhe"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_y60mo"]
@@ -73,6 +76,7 @@ oleadas = Array[ExtResource("3_0jaqp")]([SubResource("Resource_q0b7u"), SubResou
 eventos_posibles = Array[ExtResource("2_txr5h")]([ExtResource("8_a1rhe"), ExtResource("9_h0o0n")])
 prob_evento_por_minuto = 0.4
 hallazgo_imagen = ExtResource("10_11qgs")
-hallazgo_info_real = "El Cuvieronius hyodon (gonfoterio) era un proboscídeo pariente de los elefantes modernos que habitó América hasta hace ~10,000 años. Sus restos en Hoyo Negro pertenecen a uno de los 42 animales del Pleistoceno tardío encontrados en el sitio, de 13 especies distintas, 7 de ellas extintas. Su presencia confirma que la región era un ecosistema radicalmente diferente al actual. "
+hallazgo_info_real = "El Cuvieronius hyodon (gonfoterio) era un proboscídeo pariente de los elefantes modernos que habitó América hasta hace ~10,000 años. Sus restosnen Hoyo Negro pertenecen a uno de los 42 animales del Pleistoceno tardío encontrados en el sitio, de 13 especies distintas, 7 de ellas extintas. Su presencia confirma que la región era un ecosistema radicalmente diferente al actual. "
 hallazgo_descripcion_graciosa = "Un elefante con colmillos extra curvos que vivía en lo que hoy es la Riviera Maya. Los turistas de aquella época tenían una experiencia muy diferente en la playa. "
+entradas_almanaque = Array[ExtResource("1_bfthc")]([ExtResource("2_va31t"), ExtResource("3_hqn81")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

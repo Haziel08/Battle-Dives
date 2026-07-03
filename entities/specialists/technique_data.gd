@@ -17,5 +17,8 @@ extends Resource
 
 @export var color_debug: Color = Color.CYAN
 
+@export var spritesheet_path: String = ""
+@export var spritesheet_hframes: int = 4
+
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""

@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://br1oresyk07ib"]
 
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_alxmk"]
 [ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_auijx"]
 [ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_1unb8"]
 [ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_pirlv"]
+[ext_resource type="Resource" uid="uid://bivx3s0otlqvn" path="res://assets/almanac/entries/entry_n5_arqueologo.tres" id="2_wh8i5"]
 [ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_2m08x"]
+[ext_resource type="Resource" uid="uid://bxf2o0xgwjg37" path="res://assets/almanac/entries/entry_n5_divulgador.tres" id="3_d8upj"]
 [ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_mbhxp"]
+[ext_resource type="Resource" uid="uid://wm1y7ccycqeh" path="res://assets/almanac/entries/entry_n5_paleontologo.tres" id="4_78nxs"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_e2cu6"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_lxgh0"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_4vjqo"]
@@ -94,16 +98,7 @@ eventos_posibles = Array[ExtResource("2_pirlv")]([ExtResource("9_imr8d"), ExtRes
 prob_evento_por_minuto = 0.6
 danio_if_por_tiempo = 0.7
 hallazgo_imagen = ExtResource("13_ibdbi")
-hallazgo_info_real = "Naia es el esqueleto humano más completo y entre los 
-más antiguos de América (~13,000 años). Murió entre 
-los 15 y 17 años, medía ~145 cm y pesaba ~50 kg. 
-Fue descubierta en 2007 por espeleobuzos del Proyecto 
-Espeleológico Tulum y estudiada desde 2011 por el INAH. 
-Su ADN confirmó que los nativos americanos contemporáneos 
-descienden de los primeros pobladores que cruzaron desde 
-Siberia por el Estrecho de Bering. Su sacro forzado 
-indica que fue madre."
-hallazgo_descripcion_graciosa = "13,000 años después, Naia sigue enseñándonos sobre 
-quiénes somos como especie. Pocos de nosotros dejamos 
-una huella tan importante."
+hallazgo_info_real = "Naia es el esqueleto humano más completo y entre los más antiguos de América (~13,000 años). Murió entre los 15 y 17 años, medía ~145 cm y pesaba ~50 kg. Fue descubierta en 2007 por espeleobuzos del Proyecto Espeleológico Tulum y estudiada desde 2011 por el INAH. Su ADN confirmó que los nativos americanos contemporáneos descienden de los primeros pobladores que cruzaron desde Siberia por el Estrecho de Bering. Su sacro forzado indica que fue madre."
+hallazgo_descripcion_graciosa = "13,000 años después, Naia sigue enseñándonos sobre quiénes somos como especie. Pocos de nosotros dejamos una huella tan importante."
+entradas_almanaque = Array[ExtResource("1_alxmk")]([ExtResource("2_wh8i5"), ExtResource("3_d8upj"), ExtResource("4_78nxs")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

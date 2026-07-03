@@ -1,10 +1,12 @@
 [gd_resource type="Theme" format=3 uid="uid://d0dblq458wm53"]
 
 [ext_resource type="FontFile" uid="uid://ds3lunxd7lxee" path="res://assets/fonts/Nunito-VariableFont_wght.ttf" id="1_he1x5"]
-[ext_resource type="FontFile" uid="uid://c4kkl57siha5k" path="res://assets/fonts/Fredoka-VariableFont_wdth,wght.ttf" id="1_lf6ak"]
+[ext_resource type="FontFile" uid="uid://c4kkl57siha5k" path="res://assets/fonts/Fredoka-VariableFont_wdth,wght.ttf" id="2_fredoka"]
+[ext_resource type="FontFile" uid="uid://bsp0u1udun2q6" path="res://assets/Beaverpunch-Regular.ttf" id="3_bvpunch"]
 
 [resource]
-default_font = ExtResource("1_lf6ak")
+default_font = ExtResource("2_fredoka")
 default_font_size = 18
 Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/Beaverpunch = ExtResource("3_bvpunch")
 Label/fonts/Nunito_VariableFont = ExtResource("1_he1x5")

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var botones_nivel: Array = [
+@onready var botones_nivel: Array[TextureButton] = [
 	$UI/BtnNivel1, $UI/BtnNivel2, $UI/BtnNivel3, $UI/BtnNivel4, $UI/BtnNivel5
 ]
 
@@ -12,10 +12,10 @@ func _ready() -> void:
 		botones_nivel[i].pressed.connect(func(): _seleccionar(idx))
 		var desbloqueado = GameState.niveles_desbloqueados[i]
 		botones_nivel[i].disabled = not desbloqueado
-		if desbloqueado:
-			botones_nivel[i].text = "Nivel %d" % (i + 1)
-		else:
-			botones_nivel[i].text = "🔒 Nivel %d" % (i + 1)
+		botones_nivel[i].get_node("Numero").visible = desbloqueado
+		botones_nivel[i].get_node("Candado").visible = not desbloqueado
+		if not desbloqueado:
+			botones_nivel[i].modulate = Color(0.75, 0.75, 0.75, 1.0)
 
 	btn_volver.pressed.connect(_on_volver)
 	AudioManager.cambiar_musica("main_menu")

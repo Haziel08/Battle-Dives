@@ -15,6 +15,8 @@ extends Resource
 @export var color_debug: Color = Color.RED
 # Tipo de amenaza para el sistema de ventajas
 @export var tipo: String = "normal"
+@export var spritesheet_path: String = ""
+@export var spritesheet_hframes: int = 4
 @export_enum("avanza_y_pega", "roba_y_huye") var comportamiento: String = "avanza_y_pega"
 @export var ic_robado: float = 50.0
 @export_multiline var info_real: String = ""

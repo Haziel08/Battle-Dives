@@ -203,6 +203,38 @@ func _cargar_configuracion() -> void:
 # SETUP BOTONES
 # ============================================================
 
+func _crear_card_visual(btn: Button, nombre: String, costo: int, sprite_path: String, hframes: int) -> void:
+	btn.text = ""
+	btn.clip_contents = true
+	for child in btn.get_children():
+		child.free()
+
+	if sprite_path != "":
+		var tex = load(sprite_path) as Texture2D
+		if tex != null:
+			var src = tex.get_image()
+			if src != null:
+				var frame_w = src.get_width() / hframes
+				var cropped = src.get_region(Rect2i(0, 0, frame_w, src.get_height()))
+				var frame_tex = ImageTexture.create_from_image(cropped)
+				var tr = TextureRect.new()
+				tr.texture = frame_tex
+				tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+				tr.offset_bottom = -22
+				tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+				btn.add_child(tr)
+
+	var lbl = Label.new()
+	lbl.text = "%d FI" % costo
+	lbl.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	lbl.offset_top = -22
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	btn.add_child(lbl)
+
 func _setup_botones_tecnicas() -> void:
 	botones_tecnicas = contenedor_tecnicas.get_children()
 	var tecnicas = nivel_actual.tecnicas_disponibles
@@ -211,7 +243,7 @@ func _setup_botones_tecnicas() -> void:
 	for i in botones_tecnicas.size():
 		if idx_boton < tecnicas.size():
 			var ficha = tecnicas[idx_boton]
-			botones_tecnicas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+			_crear_card_visual(botones_tecnicas[i], ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 			botones_tecnicas[i].show()
 			var ficha_tt = ficha
 			var btn_tt = botones_tecnicas[i]
@@ -228,8 +260,10 @@ func _setup_botones_especialistas() -> void:
 
 	for i in botones_especialistas.size():
 		if i < especialistas.size():
+			var ficha = especialistas[i]
+			_crear_card_visual(botones_especialistas[i], ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 			botones_especialistas[i].show()
-			var ficha_tt = especialistas[i]
+			var ficha_tt = ficha
 			var btn_tt = botones_especialistas[i]
 			btn_tt.gui_input.connect(func(event): _input_tooltip_especialista(event, ficha_tt, btn_tt))
 			_reconectar_boton_especialista(i)
@@ -272,6 +306,10 @@ func _reconectar_boton_especialista(i: int) -> void:
 # ============================================================
 
 func _process(delta: float) -> void:
+	if not juego_activo:
+		return
+
+	# Shake de pantalla (siempre corre, independiente del tutorial)
 	if shake_timer > 0.0:
 		shake_timer -= delta
 		var offset = Vector2(randf_range(-shake_intensidad, shake_intensidad), randf_range(-shake_intensidad, shake_intensidad))
@@ -280,54 +318,58 @@ func _process(delta: float) -> void:
 		if shake_timer <= 0.0:
 			position = Vector2.ZERO
 			fondo_layer.offset = Vector2.ZERO
-	if not juego_activo:
+
+	# Avisos y notificaciones (siempre corren)
+	if timer_aviso > 0.0:
+		timer_aviso -= delta
+		if timer_aviso <= 0.0:
+			label_aviso.hide()
+
+	if timer_notificacion > 0.0:
+		timer_notificacion -= delta
+		if timer_notificacion <= 0.0:
+			label_mensaje.hide()
+
+	# Todo lo demás se pausa durante el tutorial
+	if tutorial_activo:
 		return
 
+	# Tiempo
 	tiempo_transcurrido += delta
 	_actualizar_label_tiempo()
 
-	# --- FI pasivo ---
+	# FI pasivo
 	timer_fi += delta
 	if timer_fi >= 1.0:
 		timer_fi = 0.0
 		var fi_pasivo = fi_pasivo_base + (nivel_generacion - 1) * INCREMENTO_FI_POR_NIVEL
 		agregar_fi(fi_pasivo)
 
-	# --- Abandono ---
+	# Abandono
 	_procesar_abandono(delta)
+
+	# Eventos
 	_procesar_eventos(delta)
-	
-	# Erosión natural: el tiempo degrada la integridad física
+
+	# Erosión por tiempo
 	if nivel_actual.danio_if_por_tiempo > 0.0:
 		timer_erosion += delta
 		if timer_erosion >= 1.0:
 			timer_erosion = 0.0
 			finding.recibir_danio_fisico(nivel_actual.danio_if_por_tiempo)
 
-	# --- Oleadas por tiempo ---
-	if not _tutorial_esta_pausando_oleadas():
-		_procesar_oleadas(delta)
+	# Oleadas
+	_procesar_oleadas(delta)
 
-	# --- Condición de victoria/derrota por tiempo ---
+	# Condición de victoria/derrota
 	_verificar_fin_de_nivel()
 
-	# --- Actualizar botones ---
+	# Actualizar botones
 	_actualizar_botones_tecnicas()
 	_actualizar_btn_mejora()
 	if nivel_generacion < MAX_NIVEL_GENERACION:
 		btn_mejora.disabled = fondo_investigacion < costo_mejora_actual()
 	_actualizar_botones_especialistas()
-	
-	if timer_aviso > 0.0:
-		timer_aviso -= delta
-		if timer_aviso <= 0.0:
-			label_aviso.hide()
-			
-	if timer_notificacion > 0.0:
-		timer_notificacion -= delta
-		if timer_notificacion <= 0.0:
-			label_mensaje.hide()
-
 # ============================================================
 # OLEADAS POR TIEMPO
 # ============================================================
@@ -505,7 +547,8 @@ func _actualizar_botones_especialistas() -> void:
 				botones_especialistas[i].text = "%s\nActivo (%.0fs)" % [ficha.nombre, restante]
 				botones_especialistas[i].disabled = true
 		else:
-			botones_especialistas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+			if ficha.spritesheet_path == "":
+				botones_especialistas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
 			botones_especialistas[i].disabled = fondo_investigacion < ficha.costo
 
 		_reconectar_boton_especialista(i)
@@ -1003,9 +1046,11 @@ func _input_tooltip_tecnica(event: InputEvent, ficha: TechniqueData, btn: Button
 			_mostrar_frente_tecnica(ficha, btn)
 
 func _mostrar_frente_tecnica(ficha: TechniqueData, btn: Button) -> void:
-	btn.text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+	_crear_card_visual(btn, ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 
 func _mostrar_reverso_tecnica(ficha: TechniqueData, btn: Button) -> void:
+	for child in btn.get_children():
+		child.free()
 	var contra = ", ".join(PackedStringArray(ficha.efectivo_contra)) if ficha.efectivo_contra.size() > 0 else "—"
 	btn.text = "HP:%d DMG:%d\nVS: %s" % [int(ficha.hp), int(ficha.danio), contra]
 
@@ -1019,9 +1064,11 @@ func _input_tooltip_especialista(event: InputEvent, ficha: SpecialistData, btn: 
 			_mostrar_frente_especialista(ficha, btn)
 
 func _mostrar_frente_especialista(ficha: SpecialistData, btn: Button) -> void:
-	btn.text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+	_crear_card_visual(btn, ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 
 func _mostrar_reverso_especialista(ficha: SpecialistData, btn: Button) -> void:
+	for child in btn.get_children():
+		child.free()
 	var pasiva = ""
 	if ficha.pasiva_ic_por_seg > 0: pasiva = "+%.0fIC/s" % ficha.pasiva_ic_por_seg
 	elif ficha.pasiva_if_por_seg > 0: pasiva = "+%.0fIF/s" % ficha.pasiva_if_por_seg

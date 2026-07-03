@@ -1,8 +1,11 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dgwm2mua2pgx8"]
 
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_8503b"]
 [ext_resource type="Script" uid="uid://jp81cwh1fegm" path="res://entities/specialists/specialist_data.gd" id="1_wv603"]
 [ext_resource type="Script" uid="uid://cwvvi5ypt3s24" path="res://core/event_data.gd" id="2_4vwjd"]
 [ext_resource type="Resource" uid="uid://ck7kb228mu81b" path="res://entities/specialists/esp_conservadore.tres" id="2_bjuea"]
+[ext_resource type="Resource" uid="uid://k6hkuuowykb5" path="res://assets/almanac/entries/entry_n2_fotogrametrista.tres" id="2_tdych"]
+[ext_resource type="Resource" uid="uid://bp0htpqi030gw" path="res://assets/almanac/entries/entry_n2_paleontologo.tres" id="3_3lhvt"]
 [ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_otg6q"]
 [ext_resource type="Script" uid="uid://bxea5stxciutd" path="res://core/wave_entry.gd" id="3_vkgxw"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_mocfe"]
@@ -61,6 +64,7 @@ duracion_nivel = 150.0
 oleadas = Array[ExtResource("3_vkgxw")]([SubResource("Resource_8503b"), SubResource("Resource_tdych"), SubResource("Resource_3lhvt"), SubResource("Resource_pj281")])
 eventos_posibles = Array[ExtResource("2_4vwjd")]([ExtResource("6_otg6q")])
 hallazgo_imagen = ExtResource("7_mocfe")
-hallazgo_info_real = "En Hoyo Negro se encontró el primer cráneo completo de Smilodon fatalis (tigre dientes de sable) hallado en México. Sus caninos medían hasta 28 cm. Vivió hace entre 40,000 y 10,000 años y fue uno de los depredadores más temibles del Pleistoceno en América. La cueva actuó como trampa natural,  preservando sus restos."
+hallazgo_info_real = "En Hoyo Negro se encontró el primer cráneo completo de Smilodon fatalis (tigre dientes de sable) hallado en México. Sus caninos medían hasta 28cm. Vivió hace entre 40,000 y 10,000 años y fue uno de los depredadores más temibles del Pleistoceno en América. La cueva actuó como trampannatural,  preservando sus restos."
 hallazgo_descripcion_graciosa = "Tenía dientes más largos que tu teléfono celular.  La naturaleza claramente no entendía el concepto de  'suficiente'."
+entradas_almanaque = Array[ExtResource("1_8503b")]([ExtResource("2_tdych"), ExtResource("3_3lhvt")])
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"
