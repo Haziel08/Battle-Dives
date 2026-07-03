@@ -7,6 +7,8 @@
 [node name="SpecialistBase" type="Node2D" unique_id=532896790]
 script = ExtResource("1_emsse")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823746512]
+
 [node name="HoverArea" type="Area2D" parent="." unique_id=1090994104]
 
 [node name="Shape" type="CollisionShape2D" parent="HoverArea" unique_id=1600514003]

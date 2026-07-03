@@ -5,6 +5,7 @@ var ref_nivel = null
 var ref_hallazgo = null
 
 var timer_vida: float = 0.0
+var tiene_sprite: bool = false
 var timer_pasiva: float = 0.0
 var timer_cooldown_activa: float = 0.0
 var activa_disponible: bool = true
@@ -23,6 +24,32 @@ func inicializar(ficha: SpecialistData, hallazgo, nivel) -> void:
 	if datos.tiene_activa:
 		timer_cooldown_activa = 0.0
 		activa_disponible = true
+	_configurar_sprite()
+
+func _configurar_sprite() -> void:
+	if datos.spritesheet_path == "":
+		return
+	var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+	if anim == null:
+		return
+	var tex = load(datos.spritesheet_path)
+	if tex == null:
+		return
+	var frame_w = tex.get_width() / datos.spritesheet_hframes
+	var frame_h = tex.get_height()
+	var frames = SpriteFrames.new()
+	frames.add_animation("walk")
+	frames.set_animation_loop("walk", true)
+	frames.set_animation_speed("walk", 8.0)
+	for i in datos.spritesheet_hframes:
+		var atlas = AtlasTexture.new()
+		atlas.atlas = tex
+		atlas.region = Rect2(i * frame_w, 0, frame_w, frame_h)
+		frames.add_frame("walk", atlas)
+	anim.sprite_frames = frames
+	anim.scale = Vector2(0.07, 0.07)
+	anim.play("walk")
+	tiene_sprite = true
 
 func _process(delta: float) -> void:
 	if datos == null:
@@ -132,4 +159,5 @@ func _on_hover_exit() -> void:
 func _draw() -> void:
 	if datos == null:
 		return
-	draw_rect(Rect2(-16, -16, 32, 32), datos.color_debug)
+	if not tiene_sprite:
+		draw_rect(Rect2(-16, -16, 32, 32), datos.color_debug)

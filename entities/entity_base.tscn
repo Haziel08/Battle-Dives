@@ -10,7 +10,8 @@
 loop = false
 script = ExtResource("1_1i81c")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1545940711]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1545940711]
+flip_h = true
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=2103561378]
 shape = SubResource("RectangleShape2D_h6hm3")

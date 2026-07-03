@@ -11,4 +11,6 @@ ignora_tropas = true
 danio_continuo = true
 color_debug = Color(0.9607843, 0, 0.023529412, 1)
 tipo = "sedimento"
+spritesheet_path = "res://assets/sedimento_spritesheet.png"
+spritesheet_hframes = 2
 metadata/_custom_type_script = "uid://d04cl4yo35bla"

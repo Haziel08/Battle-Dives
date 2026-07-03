@@ -10,7 +10,7 @@
 loop = false
 script = ExtResource("1_gr5rv")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2114193391]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=2114193391]
 
 [node name="Collision" type="Area2D" parent="." unique_id=2079149758]
 

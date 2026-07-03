@@ -11,12 +11,39 @@ var flash_danio: float = 0.0
 var ref_hallazgo = null
 var ref_nivel = null
 var timer_vida_estatico: float = 0.0
+var tiene_sprite: bool = false
 
 func inicializar(ficha: TechniqueData, hallazgo, nivel) -> void:
 	datos = ficha
 	hp_actual = ficha.hp
 	ref_hallazgo = hallazgo
 	ref_nivel = nivel
+	_configurar_sprite()
+
+func _configurar_sprite() -> void:
+	if datos.spritesheet_path == "":
+		return
+	var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+	if anim == null:
+		return
+	var tex = load(datos.spritesheet_path)
+	if tex == null:
+		return
+	var frame_w = tex.get_width() / datos.spritesheet_hframes
+	var frame_h = tex.get_height()
+	var frames = SpriteFrames.new()
+	frames.add_animation("walk")
+	frames.set_animation_loop("walk", true)
+	frames.set_animation_speed("walk", 8.0)
+	for i in datos.spritesheet_hframes:
+		var atlas = AtlasTexture.new()
+		atlas.atlas = tex
+		atlas.region = Rect2(i * frame_w, 0, frame_w, frame_h)
+		frames.add_frame("walk", atlas)
+	anim.sprite_frames = frames
+	anim.scale = Vector2(0.07, 0.07)
+	anim.play("walk")
+	tiene_sprite = true
 
 func _process(delta: float) -> void:
 	if not esta_vivo or datos == null:
@@ -119,7 +146,8 @@ func _on_hover_exit() -> void:
 func _draw() -> void:
 	if datos == null:
 		return
-	var color = datos.color_debug.lerp(Color.WHITE, flash_danio)
-	draw_rect(Rect2(-16 + offset_golpe, -16, 32, 32), color)
+	if not tiene_sprite:
+		var color = datos.color_debug.lerp(Color.WHITE, flash_danio)
+		draw_rect(Rect2(-16 + offset_golpe, -16, 32, 32), color)
 	if not datos.es_estatico:
 		draw_arc(Vector2.ZERO, datos.radio_deteccion, 0, TAU, 32, Color(datos.color_debug.r, datos.color_debug.g, datos.color_debug.b, 0.2))
