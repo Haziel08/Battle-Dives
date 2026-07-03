@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://wm1y7ccycqeh"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_utc76"]
+
+[resource]
+script = ExtResource("1_utc76")
+titulo = "ADN de Naia y los Primeros Americanos"
+contenido = "El ADN antiguo de Naia resolvió una paradoja científica de décadas: los cráneos de los paleoamericanos (como Naia) son morfológicamente muy diferentes a los nativos americanos modernos, pero genéticamente son sus ancestros directos.
+
+Esto significa que los primeros pobladores de América cruzaron desde Siberia por el Estrecho de Bering y cambiaron físicamente con el tiempo, sin necesidad de múltiples migraciones.
+
+Naia es el eslabón que faltaba para confirmar la teoría del poblamiento americano. Sus restos están resguardados en el Museo Nacional de Antropología de la Ciudad de México."
+especialista_requerido = "Paleontólogo"
+nivel_requerido = 4
+icono_categoria = "🧬"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

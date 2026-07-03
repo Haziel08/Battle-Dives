@@ -8,4 +8,6 @@ nombre = "Sismo"
 tipo = "sismo"
 duracion = 3.0
 danio_fisico_instantaneo = 30.0
+info_real = "La Península de Yucatán tiene actividad sísmica moderada relacionada con fallas geológicas del Caribe. Un sismo puede desestabilizar bloques de roca caliza dentro de las cuevas, alterar el flujo de agua subterránea y en casos extremos, colapsar paredes que durante siglos habían protegido hallazgos arqueológicos."
+descripcion_graciosa = "La cueva que sobrevivió 13,000 años intacta puede verse afectada por un sismo en minutos. La geología no acepta quejas ni apelaciones."
 metadata/_custom_type_script = "uid://cwvvi5ypt3s24"

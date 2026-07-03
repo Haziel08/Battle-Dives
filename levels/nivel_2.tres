@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://nb0majpveny8" path="res://core/events/evento_baja_visibilidad.tres" id="6_otg6q"]
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="7_0i5gj"]
 [ext_resource type="Resource" uid="uid://cox33n1ev3ogr" path="res://entities/threats/sedimento.tres" id="7_7rt2n"]
+[ext_resource type="Texture2D" uid="uid://cn5onlsuk4aj0" path="res://assets/almanac/hallazgos/smilodon.jpg" id="7_mocfe"]
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="8_c5yvw"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="8_v5b75"]
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="9_vs3d3"]
@@ -59,4 +60,7 @@ especialistas_disponibles = Array[ExtResource("1_wv603")]([ExtResource("2_bjuea"
 duracion_nivel = 150.0
 oleadas = Array[ExtResource("3_vkgxw")]([SubResource("Resource_8503b"), SubResource("Resource_tdych"), SubResource("Resource_3lhvt"), SubResource("Resource_pj281")])
 eventos_posibles = Array[ExtResource("2_4vwjd")]([ExtResource("6_otg6q")])
+hallazgo_imagen = ExtResource("7_mocfe")
+hallazgo_info_real = "En Hoyo Negro se encontró el primer cráneo completo de Smilodon fatalis (tigre dientes de sable) hallado en México. Sus caninos medían hasta 28 cm. Vivió hace entre 40,000 y 10,000 años y fue uno de los depredadores más temibles del Pleistoceno en América. La cueva actuó como trampa natural,  preservando sus restos."
+hallazgo_descripcion_graciosa = "Tenía dientes más largos que tu teléfono celular.  La naturaleza claramente no entendía el concepto de  'suficiente'."
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

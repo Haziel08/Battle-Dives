@@ -14,4 +14,6 @@ activa_ic_instantaneo = 15.0
 activa_cura_efecto = "baja_visibilidad"
 accion_extraccion_id = "escaneo_3d"
 color_debug = Color(0.64282286, 0.11871263, 0.39875656, 1)
+info_real = "La fotogrametría Structure from Motion (SfM) usada en Hoyo Negro fue desarrollada en colaboración con el ingeniero Vic Petrovic de la Universidad de California, San Diego. Permite crear modelos 3D precisos 'pintando con luz' — miles de fotografías procesadas por computadora generan un mapa digital donde se puede medir, analizar y 'visitar' virtualmente el sitio sin arriesgar los hallazgos."
+descripcion_graciosa = "Toma 3,000 fotos de la misma roca desde ángulos ligeramente distintos y las llama 'trabajo'. El resultado es tan preciso que los científicos pueden hacer análisis sin tocar el original. El arte de la paranoia productiva."
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

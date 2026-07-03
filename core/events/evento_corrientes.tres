@@ -8,4 +8,6 @@ nombre = "Corrientes Fuertes"
 tipo = "corrientes"
 duracion = 10.0
 multiplica_velocidad_amenazas = 1.4
+info_real = "El sistema de cuevas de Yucatán es el más largo del mundo, con más de 400 km mapeados y conectado al mar Caribe. Las corrientes subterráneas pueden superar 1 m/s durante eventos de marea o lluvia intensa, haciendo imposible el buceo. Estas corrientes también transportan contaminantes desde Tulum hasta Hoyo Negro en cuestión de horas, siendo uno de los mayores riesgos para el sitio."
+descripcion_graciosa = "El acuífero de Yucatán es básicamente una autopista subterránea de agua. Lo que tiras en Tulum llega a Hoyo Negro antes de que puedas decir 'patrimonio cultural subacuático'."
 metadata/_custom_type_script = "uid://cwvvi5ypt3s24"

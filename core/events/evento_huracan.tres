@@ -8,4 +8,6 @@ nombre = "Huracán"
 tipo = "huracan"
 oculta_pantalla = true
 multiplica_velocidad_amenazas = 1.5
+info_real = "Quintana Roo es una de las zonas con mayor actividad de huracanes en el mundo. Eventos como el Huracán Wilma (2005) y Gilberto (1988) alteraron significativamente los sistemas de cuevas subterráneas de la Península. Las corrientes generadas pueden transportar sedimento, mover restos óseos y alterar la química del agua en horas."
+descripcion_graciosa = "El meteorólogo dice 'categoría 5 con dirección a Tulum'. El equipo de Hoyo Negro dice 'cancelamos la temporada de campo'. La naturaleza siempre tiene la última palabra."
 metadata/_custom_type_script = "uid://cwvvi5ypt3s24"

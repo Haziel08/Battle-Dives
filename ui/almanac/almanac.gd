@@ -103,6 +103,14 @@ func _cambiar_categoria(cat: String) -> void:
 				var nombre = nivel.nombre_hallazgo if descubierto else "??? (Nivel %d)" % (i + 1)
 				var idx = i
 				_agregar_item(nombre, func(): _mostrar_hallazgo(idx))
+		
+		"descubrimientos":
+			if GameState.entradas_desbloqueadas.is_empty():
+				_agregar_item("(Ninguna entrada aún)", func(): _limpiar_detalle())
+				return
+			for entrada in GameState.entradas_desbloqueadas:
+				var e = entrada
+				_agregar_item(entrada.icono_categoria + " " + entrada.titulo, func(): _mostrar_entrada(e))
 
 	_limpiar_detalle()
 
@@ -170,15 +178,50 @@ func _mostrar_evento(f: EventData) -> void:
 
 func _mostrar_hallazgo(indice: int) -> void:
 	var nivel = GameState.niveles[indice]
+	
 	if not GameState.hallazgos_descubiertos[indice]:
 		detalle_color.color = Color.DARK_GRAY
-		detalle_nombre.text = "??? (Bloqueado)"
+		detalle_nombre.text = "??? (Nivel %d bloqueado)" % (indice + 1)
 		detalle_stats.text = "Completa el Nivel %d para descubrir este hallazgo." % (indice + 1)
 		detalle_info_real.text = ""
 		detalle_curioso.text = ""
 		return
+	
+	# Hallazgo desbloqueado
 	detalle_color.color = Color.GOLD
-	detalle_nombre.text = nivel.nombre_hallazgo + " (Hallazgo)"
-	detalle_stats.text = "En el juego:\nIntegridad Física: %.0f\nIntegridad Científica: %.0f" % [nivel.hallazgo_if, nivel.hallazgo_ic]
-	detalle_info_real.text = "En la vida real:\n" + nivel.hallazgo_info_real
-	detalle_curioso.text = "Dato curioso:\n" + nivel.hallazgo_descripcion_graciosa
+	detalle_nombre.text = nivel.nombre_hallazgo
+	detalle_stats.text = "Profundidad: ~55m | Sitio: Hoyo Negro, Tulum, Q. Roo\nIF: %.0f | IC: %.0f" % [nivel.hallazgo_if, nivel.hallazgo_ic]
+	
+	# Imagen real
+
+	
+	detalle_info_real.text = "📍 Información real:\n" + nivel.hallazgo_info_real
+	detalle_curioso.text = "💡 Dato curioso:\n" + nivel.hallazgo_descripcion_graciosa
+	
+func _mostrar_descubrimiento(ficha: SpecialistData, desbloqueado: bool) -> void:
+	if not desbloqueado:
+		detalle_nombre.text = "Entrada bloqueada"
+		detalle_stats.text = "Despliega a este especialista en su nivel para desbloquear."
+		detalle_info_real.text = ""
+		detalle_curioso.text = ""
+		detalle_color.color = Color.DARK_GRAY
+		# Ocultar imagen
+		
+		return
+
+	detalle_nombre.text = ficha.titulo_entrada
+	detalle_stats.text = ""
+	detalle_info_real.text = ficha.texto_entrada
+	detalle_curioso.text = ficha.descripcion_graciosa
+	detalle_color.color = ficha.color_debug
+
+	# Mostrar imagen real
+	
+		
+func _mostrar_entrada(entrada: AlmanacEntryData) -> void:
+	detalle_nombre.text = entrada.titulo
+	detalle_stats.text = ""
+	detalle_info_real.text = entrada.contenido
+	detalle_curioso.text = ""
+	detalle_color.color = Color(0.1, 0.3, 0.4)
+	

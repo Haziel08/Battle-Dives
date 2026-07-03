@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://b6blb1foa5uep"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_dmaef"]
+
+[resource]
+script = ExtResource("1_dmaef")
+titulo = "Condiciones Ambientales: Zona de Sedimentos"
+contenido = "Hoyo Negro tiene ~55 metros de profundidad y ~62 metros de diámetro. El fondo está cubierto de sedimento calcáreo ultra-fino que se levanta con el mínimo movimiento, reduciendo la visibilidad a cero en segundos.
+
+Este sedimento actuó como 'sello' protector durante milenios, cubriendo los restos y ralentizando su descomposición. Sin embargo, las corrientes subterráneas pueden redistribuirlo y mezclar contextos arqueológicos distintos.
+
+La halocline (capa donde el agua dulce se mezcla con agua salada) crea una distorsión visual característica que complica el trabajo de los buzos."
+especialista_requerido = "Oceanógrafo"
+nivel_requerido = 2
+icono_categoria = "🌊"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://cj5akcqmu3yec"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_qupjp"]
+
+[resource]
+script = ExtResource("1_qupjp")
+titulo = "Nueva Especie: Nohochichak xibalbahkah"
+contenido = "Nohochichak xibalbahkah significa 'animal de grandes garras que vivía en el inframundo' en lengua maya yucateca — un nombre que los investigadores consideraron perfectamente apropiado.
+
+Es un género Y especie completamente nuevos para la ciencia, descubiertos exclusivamente en Hoyo Negro. Pertenece a los perezosos terrestres gigantes (Megatheriidae), que podían alcanzar el tamaño de un elefante actual.
+
+Su hallazgo demuestra que la diversidad de megafauna en Yucatán durante el Pleistoceno era significativamente mayor de lo que se conocía."
+especialista_requerido = "Paleontólogo"
+nivel_requerido = 3
+icono_categoria = "🦥"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

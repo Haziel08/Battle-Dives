@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://dxdr11uvlvk87"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_iitsu"]
+
+[resource]
+script = ExtResource("1_iitsu")
+titulo = "Estado de Conservación: Marcas de Soga"
+contenido = "Las marcas de soga se conservaron durante milenios  gracias a las condiciones únicas de Hoyo Negro: oscuridad total, temperatura constante (~25°C) y saturación de agua que inhibe la actividad bacteriana aeróbica.
+
+El mayor riesgo actual es la alteración del pH del agua por intrusión de aguas residuales de Tulum, que podría disolver la caliza y borrar estas marcas irreversiblemente.
+
+El equipo del INAH monitorea constantemente la química del agua para detectar cambios tempranos."
+especialista_requerido = "Conservador"
+nivel_requerido = 0
+icono_categoria = "🔬"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

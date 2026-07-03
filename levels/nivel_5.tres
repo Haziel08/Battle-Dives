@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://cyif8ufmod8gq" path="res://core/events/evento_corrientes.tres" id="10_l7582"]
 [ext_resource type="Resource" uid="uid://dd4queq3q41u6" path="res://core/events/evento_huracan.tres" id="11_3xqyi"]
 [ext_resource type="Resource" uid="uid://k5ye8tk3bx3l" path="res://core/events/evento_sismo.tres" id="12_ffxlo"]
+[ext_resource type="Texture2D" uid="uid://bq7rkq2ij8q8y" path="res://assets/almanac/hallazgos/naia.jpg" id="13_ibdbi"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="14_3xqyi"]
 [ext_resource type="Resource" uid="uid://cox33n1ev3ogr" path="res://entities/threats/sedimento.tres" id="14_ffxlo"]
 [ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="15_ayxj7"]
@@ -92,4 +93,17 @@ oleadas = Array[ExtResource("3_mbhxp")]([SubResource("Resource_ilfq1"), SubResou
 eventos_posibles = Array[ExtResource("2_pirlv")]([ExtResource("9_imr8d"), ExtResource("10_l7582"), ExtResource("11_3xqyi"), ExtResource("12_ffxlo")])
 prob_evento_por_minuto = 0.6
 danio_if_por_tiempo = 0.7
+hallazgo_imagen = ExtResource("13_ibdbi")
+hallazgo_info_real = "Naia es el esqueleto humano más completo y entre los 
+más antiguos de América (~13,000 años). Murió entre 
+los 15 y 17 años, medía ~145 cm y pesaba ~50 kg. 
+Fue descubierta en 2007 por espeleobuzos del Proyecto 
+Espeleológico Tulum y estudiada desde 2011 por el INAH. 
+Su ADN confirmó que los nativos americanos contemporáneos 
+descienden de los primeros pobladores que cruzaron desde 
+Siberia por el Estrecho de Bering. Su sacro forzado 
+indica que fue madre."
+hallazgo_descripcion_graciosa = "13,000 años después, Naia sigue enseñándonos sobre 
+quiénes somos como especie. Pocos de nosotros dejamos 
+una huella tan importante."
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

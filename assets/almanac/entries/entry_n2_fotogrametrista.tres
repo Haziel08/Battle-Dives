@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://k6hkuuowykb5"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_ksryf"]
+
+[resource]
+script = ExtResource("1_ksryf")
+titulo = "Documentación 3D: Cámara de Fauna"
+contenido = "El equipo del Proyecto Hoyo Negro utilizó técnicas de fotogrametría Structure from Motion (SfM) para crear modelos digitales 3D de todos los hallazgos sin moverlos de su posición original.
+
+Esta tecnología, desarrollada en colaboración con la Universidad de California en San Diego, permite 'navegar' virtualmente entre grietas donde el ojo humano no puede distinguir huesos de roca por ser del mismo color.
+
+El modelo 3D del cráneo del Smilodon fue tan preciso que permitió análisis biomecánicos de su mandíbula sin manipular el fósil físicamente."
+especialista_requerido = "Fotogrametrista"
+nivel_requerido = 1
+icono_categoria = "📷"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

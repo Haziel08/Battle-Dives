@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://bivx3s0otlqvn"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_2n5ot"]
+
+[resource]
+script = ExtResource("1_2n5ot")
+titulo = "Historia de Naia"
+contenido = "Naia murió entre los 15 y 17 años hace ~13,000 años. Medía ~145 cm y pesaba ~50 kg. Análisis de su sacro indican que fue madre. Fracturas en sus brazos sugieren posible maltrato.
+
+Pudo haber caído accidentalmente buscando agua en lo que entonces era una cueva seca — las cuevas de Yucatán se inundaron cuando los glaciares se derritieron hace ~10,000 años.
+
+Su nombre fue elegido en honor a las náyades de la mitología griega: ninfas guardianas del agua dulce. Lo eligió Susan Bird, miembro del equipo descubridor."
+especialista_requerido = "Arqueólogo"
+nivel_requerido = 4
+icono_categoria = "👤"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

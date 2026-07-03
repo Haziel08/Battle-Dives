@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://bp0htpqi030gw"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_n2ml7"]
+
+[resource]
+script = ExtResource("1_n2ml7")
+titulo = "Identificación: Smilodon fatalis"
+contenido = "El Smilodon fatalis fue el félido más grande de América durante el Pleistoceno. Sus caninos superiores median hasta 28 cm y eran capaces de comprimir arterias y tráqueas con una sola mordida.
+
+En Hoyo Negro se encontró el PRIMER cráneo completo de esta especie hallado en México. Su presencia en la cueva se explica porque la caverna actuó como trampa natural — animales que caían no podían salir.
+
+Se extinguió hace aproximadamente 10,000 años, probablemente por la combinación de cambio climático y cacería humana."
+especialista_requerido = "Paleontólogo"
+nivel_requerido = 1
+icono_categoria = "🦁"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

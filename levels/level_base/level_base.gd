@@ -322,6 +322,11 @@ func _process(delta: float) -> void:
 		timer_aviso -= delta
 		if timer_aviso <= 0.0:
 			label_aviso.hide()
+			
+	if timer_notificacion > 0.0:
+		timer_notificacion -= delta
+		if timer_notificacion <= 0.0:
+			label_mensaje.hide()
 
 # ============================================================
 # OLEADAS POR TIEMPO
@@ -459,7 +464,16 @@ func desplegar_especialista(indice: int) -> void:
 	# Reducción de probabilidad de amenaza (Educador)
 	if ficha.reduce_prob_amenaza_tipo != "":
 		_aplicar_reduccion_prob(ficha.reduce_prob_amenaza_tipo, ficha.reduce_prob_amenaza_pct)
-
+	
+	
+	# Desbloquear entradas del almanaque
+	if nivel_actual.entradas_almanaque.size() > 0:
+		for entrada in nivel_actual.entradas_almanaque:
+			if entrada.especialista_requerido == ficha.nombre:
+				GameState.desbloquear_entrada_almanaque(entrada)
+				_mostrar_notificacion_almanaque(entrada.titulo)
+	
+	GameState.desbloquear_entrada(ficha.nombre)
 	actualizar_hud()
 
 func _actualizar_botones_especialistas() -> void:
@@ -1024,4 +1038,9 @@ func _cambiar_tab(tab: String) -> void:
 	btn_tab_tecnicas.modulate = Color.WHITE if tab == "tecnicas" else Color(0.6, 0.6, 0.6)
 	btn_tab_especialistas.modulate = Color.WHITE if tab == "especialistas" else Color(0.6, 0.6, 0.6)
 	
-	
+var timer_notificacion: float = 0.0
+
+func _mostrar_notificacion_almanaque(titulo: String) -> void:
+	label_mensaje.text = "📖 Nueva entrada en el Almanaque:\n" + titulo
+	label_mensaje.show()
+	timer_notificacion = 3.0

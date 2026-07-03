@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://ceohiat2p447c"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_2seh8"]
+
+[resource]
+script = ExtResource("1_2seh8")
+titulo = "Contexto Arqueológico: Marcas de Soga"
+contenido = "Las marcas de soga en Hoyo Negro son de las evidencias más significativas de actividad humana en el sitio. Fueron talladas en la roca caliza de las paredes de la caverna por humanos del Pleistoceno tardío hace aproximadamente 10,000 años.
+
+Su propósito era facilitar el descenso a la cueva en busca de agua dulce durante períodos de sequía extrema, cuando los cuerpos de agua superficiales desaparecían.
+
+Estas marcas representan la primera evidencia directa de interacción humana intencional y planificada con sistemas de cuevas subterráneas en Mesoamérica."
+especialista_requerido = "Arqueólogo"
+nivel_requerido = 0
+icono_categoria = "🏺"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

@@ -9,4 +9,6 @@ tipo = "baja_visibilidad"
 duracion = 12.0
 oculta_pantalla = true
 reduce_radio_deteccion_pct = 0.4
+info_real = "En Hoyo Negro, la visibilidad puede pasar de 30 metros a cero en segundos cuando el sedimento del fondo se levanta. Esto ocurre por corrientes, movimiento de buzos cercanos o perturbaciones externas. El equipo usa protocolos estrictos de movimiento y posicionamiento para minimizar el impacto, y cancela operaciones cuando la visibilidad es inferior a 2 metros por razones de seguridad."
+descripcion_graciosa = "Imagina trabajar en una cueva a 50 metros de profundidad y de repente no puedes ver tus propias manos. El protocolo oficial es 'detente, respira, no te muevas'. El protocolo no oficial incluye vocabulario que no repetiremos aquí."
 metadata/_custom_type_script = "uid://cwvvi5ypt3s24"

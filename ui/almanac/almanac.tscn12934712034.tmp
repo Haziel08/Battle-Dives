@@ -73,32 +73,39 @@ offset_bottom = 80.0
 
 [node name="DetalleNombre" type="Label" parent="UI/DetallePanel" unique_id=884920987]
 layout_mode = 0
-offset_left = 85.0
+offset_left = 100.0
 offset_top = 20.0
-offset_right = 775.0
-offset_bottom = 65.0
-autowrap_mode = 3
+offset_right = 700.0
+offset_bottom = 60.0
 
 [node name="DetalleStats" type="Label" parent="UI/DetallePanel" unique_id=2031256586]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 80.0
+offset_top = 280.0
 offset_right = 780.0
-offset_bottom = 180.0
-autowrap_mode = 3
+offset_bottom = 400.0
 
 [node name="DetalleInfoReal" type="Label" parent="UI/DetallePanel" unique_id=554726432]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 195.0
+offset_top = 310.0
 offset_right = 780.0
-offset_bottom = 355.0
-autowrap_mode = 3
+offset_bottom = 470.0
+autowrap_mode = 2
 
 [node name="DetalleCurioso" type="Label" parent="UI/DetallePanel" unique_id=1062659237]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 390.0
+offset_top = 513.0
 offset_right = 780.0
-offset_bottom = 510.0
-autowrap_mode = 3
+offset_bottom = 563.0
+
+[node name="DetalleImagen" type="TextureRect" parent="UI/DetallePanel" unique_id=1151609460]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = 780.0
+offset_bottom = 270.0
+scale = Vector2(1, 0.386)
+stretch_mode = 5

@@ -12,4 +12,6 @@ velocidad_ataque = 0.7
 fuerza_empuje = 0.6
 efectivo_contra = Array[String](["sedimento", "contaminacion"])
 color_debug = Color(0.46347243, 0.7177514, 0.18079364, 1)
+info_real = "Los ingenieros en proyectos subacuáticos diseñan y operan tecnología especializada: ROVs (vehículos operados remotamente), sistemas de iluminación submarina, plataformas de trabajo y dispositivos de filtración. En Hoyo Negro, la ingeniería desarrolló programas de software específicos para visualizar en 3D zonas donde el ojo humano no puede distinguir entre huesos y roca."
+descripcion_graciosa = "Cuando los arqueólogos dicen 'necesitamos ver eso pero sin tocarlo y a 50 metros de profundidad en oscuridad total', el ingeniero suspira, agarra su laptop y empieza a programar."
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

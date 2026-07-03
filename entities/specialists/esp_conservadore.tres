@@ -14,4 +14,6 @@ cooldown_activa = 25.0
 activa_reduce_danio_pct = 0.5
 accion_extraccion_id = "estabilizar"
 color_debug = Color(0.876136, 0.4504394, 0.15803328, 1)
+info_real = "Los conservadores-restauradores en arqueología subacuática estabilizan físicamente los materiales para prevenir deterioro al cambiar de ambiente (del agua al aire, por ejemplo). En Hoyo Negro, el principal trabajo de conservación es in situ: monitorear sin intervenir, documentar cambios y solo actuar cuando hay riesgo inminente de pérdida irreversible."
+descripcion_graciosa = "Su filosofía de vida es 'si no está roto, no lo toques, y si está roto, documenta cómo estaba roto antes de arreglarlo'. El único profesional del mundo que ve una griatura de 13,000 años y piensa 'necesito más fotos'."
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

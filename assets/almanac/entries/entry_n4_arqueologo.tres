@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://g1m5cfflfmw5"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_3lqsx"]
+
+[resource]
+script = ExtResource("1_3lqsx")
+titulo = "Protocolo de Extracción: Sinsacro"
+contenido = "La extracción del sinsacro del Nohochichak xibalbahkah fue uno de los procedimientos más complejos realizados en el sitio.
+El protocolo incluyó:
+1. Fotogrametría completa in situ (3D)
+2. Registro de profundidad exacta (47.3 m)
+3. Evaluación de estabilidad por el conservador
+4. Autorización del comité científico internacional
+5. Fabricación de cápsula de resguardo a medida
+6. Filmación completa del proceso
+
+Todo el procedimiento tomó 3 temporadas de campo. El hueso está ahora en el Laboratorio de Arqueozoología del INAH, donde continúa su análisis."
+especialista_requerido = "Arqueólogo"
+nivel_requerido = 3
+icono_categoria = "📋"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

@@ -37,3 +37,8 @@ extends Resource
 
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""
+
+@export var imagen_almanaque: Texture2D = null
+@export var titulo_entrada: String = ""
+@export_multiline var texto_entrada: String = ""
+@export var desbloqueado_en_nivel: int = -1

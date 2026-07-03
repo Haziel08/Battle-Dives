@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://tqynysi2u4gv"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_rpw35"]
+
+[resource]
+script = ExtResource("1_rpw35")
+titulo = "Identificación: Cuvieronius hyodon"
+contenido = "El Cuvieronius hyodon (gonfoterio) pertenecía a la familia Gomphotheriidae, parientes extintos de los elefantes. Se distinguía por sus colmillos en espiral y su tamaño ligeramente menor al de los elefantes africanos.
+
+En Hoyo Negro se encontraron restos de al menos 42 animales del Pleistoceno tardío de 13 especies. El gonfoterio es una de las 7 especies EXTINTAS identificadas en el sitio.
+"
+especialista_requerido = "Paleontólogo"
+nivel_requerido = 2
+icono_categoria = "🐘"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"

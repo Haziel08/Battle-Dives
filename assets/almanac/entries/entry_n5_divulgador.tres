@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AlmanacEntryData" format=3 uid="uid://bxf2o0xgwjg37"]
+
+[ext_resource type="Script" uid="uid://ba7n312g3mwvn" path="res://core/almanac_entry_data.gd" id="1_f3oay"]
+
+[resource]
+script = ExtResource("1_f3oay")
+titulo = "Comunidad y Conservación en Tulum"
+contenido = "El crecimiento turístico acelerado de Tulum representa el mayor riesgo actual para Hoyo Negro: aguas residuales, construcción sobre el acuífero y turismo de buceo no regulado amenazan la integridad del sitio.
+
+El Proyecto Hoyo Negro trabaja con comunidades locales, guías de turismo y operadores de buceo para crear conciencia sobre el valor del sitio. Programas educativos en escuelas de Tulum han logrado reducir el saqueo incidental.
+
+La conservación de Hoyo Negro demuestra que ciencia y comunidad no son opuestos — son aliados necesarios."
+especialista_requerido = "Educador Comunitario"
+nivel_requerido = 4
+icono_categoria = "🤝"
+metadata/_custom_type_script = "uid://ba7n312g3mwvn"
