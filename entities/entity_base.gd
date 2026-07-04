@@ -40,6 +40,13 @@ func _configurar_sprite() -> void:
 		atlas.atlas = tex
 		atlas.region = Rect2(i * frame_w, 0, frame_w, frame_h)
 		frames.add_frame("walk", atlas)
+	if datos.attack_frame >= 0:
+		frames.add_animation("attack")
+		frames.set_animation_loop("attack", false)
+		var atk_atlas = AtlasTexture.new()
+		atk_atlas.atlas = tex
+		atk_atlas.region = Rect2(datos.attack_frame * frame_w, 0, frame_w, frame_h)
+		frames.add_frame("attack", atk_atlas)
 	anim.sprite_frames = frames
 	anim.scale = Vector2(0.07, 0.07)
 	anim.play("walk")
@@ -63,6 +70,13 @@ func _process(delta: float) -> void:
 		objetivo = null
 		en_combate = false
 		_buscar_enemigo()
+
+	if tiene_sprite and datos.attack_frame >= 0:
+		var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+		if anim != null:
+			var anim_deseada = "attack" if en_combate else "walk"
+			if anim.animation != anim_deseada:
+				anim.play(anim_deseada)
 
 	if en_combate and objetivo != null:
 		timer_ataque += delta

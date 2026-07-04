@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4g7qlfs8p2b6"
-path="res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"
+uid="uid://76yom21vh355"
+path="res://.godot/imported/derrota.png-8dd6fe71197a9dfe70b1eda8e794ee98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo2.png"
-dest_files=["res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"]
+source_file="res://assets/texto/derrota.png"
+dest_files=["res://.godot/imported/derrota.png-8dd6fe71197a9dfe70b1eda8e794ee98.ctex"]
 
 [params]
 

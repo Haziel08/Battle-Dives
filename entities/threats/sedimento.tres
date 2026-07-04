@@ -13,4 +13,6 @@ color_debug = Color(0.9607843, 0, 0.023529412, 1)
 tipo = "sedimento"
 spritesheet_path = "res://assets/sedimento_spritesheet.png"
 spritesheet_hframes = 2
+info_real = "El sedimento calcáreo ultrafino de Hoyo Negro se levanta con el mínimo movimiento de un buzo, reduciendo la visibilidad a cero en segundos. Este sedimento actuó como 'sello' protector durante milenios, cubriendo los restos y ralentizando su descomposición. Sin embargo, las corrientes lo redistribuyen y pueden mezclar contextos arqueológicos distintos."
+descripcion_graciosa = "Una nube de sedimento es la forma que tiene la cueva de decirte 'hoy no'. No es personal. Solo lleva 10,000 años ahí y tú llegaste hace 5 minutos."
 metadata/_custom_type_script = "uid://d04cl4yo35bla"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4g7qlfs8p2b6"
-path="res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"
+uid="uid://b7rokeovv4pja"
+path="res://.godot/imported/victoria.png-803d85e58e8e14ac50ac22b14d855ed2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo2.png"
-dest_files=["res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"]
+source_file="res://assets/texto/victoria.png"
+dest_files=["res://.godot/imported/victoria.png-803d85e58e8e14ac50ac22b14d855ed2.ctex"]
 
 [params]
 

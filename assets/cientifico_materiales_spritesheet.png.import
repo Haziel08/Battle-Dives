@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4g7qlfs8p2b6"
-path="res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"
+uid="uid://cgxqme2tifl4v"
+path="res://.godot/imported/cientifico_materiales_spritesheet.png-55e13d483c5c130640ab34641fdac280.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo2.png"
-dest_files=["res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"]
+source_file="res://assets/cientifico_materiales_spritesheet.png"
+dest_files=["res://.godot/imported/cientifico_materiales_spritesheet.png-55e13d483c5c130640ab34641fdac280.ctex"]
 
 [params]
 

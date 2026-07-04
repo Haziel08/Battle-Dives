@@ -23,7 +23,6 @@
 [ext_resource type="Resource" uid="uid://cyif8ufmod8gq" path="res://core/events/evento_corrientes.tres" id="10_pqelc"]
 [ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="10_ps6ke"]
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="11_3w4c1"]
-[ext_resource type="Texture2D" uid="uid://dfrr7wunetoey" path="res://assets/almanac/hallazgos/perezoso.jpg" id="11_volvt"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="11_y6xl2"]
 [ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="12_iwpa4"]
 [ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="12_lmrcp"]
@@ -94,7 +93,6 @@ prob_evento_por_minuto = 0.4
 danio_if_por_tiempo = 0.6
 permite_extraccion = true
 pasos_extraccion = Array[ExtResource("4_rqix3")]([ExtResource("16_3h08x"), ExtResource("17_volvt"), ExtResource("18_ns50c"), ExtResource("19_lurwe"), ExtResource("20_fa4v6")])
-hallazgo_imagen = ExtResource("11_volvt")
 hallazgo_info_real = "El Nohochichak xibalbahkah ('animal de grandes garras que vivía en el inframundo' en maya) es una nueva especie y género de perezoso terrestre gigante descubierta en Hoyo Negro. Su sinsacro fue extraído mediante un procedimiento meticuloso: fotografía previa, registro 3D de ubicación y profundidad, evaluación del conservador, autorización científica y embalaje especializado. Todo el proceso fue filmado. Sus restos están resguardados en el Laboratorio de Arqueozoología del INAH. 
 "
 hallazgo_descripcion_graciosa = "Su nombre en maya ya advertía que era intimidante."

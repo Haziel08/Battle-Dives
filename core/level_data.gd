@@ -38,9 +38,7 @@ extends Resource
 @export var pasos_extraccion: Array[ExtractionStepData] = []
 @export var ic_penalizacion_extraccion: float = 30.0
 
-@export var hallazgo_imagen: Texture2D = null
 @export_multiline var hallazgo_info_real: String = ""
 @export_multiline var hallazgo_descripcion_graciosa: String = ""
-
-# Entradas del almanaque desbloqueables al desplegar especialistas
 @export var entradas_almanaque: Array[AlmanacEntryData] = []
+@export var fondo_path: String = ""

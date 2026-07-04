@@ -12,6 +12,6 @@ fuerza_empuje = 0.2
 efectivo_contra = Array[String](["sedimento", "buceador"])
 color_debug = Color(0, 0.2509804, 1, 1)
 spritesheet_path = "res://assets/espeleobuzo_spritesheet.png"
-info_real = "Los espeleobuzos son buceadores con entrenamiento especializado en navegación en cuevas inundadas. Operan con visibilidad cero usando únicamente líneas guía y navegación táctil. En Hoyo Negro, los buzos del Proyecto Espeleológico Tulum fueron los primeros en explorar el sitio en 2007 y establecer los protocolos de seguridad para trabajo científico."
+info_real = "Los espeleobuzos son buceadores con entrenamiento  especializado en navegación en cuevas inundadas. Operan con visibilidad cero usando únicamente líneas guía y navegación táctil. En Hoyo Negro, los buzos del Proyecto Espeleológico Tulum fueron los primeros en explorar el sitio en 2007 y establecer los protocolos de seguridad para trabajo científico."
 descripcion_graciosa = "Su trabajo consiste en nadar hacia la oscuridad total a propósito, con el equipo más pesado posible, en una cueva que los científicos llaman 'trampa mortal'. CV extraordinario, vacaciones terroríficas."
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

@@ -15,4 +15,6 @@ color_debug = Color(0.13006365, 0.007563399, 0.025845079, 1)
 tipo = "saqueador"
 comportamiento = "roba_y_huye"
 ic_robado = 30.0
+info_real = "El saqueo de patrimonio arqueológico subacuático es un delito federal en México con penas de hasta 12 años de prisión según la Ley Federal sobre Monumentos y Zonas Arqueológicos. El mercado negro de fósiles y piezas arqueológicas mueve millones de dólares al año. Cada pieza robada pierde su contexto científico — información que no puede recuperarse."
+descripcion_graciosa = "obó un fósil de perezoso gigante de una cueva a 50 metros de profundidad. El valor científico perdido: incalculable. El precio en el mercado negro: unos cuantos miles de dólares. La condena potencial: hasta 12 años. La decisión más cara de su vida."
 metadata/_custom_type_script = "uid://d04cl4yo35bla"

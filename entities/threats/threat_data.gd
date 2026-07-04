@@ -21,3 +21,4 @@ extends Resource
 @export var ic_robado: float = 50.0
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""
+@export var fotos_reales: Array[String] = []

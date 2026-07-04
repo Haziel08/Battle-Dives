@@ -1,3 +1,33 @@
+# Cache del editor de Godot (contiene importaciones, uids y datos locales)
 .godot/
-*.translation
+
+# Archivos de configuración local del editor (tamaños de ventanas, scripts abiertos, etc.)
+# Esto evita que tus preferencias de pantalla interfieran con las de tu compañero
+.gitattributes
+*.tmp
+*.bak
+
+# Archivos de exportación y presets
+# Nota: Si quieren compartir los mismos presets de exportación (Android, Windows, etc.)
+# pueden comentar la línea 'export_presets.cfg' poniéndole un '#' al inicio.
 export_presets.cfg
+
+# Binarios exportados (por si compilan el juego dentro de la carpeta del proyecto)
+*.apk
+*.aab
+*.exe
+*.zip
+*.o
+*.res
+*.app
+*.dmg
+*.html
+*.js
+*.wasm
+
+# Archivos de traducción generados automáticamente
+*.translation
+
+# Archivos basura del sistema operativo
+.DS_Store
+Thumbs.db
