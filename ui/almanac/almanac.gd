@@ -13,6 +13,10 @@ extends Node2D
 @onready var detalle_stats: Label = $UI/DetallePanel/DetalleStats
 @onready var detalle_info_real: Label = $UI/DetallePanel/DetalleInfoReal
 @onready var detalle_curioso: Label = $UI/DetallePanel/DetalleCurioso
+@onready var galeria_label: Label = $UI/DetallePanel/GaleriaLabel
+@onready var galeria_container: HBoxContainer = $UI/DetallePanel/GaleriaScroll/GaleriaContainer
+@onready var foto_overlay: Panel = $UI/FotoOverlay
+@onready var foto_overlay_img: TextureRect = $UI/FotoOverlay/FotoImg
 
 var tecnicas: Array[TechniqueData] = [
 	preload("res://entities/specialists/tec_espeleobuzo.tres"),
@@ -57,6 +61,10 @@ func _setup_hover_scale(btn: Button) -> void:
 	)
 
 func _ready() -> void:
+	foto_overlay.gui_input.connect(func(event: InputEvent) -> void:
+		if event is InputEventMouseButton and event.pressed:
+			foto_overlay.visible = false
+	)
 	AudioManager.cambiar_musica("main_menu")
 	_setup_hover_scale(tab_tecnicas)
 	_setup_hover_scale(tab_especialistas)
@@ -147,6 +155,36 @@ func _limpiar_detalle() -> void:
 	detalle_info_real.text = ""
 	detalle_curioso.text = ""
 	detalle_sprite.texture = null
+	_limpiar_galeria()
+
+func _limpiar_galeria() -> void:
+	for c in galeria_container.get_children():
+		c.queue_free()
+	galeria_label.visible = false
+
+func _cargar_galeria(fotos: Array[String]) -> void:
+	_limpiar_galeria()
+	if fotos.is_empty():
+		return
+	galeria_label.text = "Contrapartes en México:"
+	galeria_label.visible = true
+	for path in fotos:
+		var tex := load(path) as Texture2D
+		if tex == null:
+			continue
+		var rect := TextureRect.new()
+		rect.texture = tex
+		rect.custom_minimum_size = Vector2(110, 110)
+		rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		rect.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		var captured_tex := tex
+		rect.gui_input.connect(func(event: InputEvent) -> void:
+			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+				foto_overlay_img.texture = captured_tex
+				foto_overlay.visible = true
+		)
+		galeria_container.add_child(rect)
 
 func _cargar_sprite_detalle(sprite_path: String, hframes: int) -> void:
 	if sprite_path == "":
@@ -171,6 +209,7 @@ func _mostrar_tecnica(f: TechniqueData) -> void:
 		% [f.costo, f.hp, f.danio, f.velocidad, f.velocidad_ataque, ", ".join(PackedStringArray(f.efectivo_contra)), f.multiplicador_danio]
 	detalle_info_real.text = "En la vida real:\n" + f.info_real
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
+	_cargar_galeria(f.fotos_reales)
 
 func _mostrar_especialista(f: SpecialistData) -> void:
 	detalle_nombre.text = f.nombre + " (Especialista)"
@@ -185,6 +224,7 @@ func _mostrar_especialista(f: SpecialistData) -> void:
 		% [f.costo, int(f.duracion), pasiva, f.nombre_activa, int(f.cooldown_activa)]
 	detalle_info_real.text = "En la vida real:\n" + f.info_real
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
+	_cargar_galeria(f.fotos_reales)
 
 func _mostrar_amenaza(f: ThreatData) -> void:
 	detalle_nombre.text = f.nombre + " (Amenaza)"
@@ -195,6 +235,7 @@ func _mostrar_amenaza(f: ThreatData) -> void:
 		detalle_stats.text += "\nRoba %.0f IC y huye" % f.ic_robado
 	detalle_info_real.text = "En la vida real:\n" + f.info_real
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
+	_cargar_galeria(f.fotos_reales)
 
 func _mostrar_evento(f: EventData) -> void:
 	detalle_nombre.text = f.nombre + " (Evento)"
@@ -206,9 +247,11 @@ func _mostrar_evento(f: EventData) -> void:
 	if f.reduce_radio_deteccion_pct > 0: detalle_stats.text += "\n-%.0f%% radio detección" % (f.reduce_radio_deteccion_pct * 100)
 	detalle_info_real.text = "En la vida real:\n" + f.info_real
 	detalle_curioso.text = "Dato curioso:\n" + f.descripcion_graciosa
+	_cargar_galeria(f.fotos_reales)
 
 func _mostrar_hallazgo(indice: int) -> void:
 	detalle_sprite.texture = null
+	_limpiar_galeria()
 	var nivel = GameState.niveles[indice]
 	if not GameState.hallazgos_descubiertos[indice]:
 		detalle_nombre.text = "??? (Bloqueado)"

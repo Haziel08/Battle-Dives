@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4g7qlfs8p2b6"
-path="res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"
+uid="uid://cbbfweanafywa"
+path="res://.godot/imported/contaminacion_spritesheet.png-2361479e793657bd28b7e1c473ccb526.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo2.png"
-dest_files=["res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"]
+source_file="res://assets/contaminacion_spritesheet.png"
+dest_files=["res://.godot/imported/contaminacion_spritesheet.png-2361479e793657bd28b7e1c473ccb526.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfelsvt0oi2s1"]
+[gd_scene format=3 uid="uid://cfelsvt0oi2s1"]
 
 [ext_resource type="Script" uid="uid://ckx6sen5idsu" path="res://ui/almanac/almanac.gd" id="1_glhfh"]
 [ext_resource type="Texture2D" uid="uid://uj0q0qjxcy4q" path="res://assets/botones/BackButton.png" id="2_fffqq"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dgmabk2kgarxt" path="res://assets/almanac/hallazgos.png" id="8_tab_hal"]
 [ext_resource type="Texture2D" uid="uid://dghweyd08ki87" path="res://assets/menuPrincipal/fondoMenu.png" id="9_qrl2r"]
 [ext_resource type="FontFile" uid="uid://ds3lunxd7lxee" path="res://assets/fonts/Nunito-VariableFont_wght.ttf" id="10_nunito"]
-[ext_resource type="Texture2D" path="res://assets/almanac/fondo_papel.png" id="11_papel"]
 
 [node name="Almanac" type="Node2D" unique_id=1578229596]
 script = ExtResource("1_glhfh")
@@ -129,7 +128,7 @@ stretch_mode = 5
 
 [node name="ListaScroll" type="ScrollContainer" parent="UI" unique_id=1486080620]
 offset_left = 10.0
-offset_top = 105.0
+offset_top = 111.0
 offset_right = 330.0
 offset_bottom = 640.0
 
@@ -142,34 +141,32 @@ offset_top = 82.0
 offset_right = 1144.0
 offset_bottom = 642.0
 
-[node name="FondoPapel" type="TextureRect" parent="UI/DetallePanel"]
+[node name="FondoPapel" type="TextureRect" parent="UI/DetallePanel" unique_id=1071373194]
 layout_mode = 0
-offset_right = 804.0
-offset_bottom = 560.0
+offset_right = 801.0
+offset_bottom = 555.0
 mouse_filter = 2
-texture = ExtResource("11_papel")
-stretch_mode = 1
 
 [node name="DetalleNombre" type="Label" parent="UI/DetallePanel" unique_id=884920987]
 layout_mode = 0
-offset_left = 20.0
+offset_left = 43.0
 offset_top = 20.0
-offset_right = 560.0
-offset_bottom = 60.0
+offset_right = 586.0
+offset_bottom = 96.0
 theme_override_font_sizes/font_size = 22
 
 [node name="DetalleSprite" type="TextureRect" parent="UI/DetallePanel" unique_id=-1282120091]
 layout_mode = 0
-offset_left = 580.0
-offset_top = 10.0
-offset_right = 780.0
-offset_bottom = 210.0
+offset_left = 548.0
+offset_top = 18.0
+offset_right = 748.0
+offset_bottom = 218.0
 expand_mode = 1
 stretch_mode = 5
 
 [node name="DetalleStats" type="Label" parent="UI/DetallePanel" unique_id=2031256586]
 layout_mode = 0
-offset_left = 20.0
+offset_left = 41.0
 offset_top = 65.0
 offset_right = 560.0
 offset_bottom = 210.0
@@ -178,20 +175,74 @@ theme_override_font_sizes/font_size = 15
 
 [node name="DetalleInfoReal" type="Label" parent="UI/DetallePanel" unique_id=554726432]
 layout_mode = 0
-offset_left = 20.0
+offset_left = 43.0
 offset_top = 220.0
-offset_right = 780.0
-offset_bottom = 385.0
-autowrap_mode = 2
+offset_right = 748.0
+offset_bottom = 315.0
 theme_override_fonts/font = ExtResource("10_nunito")
 theme_override_font_sizes/font_size = 14
+autowrap_mode = 2
 
 [node name="DetalleCurioso" type="Label" parent="UI/DetallePanel" unique_id=139950105]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 395.0
+offset_left = 43.0
+offset_top = 320.0
 offset_right = 780.0
-offset_bottom = 530.0
-autowrap_mode = 2
+offset_bottom = 400.0
 theme_override_fonts/font = ExtResource("10_nunito")
 theme_override_font_sizes/font_size = 14
+autowrap_mode = 2
+
+[node name="GaleriaLabel" type="Label" parent="UI/DetallePanel" unique_id=894344987]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 408.0
+offset_right = 780.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("10_nunito")
+theme_override_font_sizes/font_size = 12
+
+[node name="GaleriaScroll" type="ScrollContainer" parent="UI/DetallePanel" unique_id=1205562960]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 428.0
+offset_right = 780.0
+offset_bottom = 548.0
+vertical_scroll_mode = 3
+
+[node name="GaleriaContainer" type="HBoxContainer" parent="UI/DetallePanel/GaleriaScroll" unique_id=713488836]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FotoOverlay" type="Panel" parent="UI" unique_id=746972453]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="FondoOscuro" type="ColorRect" parent="UI/FotoOverlay" unique_id=1457820443]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.82)
+
+[node name="FotoImg" type="TextureRect" parent="UI/FotoOverlay" unique_id=1107960799]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 74.0
+offset_right = 1026.0
+offset_bottom = 574.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CerrarLabel" type="Label" parent="UI/FotoOverlay" unique_id=1326324440]
+layout_mode = 0
+offset_top = 615.0
+offset_right = 1152.0
+offset_bottom = 645.0
+theme_override_fonts/font = ExtResource("10_nunito")
+theme_override_font_sizes/font_size = 13
+text = "Clic en cualquier lugar para cerrar"
+horizontal_alignment = 1

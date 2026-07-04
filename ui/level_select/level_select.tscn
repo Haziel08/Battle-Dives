@@ -1,29 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://6gdqrjnyc00b"]
+[gd_scene format=3 uid="uid://6gdqrjnyc00b"]
 
 [ext_resource type="Script" uid="uid://d24oye8aotxbx" path="res://ui/level_select/level_select.gd" id="1_pjhtp"]
+[ext_resource type="Texture2D" uid="uid://cduktj8sx235c" path="res://assets/image 2.png" id="2_boxuh"]
 [ext_resource type="Texture2D" uid="uid://uj0q0qjxcy4q" path="res://assets/botones/BackButton.png" id="2_r5cd4"]
 [ext_resource type="Texture2D" uid="uid://bwuld2qtx6y8t" path="res://assets/botones/BackButtonHover.png" id="3_w8mlk"]
-[ext_resource type="Texture2D" uid="uid://dre2xdt8faqpw" path="res://assets/fondo2.png" id="4_2hwju"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/LevelButton.png" id="5_lvlbtn"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Level1.png" id="6_lv1"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Level2.png" id="7_lv2"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Level3.png" id="8_lv3"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Level4.png" id="9_lv4"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Level5.png" id="10_lv5"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/lock.png" id="11_lock"]
-[ext_resource type="Texture2D" path="res://assets/menuNiveles/Niveles.png" id="12_titulo"]
+[ext_resource type="Texture2D" uid="uid://bwnseo613sd8j" path="res://assets/menuNiveles/LevelButton.png" id="5_lvlbtn"]
+[ext_resource type="Texture2D" uid="uid://60bfrg7nlxdp" path="res://assets/menuNiveles/Level1.png" id="6_lv1"]
+[ext_resource type="Texture2D" uid="uid://bkx7wessjd3sd" path="res://assets/menuNiveles/Level2.png" id="7_lv2"]
+[ext_resource type="Texture2D" uid="uid://co1tkilk0p0s3" path="res://assets/menuNiveles/Level3.png" id="8_lv3"]
+[ext_resource type="Texture2D" uid="uid://cppordc88nejc" path="res://assets/menuNiveles/Level4.png" id="9_lv4"]
+[ext_resource type="Texture2D" uid="uid://dlrlyp6otjkgx" path="res://assets/menuNiveles/Level5.png" id="10_lv5"]
+[ext_resource type="Texture2D" uid="uid://d26bwbn2oxd2n" path="res://assets/menuNiveles/lock.png" id="11_lock"]
+[ext_resource type="Texture2D" uid="uid://dxls71p6x2s2a" path="res://assets/menuNiveles/Niveles.png" id="12_titulo"]
 
 [node name="LevelSelect" type="Node2D" unique_id=932344432]
 script = ExtResource("1_pjhtp")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=784095070]
 
-[node name="Fondo2" type="Sprite2D" parent="UI"]
+[node name="Fondo2" type="Sprite2D" parent="UI" unique_id=535422465]
 z_index = -1
 position = Vector2(577, 333)
-texture = ExtResource("4_2hwju")
+texture = ExtResource("2_boxuh")
 
-[node name="TituloNiveles" type="Sprite2D" parent="UI"]
+[node name="TituloNiveles" type="Sprite2D" parent="UI" unique_id=902081930]
 position = Vector2(576, 90)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("12_titulo")
@@ -37,12 +37,12 @@ texture_normal = ExtResource("5_lvlbtn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Numero" type="Sprite2D" parent="UI/BtnNivel1"]
+[node name="Numero" type="Sprite2D" parent="UI/BtnNivel1" unique_id=1562872008]
 position = Vector2(80, 80)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("6_lv1")
 
-[node name="Candado" type="Sprite2D" parent="UI/BtnNivel1"]
+[node name="Candado" type="Sprite2D" parent="UI/BtnNivel1" unique_id=1668925241]
 visible = false
 position = Vector2(80, 80)
 scale = Vector2(0.055, 0.055)
@@ -57,12 +57,12 @@ texture_normal = ExtResource("5_lvlbtn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Numero" type="Sprite2D" parent="UI/BtnNivel2"]
+[node name="Numero" type="Sprite2D" parent="UI/BtnNivel2" unique_id=733255265]
 position = Vector2(80, 80)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("7_lv2")
 
-[node name="Candado" type="Sprite2D" parent="UI/BtnNivel2"]
+[node name="Candado" type="Sprite2D" parent="UI/BtnNivel2" unique_id=628528209]
 visible = false
 position = Vector2(80, 80)
 scale = Vector2(0.055, 0.055)
@@ -77,12 +77,12 @@ texture_normal = ExtResource("5_lvlbtn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Numero" type="Sprite2D" parent="UI/BtnNivel3"]
+[node name="Numero" type="Sprite2D" parent="UI/BtnNivel3" unique_id=248627378]
 position = Vector2(80, 80)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("8_lv3")
 
-[node name="Candado" type="Sprite2D" parent="UI/BtnNivel3"]
+[node name="Candado" type="Sprite2D" parent="UI/BtnNivel3" unique_id=526544464]
 visible = false
 position = Vector2(80, 80)
 scale = Vector2(0.055, 0.055)
@@ -97,12 +97,12 @@ texture_normal = ExtResource("5_lvlbtn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Numero" type="Sprite2D" parent="UI/BtnNivel4"]
+[node name="Numero" type="Sprite2D" parent="UI/BtnNivel4" unique_id=1305410024]
 position = Vector2(80, 80)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("9_lv4")
 
-[node name="Candado" type="Sprite2D" parent="UI/BtnNivel4"]
+[node name="Candado" type="Sprite2D" parent="UI/BtnNivel4" unique_id=882036035]
 visible = false
 position = Vector2(80, 80)
 scale = Vector2(0.055, 0.055)
@@ -117,12 +117,12 @@ texture_normal = ExtResource("5_lvlbtn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Numero" type="Sprite2D" parent="UI/BtnNivel5"]
+[node name="Numero" type="Sprite2D" parent="UI/BtnNivel5" unique_id=2009668019]
 position = Vector2(80, 80)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("10_lv5")
 
-[node name="Candado" type="Sprite2D" parent="UI/BtnNivel5"]
+[node name="Candado" type="Sprite2D" parent="UI/BtnNivel5" unique_id=1127020791]
 visible = false
 position = Vector2(80, 80)
 scale = Vector2(0.055, 0.055)

@@ -40,3 +40,5 @@ extends Resource
 
 @export_multiline var hallazgo_info_real: String = ""
 @export_multiline var hallazgo_descripcion_graciosa: String = ""
+
+@export var fondo_path: String = ""

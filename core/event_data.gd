@@ -14,3 +14,4 @@ extends Resource
 @export var color_debug: Color = Color(0.3, 0.3, 0.5)
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""
+@export var fotos_reales: Array[String] = []

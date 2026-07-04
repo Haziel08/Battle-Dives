@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blkei0dua2hns"
-path="res://.godot/imported/fondo_papel.png-0a5af3027168a7718b58496b985e05d2.ctex"
+uid="uid://b7rokeovv4pja"
+path="res://.godot/imported/victoria.png-803d85e58e8e14ac50ac22b14d855ed2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/almanac/fondo_papel.png"
-dest_files=["res://.godot/imported/fondo_papel.png-0a5af3027168a7718b58496b985e05d2.ctex"]
+source_file="res://assets/texto/victoria.png"
+dest_files=["res://.godot/imported/victoria.png-803d85e58e8e14ac50ac22b14d855ed2.ctex"]
 
 [params]
 

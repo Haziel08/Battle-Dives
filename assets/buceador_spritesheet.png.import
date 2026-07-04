@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4g7qlfs8p2b6"
-path="res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"
+uid="uid://7mt4u5f76njm"
+path="res://.godot/imported/buceador_spritesheet.png-e013b468c13e0bea365aad8ab202be98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo2.png"
-dest_files=["res://.godot/imported/fondo2.png-d2b0411f823bc17c93f4bd4b6a2507ae.ctex"]
+source_file="res://assets/buceador_spritesheet.png"
+dest_files=["res://.godot/imported/buceador_spritesheet.png-e013b468c13e0bea365aad8ab202be98.ctex"]
 
 [params]
 

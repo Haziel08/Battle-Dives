@@ -12,4 +12,5 @@ velocidad_ataque = 1.2
 danio_continuo = true
 color_debug = Color(0.025315145, 0.090824105, 0.21424428, 1)
 tipo = "buceador"
+spritesheet_path = "res://assets/buceador_spritesheet.png"
 metadata/_custom_type_script = "uid://d04cl4yo35bla"

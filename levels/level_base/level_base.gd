@@ -53,14 +53,17 @@ var cartas_volteadas: Dictionary = {}
 @onready var contenedor_especialistas = $HUD/BottomPanel/ContenedorEspecialistas
 @onready var btn_tab_tecnicas: Button = $HUD/BottomPanel/BtnTabTecnicas
 @onready var btn_tab_especialistas: Button = $HUD/BottomPanel/BtnTabEspecialistas
-@onready var btn_mejora: Button = $HUD/BottomPanel/BtnMejoraFI
+@onready var btn_mejora: TextureButton = $HUD/BottomPanel/BtnMejoraFI
+@onready var label_mejora: Label = $HUD/BottomPanel/BtnMejoraFI/LabelMejora
 
 
 @onready var panel_fin: Panel = $HUD/PanelFin
 @onready var label_resultado: Label = $HUD/PanelFin/LabelResultado
-@onready var btn_reintentar: Button = $HUD/PanelFin/BtnReintentar
-@onready var btn_siguiente: Button = $HUD/PanelFin/BtnSiguiente
-@onready var btn_salir: Button = $HUD/PanelFin/BtnSalir
+@onready var img_victoria: Sprite2D = $HUD/PanelFin/ImgVictoria
+@onready var img_derrota: Sprite2D = $HUD/PanelFin/ImgDerrota
+@onready var btn_reintentar: TextureButton = $HUD/PanelFin/BtnReintentar
+@onready var btn_siguiente: TextureButton = $HUD/PanelFin/BtnSiguiente
+@onready var btn_salir: TextureButton = $HUD/PanelFin/BtnSalir
 
 @onready var btn_pausa: TextureButton = $HUD/BtnPausa
 @onready var panel_pausa: Panel = $HUD/PanelPausa
@@ -76,6 +79,7 @@ var cartas_volteadas: Dictionary = {}
 @onready var overlay_evento: ColorRect = $HUD/OverlayEvento
 @onready var label_evento: Label = $HUD/LabelEvento
 @onready var fondo_layer: CanvasLayer = $FondoLayer
+@onready var fondo_textura: TextureRect = $FondoLayer/Fondo
 
 @onready var tooltip_panel: Panel = $HUD/TooltipPanel
 @onready var tooltip_label: Label = $HUD/TooltipPanel/TooltipLabel
@@ -190,6 +194,11 @@ func _cargar_configuracion() -> void:
 	fondo_investigacion = nivel_actual.fi_inicial
 	fi_pasivo_base = nivel_actual.fi_pasivo_base
 
+	if nivel_actual.fondo_path != "":
+		var tex = load(nivel_actual.fondo_path) as Texture2D
+		if tex:
+			fondo_textura.texture = tex
+
 	# Resetear estado runtime de oleadas
 	for ola in nivel_actual.oleadas:
 		ola.spawneados = 0
@@ -207,7 +216,8 @@ func _crear_card_visual(btn: Button, nombre: String, costo: int, sprite_path: St
 	btn.text = ""
 	btn.clip_contents = true
 	for child in btn.get_children():
-		child.free()
+		if child.name != "CooldownOverlay" and child.name != "CooldownBar":
+			child.free()
 
 	if sprite_path != "":
 		var tex = load(sprite_path) as Texture2D
@@ -234,6 +244,34 @@ func _crear_card_visual(btn: Button, nombre: String, costo: int, sprite_path: St
 	lbl.add_theme_font_size_override("font_size", 11)
 	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	btn.add_child(lbl)
+
+func _setup_cooldown_ui(btn: Button) -> void:
+	if btn.get_node_or_null("CooldownOverlay") != null:
+		return
+	var overlay = ColorRect.new()
+	overlay.name = "CooldownOverlay"
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.color = Color(0, 0, 0, 0.55)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	overlay.visible = false
+	btn.add_child(overlay)
+
+	var bar = ProgressBar.new()
+	bar.name = "CooldownBar"
+	bar.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	bar.offset_top = -8
+	bar.max_value = 1.0
+	bar.value = 0.0
+	bar.show_percentage = false
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bar.visible = false
+	var fill = StyleBoxFlat.new()
+	fill.bg_color = Color(0.25, 0.9, 0.35, 1.0)
+	bar.add_theme_stylebox_override("fill", fill)
+	var bg = StyleBoxFlat.new()
+	bg.bg_color = Color(0.08, 0.08, 0.08, 0.85)
+	bar.add_theme_stylebox_override("background", bg)
+	btn.add_child(bar)
 
 func _setup_botones_tecnicas() -> void:
 	botones_tecnicas = contenedor_tecnicas.get_children()
@@ -262,6 +300,7 @@ func _setup_botones_especialistas() -> void:
 		if i < especialistas.size():
 			var ficha = especialistas[i]
 			_crear_card_visual(botones_especialistas[i], ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
+			_setup_cooldown_ui(botones_especialistas[i])
 			botones_especialistas[i].show()
 			var ficha_tt = ficha
 			var btn_tt = botones_especialistas[i]
@@ -317,8 +356,9 @@ func _process(delta: float) -> void:
 	if not juego_activo:
 		return
 
-	tiempo_transcurrido += delta
-	_actualizar_label_tiempo()
+	if not tutorial_activo:
+		tiempo_transcurrido += delta
+		_actualizar_label_tiempo()
 
 	# --- FI pasivo ---
 	timer_fi += delta
@@ -327,23 +367,23 @@ func _process(delta: float) -> void:
 		var fi_pasivo = fi_pasivo_base + (nivel_generacion - 1) * INCREMENTO_FI_POR_NIVEL
 		agregar_fi(fi_pasivo)
 
-	# --- Abandono ---
-	_procesar_abandono(delta)
-	_procesar_eventos(delta)
-	
-	# Erosión natural: el tiempo degrada la integridad física
-	if nivel_actual.danio_if_por_tiempo > 0.0:
-		timer_erosion += delta
-		if timer_erosion >= 1.0:
-			timer_erosion = 0.0
-			finding.recibir_danio_fisico(nivel_actual.danio_if_por_tiempo)
+	if not tutorial_activo:
+		# --- Abandono ---
+		_procesar_abandono(delta)
+		_procesar_eventos(delta)
 
-	# --- Oleadas por tiempo ---
-	if not _tutorial_esta_pausando_oleadas():
+		# Erosión natural: el tiempo degrada la integridad física
+		if nivel_actual.danio_if_por_tiempo > 0.0:
+			timer_erosion += delta
+			if timer_erosion >= 1.0:
+				timer_erosion = 0.0
+				finding.recibir_danio_fisico(nivel_actual.danio_if_por_tiempo)
+
+		# --- Oleadas por tiempo ---
 		_procesar_oleadas(delta)
 
-	# --- Condición de victoria/derrota por tiempo ---
-	_verificar_fin_de_nivel()
+		# --- Condición de victoria/derrota por tiempo ---
+		_verificar_fin_de_nivel()
 
 	# --- Actualizar botones ---
 	_actualizar_botones_tecnicas()
@@ -511,23 +551,39 @@ func _actualizar_botones_especialistas() -> void:
 				instancia_activa = esp
 				break
 
+		var overlay = botones_especialistas[i].get_node_or_null("CooldownOverlay")
+		var bar = botones_especialistas[i].get_node_or_null("CooldownBar")
+		var tiene_sprite = ficha.spritesheet_path != ""
+
 		if instancia_activa != null:
-			var restante = instancia_activa.get_tiempo_restante()
 			if ficha.tiene_activa:
 				var cd = instancia_activa.get_porcentaje_cooldown()
 				if cd >= 1.0:
-					botones_especialistas[i].text = "%s\n[%.0fs] LISTO" % [ficha.nombre_activa, restante]
+					if overlay: overlay.visible = false
+					if bar: bar.visible = false
 					botones_especialistas[i].disabled = false
+					if not tiene_sprite:
+						botones_especialistas[i].text = "%s\nLISTO" % ficha.nombre_activa
 				else:
-					botones_especialistas[i].text = "%s\nCD %.0fs" % [ficha.nombre_activa, (1.0-cd)*ficha.cooldown_activa]
+					if overlay: overlay.visible = true
+					if bar:
+						bar.visible = true
+						bar.value = cd
 					botones_especialistas[i].disabled = true
+					if not tiene_sprite:
+						botones_especialistas[i].text = "%s\nCD %.0fs" % [ficha.nombre_activa, (1.0 - cd) * ficha.cooldown_activa]
 			else:
-				botones_especialistas[i].text = "%s\nActivo (%.0fs)" % [ficha.nombre, restante]
+				if overlay: overlay.visible = false
+				if bar: bar.visible = false
 				botones_especialistas[i].disabled = true
+				if not tiene_sprite:
+					botones_especialistas[i].text = "%s\nActivo" % ficha.nombre
 		else:
-			if ficha.spritesheet_path == "":
-				botones_especialistas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
+			if overlay: overlay.visible = false
+			if bar: bar.visible = false
 			botones_especialistas[i].disabled = fondo_investigacion < ficha.costo
+			if not tiene_sprite:
+				botones_especialistas[i].text = "%s\n%d FI" % [ficha.nombre, ficha.costo]
 
 		_reconectar_boton_especialista(i)
 
@@ -594,10 +650,10 @@ func _on_mejora_pressed() -> void:
 
 func _actualizar_btn_mejora() -> void:
 	if nivel_generacion >= MAX_NIVEL_GENERACION:
-		btn_mejora.text = "Generación\nMÁX"
+		label_mejora.text = "MÁX"
 		btn_mejora.disabled = true
 	else:
-		btn_mejora.text = "Mejorar Gen.\n%d FI" % costo_mejora_actual()
+		label_mejora.text = "%d FI" % costo_mejora_actual()
 
 func agregar_fi(cantidad: float) -> void:
 	fondo_investigacion = min(FI_MAX, fondo_investigacion + cantidad)
@@ -640,7 +696,8 @@ func _terminar_juego(mensaje: String, gano: bool) -> void:
 	else:
 		AudioManager.play_sfx("derrota")
 
-	label_resultado.text = mensaje
+	img_victoria.visible = gano
+	img_derrota.visible = not gano
 	btn_siguiente.visible = gano
 	panel_fin.show()
 

@@ -12,4 +12,6 @@ velocidad_ataque = 0.7
 fuerza_empuje = 0.6
 efectivo_contra = Array[String](["sedimento", "contaminacion"])
 color_debug = Color(0.46347243, 0.7177514, 0.18079364, 1)
+spritesheet_path = "res://assets/ingeniero_spritesheet.png"
+attack_frame = 1
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

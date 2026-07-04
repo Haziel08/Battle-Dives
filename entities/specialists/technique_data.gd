@@ -19,6 +19,8 @@ extends Resource
 
 @export var spritesheet_path: String = ""
 @export var spritesheet_hframes: int = 4
+@export var attack_frame: int = -1
 
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""
+@export var fotos_reales: Array[String] = []

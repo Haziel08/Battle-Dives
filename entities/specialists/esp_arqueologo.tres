@@ -13,6 +13,4 @@ nombre_activa = "Documentar"
 cooldown_activa = 30.0
 activa_ic_instantaneo = 20.0
 accion_extraccion_id = "documentar"
-spritesheet_path = "res://assets/arquelogo_spritesheet.png"
-spritesheet_hframes = 4
 metadata/_custom_type_script = "uid://jp81cwh1fegm"

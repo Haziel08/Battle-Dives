@@ -40,3 +40,4 @@ extends Resource
 
 @export_multiline var info_real: String = ""
 @export_multiline var descripcion_graciosa: String = ""
+@export var fotos_reales: Array[String] = []
