@@ -78,11 +78,12 @@ integridad_cientifica = 200.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1002676374]
 
-[node name="LabelEvento" type="Label" parent="HUD" unique_id=546642610]
-offset_left = 460.0
-offset_top = 88.0
-offset_right = 760.0
-offset_bottom = 118.0
+[node name="BannerEvento" type="TextureRect" parent="HUD" unique_id=1857747441]
+visible = false
+offset_left = 421.0
+offset_top = 80.0
+offset_right = 721.0
+offset_bottom = 140.0
 
 [node name="LabelMensaje" type="Label" parent="HUD" unique_id=1138197011]
 offset_left = 572.0
@@ -109,10 +110,12 @@ texture = ExtResource("6_5qqpq")
 
 [node name="LabelFI" type="Label" parent="HUD/TopPanel" unique_id=1625199864]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 20.0
 offset_top = 15.0
-offset_right = 160.0
+offset_right = 170.0
 offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
 
 [node name="LabelNombre" type="Label" parent="HUD/TopPanel" unique_id=215230953]
 layout_mode = 0
@@ -120,6 +123,7 @@ offset_left = 850.0
 offset_top = 5.0
 offset_right = 1140.0
 offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="BarraFisica" type="ProgressBar" parent="HUD/TopPanel" unique_id=671412389]
 modulate = Color(0.27042106, 0.6709628, 0.35337868, 1)
@@ -143,10 +147,13 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="LabelTiempo" type="Label" parent="HUD/TopPanel" unique_id=291759020]
 layout_mode = 0
-offset_left = 150.0
+offset_left = 160.0
 offset_top = 15.0
-offset_right = 350.0
+offset_right = 360.0
 offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.37445906, 0.058479182, 0.41832697, 1)
+theme_override_font_sizes/font_size = 25
 
 [node name="LabelAviso" type="Label" parent="HUD/TopPanel" unique_id=2013320201]
 visible = false

@@ -77,7 +77,7 @@ var cartas_volteadas: Dictionary = {}
 @onready var btn_tutorial_siguiente: Button = $HUD/PanelTutorial/BtnContinuar
 
 @onready var overlay_evento: ColorRect = $HUD/OverlayEvento
-@onready var label_evento: Label = $HUD/LabelEvento
+@onready var banner_evento: TextureRect = $HUD/BannerEvento
 @onready var fondo_layer: CanvasLayer = $FondoLayer
 @onready var fondo_textura: TextureRect = $FondoLayer/Fondo
 
@@ -95,6 +95,13 @@ var cartas_volteadas: Dictionary = {}
 @onready var btn_extraer: Button = $HUD/PanelExtraccion/BtnExtraer
 @onready var label_aviso: Label = $HUD/TopPanel/LabelAviso
 @onready var btn_colapsar_extraccion: Button = $HUD/PanelExtraccion/BtnColapsar
+
+const BANNERS = {
+	"huracan": preload("res://assets/ui/events/banner_huracan.png"),
+	"sismo": preload("res://assets/ui/events/banner_sismo.png"),
+	"baja_visibilidad": preload("res://assets/ui/events/banner_baja_visibilidad.png"),
+	"corrientes": preload("res://assets/ui/events/banner_corrientes.png"),
+}
 
 var pasos_extraccion_completados: Array[bool] = []
 var timer_aviso: float = 0.0
@@ -168,7 +175,6 @@ func _ready() -> void:
 	_actualizar_btn_mejora()
 	actualizar_hud()
 	overlay_evento.hide()
-	label_evento.text = ""
 	
 	label_aviso.hide()
 	if nivel_actual.permite_extraccion:
@@ -935,7 +941,9 @@ func _iniciar_evento(evento: EventData) -> void:
 		finding.recibir_danio_fisico(evento.danio_fisico_instantaneo)
 		iniciar_shake(0.5, 8.0)
 
-	label_evento.text = "⚠ " + evento.nombre
+	if BANNERS.has(evento.tipo):
+		banner_evento.texture = BANNERS[evento.tipo]
+		banner_evento.show()
 
 func _terminar_evento() -> void:
 	if evento_actual != null:
@@ -946,7 +954,8 @@ func _terminar_evento() -> void:
 	overlay_evento.hide()
 	modificador_radio_deteccion = 1.0
 	modificador_velocidad_amenazas = 1.0
-	label_evento.text = ""
+	banner_evento.hide()
+	banner_evento.texture = null
 
 func get_modificador_radio_deteccion() -> float:
 	return modificador_radio_deteccion
