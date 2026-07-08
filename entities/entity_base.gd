@@ -127,6 +127,12 @@ func _atacar() -> void:
 		if datos.efectivo_contra.has(objetivo.datos.tipo):
 			danio_final *= datos.multiplicador_danio
 
+	if objetivo.hp_actual - danio_final > 0.0:
+		AudioManager.play_sfx("golpe_tecnica")
+	else:
+		# Golpe de gracia — sonido diferente
+		AudioManager.play_sfx("amenaza_derrotada")
+
 	objetivo.recibir_danio_de_tropa(danio_final, datos.fuerza_empuje)
 	offset_golpe = 8.0
 

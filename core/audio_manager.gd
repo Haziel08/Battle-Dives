@@ -37,6 +37,8 @@ const SFX: Dictionary = {
 	"despliegue_especialista": "res://assets/audio/sfx/despliegue_especialista_dinero.wav",
 	"despliegue_tecnica": "res://assets/audio/sfx/despliegue_tecnica_dinero.wav",
 	"mejora_dinero": "res://assets/audio/sfx/mejora_dinero.wav",
+	"golpe_tecnica": "res://assets/audio/sfx/golpe_tecnica.wav",
+	"amenaza_derrotada": "res://assets/audio/sfx/amenaza_derrotada.wav",
 }
 
 func _ready() -> void:
