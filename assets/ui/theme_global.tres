@@ -2,9 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://ds3lunxd7lxee" path="res://assets/fonts/Nunito-VariableFont_wght.ttf" id="1_he1x5"]
 [ext_resource type="FontFile" uid="uid://bsp0u1udun2q6" path="res://assets/Beaverpunch-Regular.ttf" id="3_bvpunch"]
+[ext_resource type="FontVariation" uid="uid://cqeq867i4y50b" path="res://assets/fonts/fuente_botones.tres" id="3_gsdhp"]
 
 [resource]
-default_font = ExtResource("3_bvpunch")
+default_font = ExtResource("3_gsdhp")
 default_font_size = 18
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/fonts/Beaverpunch = ExtResource("3_bvpunch")

@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3 uid="uid://cqeq867i4y50b"]
+
+[ext_resource type="FontFile" uid="uid://ub21grimc7jw" path="res://assets/fonts/Beaver Punch.otf" id="1_6ie4e"]
+[ext_resource type="FontFile" uid="uid://crtm1nukbwr0s" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_cd5ii"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_cd5ii")])
+base_font = ExtResource("1_6ie4e")
