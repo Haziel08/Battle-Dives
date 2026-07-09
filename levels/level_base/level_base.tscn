@@ -166,10 +166,10 @@ theme_override_font_sizes/font_size = 25
 [node name="LabelAviso" type="Label" parent="HUD/TopPanel" unique_id=2013320201]
 visible = false
 layout_mode = 0
-offset_left = 380.0
-offset_top = 45.0
-offset_right = 780.0
-offset_bottom = 70.0
+offset_left = 409.0
+offset_top = 80.0
+offset_right = 809.0
+offset_bottom = 105.0
 
 [node name="BottomPanel" type="TextureRect" parent="HUD" unique_id=1540433401]
 anchors_preset = 12
@@ -267,7 +267,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_top = 35.0
 offset_right = 555.0
-offset_bottom = 115.0
+offset_bottom = 120.0
 
 [node name="ContenedorEspecialistas" type="Control" parent="HUD/BottomPanel" unique_id=452988609]
 visible = false
@@ -277,43 +277,43 @@ anchors_preset = 0
 layout_mode = 0
 offset_left = 10.0
 offset_top = 35.0
-offset_right = 90.0
-offset_bottom = 115.0
+offset_right = 115.0
+offset_bottom = 120.0
 
 [node name="BtnEsp2" type="Button" parent="HUD/BottomPanel/ContenedorEspecialistas" unique_id=884741694]
 layout_mode = 0
-offset_left = 100.0
+offset_left = 120.0
 offset_top = 35.0
-offset_right = 180.0
-offset_bottom = 115.0
+offset_right = 225.0
+offset_bottom = 120.0
 
 [node name="BtnEsp3" type="Button" parent="HUD/BottomPanel/ContenedorEspecialistas" unique_id=1494159426]
 layout_mode = 0
-offset_left = 190.0
+offset_left = 230.0
 offset_top = 35.0
-offset_right = 270.0
-offset_bottom = 115.0
+offset_right = 335.0
+offset_bottom = 120.0
 
 [node name="BtnEsp4" type="Button" parent="HUD/BottomPanel/ContenedorEspecialistas" unique_id=748847740]
 layout_mode = 0
-offset_left = 280.0
+offset_left = 340.0
 offset_top = 35.0
-offset_right = 360.0
-offset_bottom = 115.0
+offset_right = 445.0
+offset_bottom = 120.0
 
 [node name="BtnEsp5" type="Button" parent="HUD/BottomPanel/ContenedorEspecialistas" unique_id=2030985967]
 layout_mode = 0
-offset_left = 370.0
+offset_left = 450.0
 offset_top = 35.0
-offset_right = 450.0
-offset_bottom = 115.0
+offset_right = 555.0
+offset_bottom = 120.0
 
 [node name="BtnEsp6" type="Button" parent="HUD/BottomPanel/ContenedorEspecialistas" unique_id=1330327694]
 layout_mode = 0
-offset_left = 460.0
+offset_left = 560.0
 offset_top = 35.0
-offset_right = 540.0
-offset_bottom = 115.0
+offset_right = 665.0
+offset_bottom = 120.0
 
 [node name="BtnMejoraFI" type="TextureButton" parent="HUD/BottomPanel" unique_id=391739322]
 layout_mode = 0
@@ -567,7 +567,7 @@ offset_left = 680.0
 offset_top = 95.0
 offset_right = 780.0
 offset_bottom = 130.0
-text = "Siguiente →"
+text = "Siguiente"
 
 [node name="TooltipPanel" type="Panel" parent="HUD" unique_id=1093294499]
 visible = false
@@ -642,6 +642,7 @@ offset_bottom = 33.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Paso3" type="TextureRect" parent="HUD/PanelExtraccion" unique_id=1027468579]
 layout_mode = 0
@@ -660,6 +661,7 @@ offset_bottom = 33.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Paso4" type="TextureRect" parent="HUD/PanelExtraccion" unique_id=1115632028]
 layout_mode = 0
@@ -677,6 +679,7 @@ offset_right = 280.0
 offset_bottom = 33.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
 
 [node name="Paso5" type="TextureRect" parent="HUD/PanelExtraccion" unique_id=1530291107]
 layout_mode = 0
@@ -694,6 +697,7 @@ offset_right = 280.0
 offset_bottom = 33.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BtnAutorizacion" type="TextureButton" parent="HUD/PanelExtraccion" unique_id=328440198]
@@ -710,9 +714,9 @@ texture_disabled = ExtResource("33_2u3pq")
 [node name="Label" type="Label" parent="HUD/PanelExtraccion/BtnAutorizacion" unique_id=1310224082]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 7.0
+offset_top = 10.0
 offset_right = 263.0
-offset_bottom = 34.0
+offset_bottom = 31.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Autorización - 40 FI"
 horizontal_alignment = 1
@@ -721,9 +725,9 @@ vertical_alignment = 1
 [node name="BtnCapsula" type="TextureButton" parent="HUD/PanelExtraccion" unique_id=334061062]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 323.0
+offset_top = 325.0
 offset_right = 327.0
-offset_bottom = 363.0
+offset_bottom = 365.0
 texture_normal = ExtResource("31_7g4ee")
 texture_pressed = ExtResource("32_abhfy")
 texture_hover = ExtResource("32_abhfy")
@@ -732,9 +736,9 @@ texture_disabled = ExtResource("31_7g4ee")
 [node name="Label" type="Label" parent="HUD/PanelExtraccion/BtnCapsula" unique_id=1302373840]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 9.0
+offset_top = 10.0
 offset_right = 263.0
-offset_bottom = 36.0
+offset_bottom = 30.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Capsula - 60 FI"
 horizontal_alignment = 1
@@ -743,9 +747,9 @@ vertical_alignment = 1
 [node name="BtnExtraer" type="TextureButton" parent="HUD/PanelExtraccion" unique_id=580756717]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 365.0
+offset_top = 366.0
 offset_right = 327.0
-offset_bottom = 417.0
+offset_bottom = 418.0
 texture_normal = ExtResource("33_2u3pq")
 texture_pressed = ExtResource("35_2u3pq")
 texture_hover = ExtResource("35_2u3pq")

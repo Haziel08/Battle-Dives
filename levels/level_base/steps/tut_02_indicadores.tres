@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_onjt6")
-texto = "Arriba ves dos barras: Integridad Física (IF) y Científica (IC). Si cualquiera llega a 0, pierdes. Algunas amenazas dañan IF, otras IC."
+texto = "Arriba ves dos barras: Integridad Científica  (IC -Azul) e Integridad  Física (IF -Verde). Si cualquiera llega a 0, pierdes. Algunas amenazas dañan IF, otras IC."
 metadata/_custom_type_script = "uid://y421pwqha5yv"

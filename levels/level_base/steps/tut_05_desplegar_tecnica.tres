@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dlk3l")
-texto = "Presiona el botón de la primera técnica (o la tecla 1) para desplegarla."
+texto = "Los TÉCNICOS están en el panel inferior izquierdo. Presiona el botón del Espeleobuzo (o tecla 1) para desplegarlo. Avanzará solo e interceptará amenazas automáticamente."
 tipo = "esperar_accion"
 accion_esperada = "tecnica_1"
 metadata/_custom_type_script = "uid://y421pwqha5yv"

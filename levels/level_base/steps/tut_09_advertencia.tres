@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_xqu71")
-texto = "Cuidado: si tu FI baja de 100, entras en 'Abandono' y pierdes IC con el tiempo. Y el tiempo mismo erosiona la IF, ¡aunque no haya amenazas!"
+texto = "Si tu FI baja de 100, entras en ABANDONO y pierdes IC cada segundo. El tiempo también desgasta la IF. ¡Mantén tu presupuesto!"
 metadata/_custom_type_script = "uid://y421pwqha5yv"

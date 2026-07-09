@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://7ux54pq42l7o"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_6nfyu"]
+
+[resource]
+script = ExtResource("1_6nfyu")
+texto = "Al desplegar un Especialista, desbloqueas una entrada real en el Almanaque sobre Hoyo Negro. ¡Cada especialista revela información científica diferente!"
+metadata/_custom_type_script = "uid://y421pwqha5yv"

@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_2u62j")
-texto = "\"Los Especialistas están en el mismo panel (tab 'Especialistas'). 
-No combaten — aportan habilidades mientras están activos.\""
+texto = "Cambia al tab ESPECIALISTAS en el panel inferior. Presiona el primer botón para desplegar al Conservador. No combaten - aportan habilidades mientras están activos."
 metadata/_custom_type_script = "uid://y421pwqha5yv"

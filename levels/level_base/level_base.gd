@@ -124,6 +124,20 @@ const BANNERS = {
 	"corrientes": preload("res://assets/ui/events/banner_corrientes.png"),
 }
 
+const REVERSOS: Dictionary = {
+	"Espeleobuzo": "res://assets/ui/cards/reverso_espeleobuzo.png",
+	"Ingeniero": "res://assets/ui/cards/reverso_ingeniero.png",
+	"Científico de Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
+	"Vigilancia": "res://assets/ui/cards/reverso_vigilancia.png",
+	"Policía Marítima": "res://assets/ui/cards/reverso_policia_maritima.png",
+	"Arqueólogo": "res://assets/ui/cards/reverso_arqueologo.png",
+	"Conservador": "res://assets/ui/cards/reverso_conservador.png",
+	"Oceanógrafo": "res://assets/ui/cards/reverso_oceanografo.png",
+	"Fotogrametrista": "res://assets/ui/cards/reverso_fotogrametrista.png",
+	"Paleontólogo": "res://assets/ui/cards/reverso_paleontologo.png",
+	"Educador Comunitario": "res://assets/ui/cards/reverso_voluntario.png",
+}
+
 var pasos_extraccion_completados: Array[bool] = []
 var timer_aviso: float = 0.0
 var timer_notificacion: float = 0.0
@@ -1148,8 +1162,8 @@ func _on_colapsar_extraccion_pressed() -> void:
 
 	# Cambiar tamaño del panel Y del fondo
 	if panel_extraccion_colapsado:
-		panel_extraccion.size.y = 290
-		$HUD/PanelExtraccion/FondoPanel.size.y = 290
+		panel_extraccion.size.y = 70
+		$HUD/PanelExtraccion/FondoPanel.size.y = 70
 	else:
 		panel_extraccion.size.y = 420  # tu altura real expandida
 		$HUD/PanelExtraccion/FondoPanel.size.y = 420
@@ -1167,10 +1181,8 @@ func _mostrar_frente_tecnica(ficha: TechniqueData, btn: Button) -> void:
 	_crear_card_visual(btn, ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 
 func _mostrar_reverso_tecnica(ficha: TechniqueData, btn: Button) -> void:
-	for child in btn.get_children():
-		child.free()
-	var contra = ", ".join(PackedStringArray(ficha.efectivo_contra)) if ficha.efectivo_contra.size() > 0 else "—"
-	btn.text = "HP:%d DMG:%d\nVS: %s" % [int(ficha.hp), int(ficha.danio), contra]
+	_aplicar_reverso(ficha.nombre, btn)
+
 
 func _input_tooltip_especialista(event: InputEvent, ficha: SpecialistData, btn: Button) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
@@ -1185,17 +1197,38 @@ func _mostrar_frente_especialista(ficha: SpecialistData, btn: Button) -> void:
 	_crear_card_visual(btn, ficha.nombre, ficha.costo, ficha.spritesheet_path, ficha.spritesheet_hframes)
 
 func _mostrar_reverso_especialista(ficha: SpecialistData, btn: Button) -> void:
+	_aplicar_reverso(ficha.nombre, btn)
+
+func _aplicar_reverso(nombre: String, btn: Button) -> void:
+	# Limpiar hijos anteriores
 	for child in btn.get_children():
 		child.free()
-	var pasiva = ""
-	if ficha.pasiva_ic_por_seg > 0: pasiva = "+%.0fIC/s" % ficha.pasiva_ic_por_seg
-	elif ficha.pasiva_if_por_seg > 0: pasiva = "+%.0fIF/s" % ficha.pasiva_if_por_seg
-	elif ficha.pasiva_fi_por_seg > 0: pasiva = "+%.0fFI/s" % ficha.pasiva_fi_por_seg
-	elif ficha.pasiva_reduce_prob_evento > 0: pasiva = "-%.0f%%eventos" % (ficha.pasiva_reduce_prob_evento*100)
-	elif ficha.reduce_prob_amenaza_tipo != "": pasiva = "-%.0f%%%s" % [ficha.reduce_prob_amenaza_pct*100, ficha.reduce_prob_amenaza_tipo]
-	btn.text = "%ds | %s\n%s" % [int(ficha.duracion), pasiva, ficha.nombre_activa if ficha.tiene_activa else "Sin activa"]
-				
-				
+
+	# Limpiar texto del botón
+	btn.text = ""
+
+	# Verificar que existe el reverso
+	if not REVERSOS.has(nombre):
+		btn.text = "Sin imagen"
+		return
+
+	var ruta = REVERSOS[nombre]
+	if not ResourceLoader.exists(ruta):
+		btn.text = "Sin imagen"
+		return
+
+	# Crear TextureRect que cubre todo el botón
+	var tex_rect = TextureRect.new()
+	tex_rect.texture = load(ruta)
+	tex_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	tex_rect.anchors_preset = Control.PRESET_FULL_RECT
+	tex_rect.offset_left = 0
+	tex_rect.offset_top = 0
+	tex_rect.offset_right = 0
+	tex_rect.offset_bottom = 0
+	tex_rect.mouse_filter = Control.MOUSE_FILTER_PASS
+	btn.add_child(tex_rect)
+	
 func _cambiar_tab(tab: String) -> void:
 	contenedor_tecnicas.visible = (tab == "tecnicas")
 	contenedor_especialistas.visible = (tab == "especialistas")

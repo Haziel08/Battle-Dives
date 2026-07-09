@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://cvjdbe6cs0wkc"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_p2l5c"]
+
+[resource]
+script = ExtResource("1_p2l5c")
+texto = "CONSEJO: Haz clic derecho sobre cualquier carta para verla al revés y consultar sus estadísticas: daño, vida, velocidad y a qué amenazas es efectiva."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dsmyn7xspxxn7" path="res://core/extraction/paso_01_escaneo.tres" id="8_um13t"]
 [ext_resource type="Resource" uid="uid://hujjredxtu5c" path="res://core/extraction/paso_02_registro.tres" id="9_j05mq"]
 [ext_resource type="Resource" uid="uid://6ot8obkcmss6" path="res://core/extraction/paso_03_riesgo.tres" id="10_li3eh"]
+[ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="10_um13t"]
 [ext_resource type="Resource" uid="uid://dwi5gm6hkbi64" path="res://core/extraction/paso_04_autorizacion.tres" id="11_8qugv"]
 [ext_resource type="Resource" uid="uid://d3pcdvxg8lcyg" path="res://core/extraction/paso_05_capsula.tres" id="12_pjatk"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="13_vbyxe"]
@@ -24,18 +25,30 @@
 [ext_resource type="Resource" uid="uid://c84ifmd0nv86x" path="res://levels/level_base/steps/tut_06_especialistas_intro.tres" id="19_ew31r"]
 [ext_resource type="Resource" uid="uid://csgnbdkd11f6b" path="res://levels/level_base/steps/tut_07_desplegar_especialista.tres" id="20_gryup"]
 [ext_resource type="Resource" uid="uid://c0qwhuaosrok5" path="res://levels/level_base/steps/tut_08_mejora_fi.tres" id="21_klcdh"]
+[ext_resource type="Resource" uid="uid://cvjdbe6cs0wkc" path="res://levels/level_base/steps/tut_11_cartas_flip.tres" id="22_c715l"]
 [ext_resource type="Resource" uid="uid://dq8dfke4mnjpq" path="res://levels/level_base/steps/tut_09_advertencia.tres" id="22_rdryl"]
 [ext_resource type="Resource" uid="uid://clqky4qih0bbq" path="res://levels/level_base/steps/tut_10_inicio.tres" id="23_dx0xt"]
 [ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="24_3kuos"]
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="25_cyqql"]
+[ext_resource type="Resource" uid="uid://7ux54pq42l7o" path="res://levels/level_base/steps/tut_12_especialistas_almanaque.tres" id="25_um13t"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="26_u7i7f"]
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="27_gfn4v"]
+[ext_resource type="Resource" uid="uid://ci8foqq5emlfu" path="res://levels/level_base/steps/tut_13_eventos.tres" id="28_j05mq"]
 
 [sub_resource type="Resource" id="Resource_cnso8"]
 script = ExtResource("5_vnwh0")
 threat = ExtResource("6_hm4qr")
+cantidad = 7
 intervalo_spawn = 20.0
-tiempo_inicio = 15.0
+tiempo_inicio = 10.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_j05mq"]
+script = ExtResource("5_vnwh0")
+threat = ExtResource("10_um13t")
+cantidad = 4
+intervalo_spawn = 40.0
+tiempo_inicio = 30.0
 metadata/_custom_type_script = "uid://bxea5stxciutd"
 
 [resource]
@@ -46,11 +59,11 @@ fi_inicial = 120.0
 tecnicas_disponibles = Array[ExtResource("25_cyqql")]([ExtResource("26_u7i7f"), ExtResource("27_gfn4v")])
 especialistas_disponibles = Array[ExtResource("1_o8eua")]([ExtResource("2_eeibl"), ExtResource("3_fno00")])
 duracion_nivel = 120.0
-oleadas = Array[ExtResource("5_vnwh0")]([SubResource("Resource_cnso8")])
+oleadas = Array[ExtResource("5_vnwh0")]([SubResource("Resource_cnso8"), SubResource("Resource_j05mq")])
 prob_evento_por_minuto = 0.0
 danio_if_por_tiempo = 0.3
 es_tutorial = true
-pasos_tutorial = Array[ExtResource("13_vbyxe")]([ExtResource("14_0gwae"), ExtResource("15_lfua0"), ExtResource("16_ew18s"), ExtResource("17_bbmk1"), ExtResource("18_eqex1"), ExtResource("19_ew31r"), ExtResource("20_gryup"), ExtResource("21_klcdh"), ExtResource("22_rdryl"), ExtResource("23_dx0xt")])
+pasos_tutorial = Array[ExtResource("13_vbyxe")]([ExtResource("14_0gwae"), ExtResource("15_lfua0"), ExtResource("16_ew18s"), ExtResource("17_bbmk1"), ExtResource("18_eqex1"), ExtResource("22_c715l"), ExtResource("19_ew31r"), ExtResource("20_gryup"), ExtResource("25_um13t"), ExtResource("21_klcdh"), ExtResource("22_rdryl"), ExtResource("28_j05mq"), ExtResource("23_dx0xt")])
 pasos_extraccion = Array[ExtResource("7_c715l")]([ExtResource("8_um13t"), ExtResource("9_j05mq"), ExtResource("10_li3eh"), ExtResource("11_8qugv"), ExtResource("12_pjatk")])
 hallazgo_info_real = "Las Marcas de Soga de Hoyo Negro son surcos tallados en la roca caliza de las paredes de la caverna. Fueron realizadas por humanos del Pleistoceno tardío hace aproximadamente 10,000 años, que descendieron intencionalmente a la cueva usando cuerdas para buscar agua dulce durante períodos de sequía extrema."
 hallazgo_descripcion_graciosa = "Antes de que existieran los mapas, el GPS, las tiendas de conveniencia y el agua embotellada, nuestros ancestros bajaban a cuevas oscuras de 55 metros de profundidad con una cuerda y mucha determinación a buscar agua. La próxima vez que te quejes de que el Uber tardó 5 minutos, piénsalo."

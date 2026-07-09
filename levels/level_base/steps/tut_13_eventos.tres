@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://ci8foqq5emlfu"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_8qdc8"]
+
+[resource]
+script = ExtResource("1_8qdc8")
+texto = "Durante el nivel pueden ocurrir EVENTOS como Sismos, Huracanes o Baja Visibilidad. Afectan la velocidad de amenazas o tu visión. ¡El Oceanógrafo los reduce!"
+metadata/_custom_type_script = "uid://y421pwqha5yv"
