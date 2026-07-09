@@ -13,7 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bkttoh6r5rbdu" path="res://assets/botones/Almanaque.png" id="7_w2r0d"]
 [ext_resource type="Texture2D" uid="uid://cqqmf2lp64mj5" path="res://assets/texto/AlmanaqueTexto.png" id="8_4e78x"]
 [ext_resource type="Texture2D" uid="uid://boo7f7wgd45r4" path="res://assets/texto/Musica.png" id="13_qao3l"]
+[ext_resource type="Texture2D" uid="uid://dxmjmm1ryluc2" path="res://assets/botones/PauseButton/ajustes.png" id="13_u2jyo"]
+[ext_resource type="Texture2D" uid="uid://bd31cp7f7718x" path="res://assets/botones/PauseButton/ajustes_cursor.png" id="14_bpbph"]
 [ext_resource type="Texture2D" uid="uid://bgowatrmhr68i" path="res://assets/texto/efectos.png" id="14_lknku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2jyo"]
 
 [node name="MainMenu" type="Node2D" unique_id=502576784]
 script = ExtResource("1_uhj5c")
@@ -68,6 +72,7 @@ offset_left = 929.0
 offset_top = 56.44
 offset_right = 1041.0
 offset_bottom = 175.44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u2jyo")
 text = "Almanaque"
 
 [node name="Almanaque" type="Sprite2D" parent="UI/BtnAlmanaque" unique_id=1576903476]
@@ -90,12 +95,14 @@ texture = ExtResource("2_mu8pm")
 position = Vector2(358, 293)
 texture = ExtResource("5_3c04x")
 
-[node name="BtnAjustes" type="Button" parent="UI" unique_id=2147096274]
-offset_left = 1102.0
-offset_top = 10.0
-offset_right = 1142.0
-offset_bottom = 50.0
-text = "⚙"
+[node name="BtnAjustes" type="TextureButton" parent="UI" unique_id=417724429]
+offset_left = 38.0
+offset_top = 558.0
+offset_right = 98.0
+offset_bottom = 618.0
+texture_normal = ExtResource("13_u2jyo")
+texture_pressed = ExtResource("14_bpbph")
+texture_hover = ExtResource("14_bpbph")
 
 [node name="PanelAjustes" type="Panel" parent="UI" unique_id=1633069]
 anchors_preset = 8

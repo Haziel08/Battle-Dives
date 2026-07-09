@@ -42,3 +42,4 @@ extends Resource
 @export_multiline var hallazgo_descripcion_graciosa: String = ""
 @export var entradas_almanaque: Array[AlmanacEntryData] = []
 @export var fondo_path: String = ""
+@export var hallazgo_imagen: Texture2D = null

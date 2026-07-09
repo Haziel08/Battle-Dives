@@ -315,18 +315,22 @@ func _mostrar_evento(f: EventData) -> void:
 func _mostrar_hallazgo(indice: int) -> void:
 	_limpiar_detalle()
 	var nivel = GameState.niveles[indice]
+
 	if not GameState.hallazgos_descubiertos[indice]:
-		detalle_nombre.text = "??? (Bloqueado)"
+		detalle_nombre.text = "??? (Nivel %d bloqueado)" % (indice + 1)
 		detalle_stats.text = "Completa el Nivel %d para descubrir este hallazgo." % (indice + 1)
-		detalle_info_real.text = ""
-		detalle_curioso.text = ""
 		return
+
 	detalle_nombre.text = nivel.nombre_hallazgo + " (Hallazgo)"
 	detalle_stats.text = "Sitio: Hoyo Negro, Tulum, Q. Roo\nIF: %.0f | IC: %.0f" % [nivel.hallazgo_if, nivel.hallazgo_ic]
 	detalle_info_real.text = "En la vida real:\n" + nivel.hallazgo_info_real
 	detalle_curioso.text = "Dato curioso:\n" + nivel.hallazgo_descripcion_graciosa
-	if nivel.hallazgo_imagen != null:
+
+	# Proteger acceso a hallazgo_imagen
+	if nivel.get("hallazgo_imagen") != null:
 		_mostrar_imagen(nivel.hallazgo_imagen)
+	else:
+		_ocultar_imagen()
 
 func _mostrar_entrada(entrada: AlmanacEntryData) -> void:
 	_limpiar_detalle()

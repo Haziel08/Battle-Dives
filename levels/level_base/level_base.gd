@@ -33,6 +33,10 @@ var escudo_fisico_pct: float = 0.0
 var campania_tipos: Array[String] = []
 var campania_reduccion: float = 0.0
 
+const TEX_PASO_BLOQUEADO = preload("res://assets/ui/extraction/paso_bloqueado.png")
+const TEX_PASO_ACTUAL = preload("res://assets/ui/extraction/paso_actual.png")
+const TEX_PASO_COMPLETADO = preload("res://assets/ui/extraction/paso_completado.png")
+
 # --- EFECTOS DE NIVEL (Bloque D) ---
 var efectos_activos: Dictionary = {}  # "baja_visibilidad" -> true/false
 var timer_erosion: float = 0.0
@@ -84,17 +88,34 @@ var cartas_volteadas: Dictionary = {}
 @onready var tooltip_panel: Panel = $HUD/TooltipPanel
 @onready var tooltip_label: Label = $HUD/TooltipPanel/TooltipLabel
 
+# Fondo
 @onready var panel_extraccion: Panel = $HUD/PanelExtraccion
-@onready var labels_pasos_extraccion: Array = [
-	$HUD/PanelExtraccion/LabelPaso1, $HUD/PanelExtraccion/LabelPaso2,
-	$HUD/PanelExtraccion/LabelPaso3, $HUD/PanelExtraccion/LabelPaso4,
-	$HUD/PanelExtraccion/LabelPaso5
+
+# Pasos como TextureRect
+@onready var pasos_textures: Array[TextureRect] = [
+	$HUD/PanelExtraccion/Paso1,
+	$HUD/PanelExtraccion/Paso2,
+	$HUD/PanelExtraccion/Paso3,
+	$HUD/PanelExtraccion/Paso4,
+	$HUD/PanelExtraccion/Paso5,
 ]
-@onready var btn_autorizacion: Button = $HUD/PanelExtraccion/BtnAutorizacion
-@onready var btn_capsula: Button = $HUD/PanelExtraccion/BtnCapsula
-@onready var btn_extraer: Button = $HUD/PanelExtraccion/BtnExtraer
-@onready var label_aviso: Label = $HUD/TopPanel/LabelAviso
+
+@onready var pasos_labels: Array[Label] = [
+	$HUD/PanelExtraccion/Paso1/LabelTitulo1,
+	$HUD/PanelExtraccion/Paso2/LabelTitulo2,
+	$HUD/PanelExtraccion/Paso3/LabelTitulo3,
+	$HUD/PanelExtraccion/Paso4/LabelTitulo4,
+	$HUD/PanelExtraccion/Paso5/LabelTitulo5,
+]
+
+# Botones
+@onready var btn_autorizacion: TextureButton = $HUD/PanelExtraccion/BtnAutorizacion
+@onready var btn_capsula: TextureButton = $HUD/PanelExtraccion/BtnCapsula
+@onready var btn_extraer: TextureButton = $HUD/PanelExtraccion/BtnExtraer
 @onready var btn_colapsar_extraccion: Button = $HUD/PanelExtraccion/BtnColapsar
+
+@onready var label_aviso: Label = $HUD/TopPanel/LabelAviso
+
 
 const BANNERS = {
 	"huracan": preload("res://assets/ui/events/banner_huracan.png"),
@@ -1052,9 +1073,46 @@ func _completar_paso(i: int) -> void:
 
 func _actualizar_panel_extraccion() -> void:
 	var pasos = nivel_actual.pasos_extraccion
+
 	for i in pasos.size():
-		var check = "✅" if pasos_extraccion_completados[i] else "⬜"
-		labels_pasos_extraccion[i].text = "%s %s" % [check, pasos[i].nombre]
+		if i >= pasos_textures.size():
+			break
+
+		var completado = pasos_extraccion_completados[i]
+		var es_siguiente = not completado and (i == 0 or pasos_extraccion_completados[i - 1])
+
+		# Cambiar textura del paso
+		if completado:
+			pasos_textures[i].texture = TEX_PASO_COMPLETADO
+		elif es_siguiente:
+			pasos_textures[i].texture = TEX_PASO_ACTUAL
+		else:
+			pasos_textures[i].texture = TEX_PASO_BLOQUEADO
+
+		# Actualizar label
+		if i < pasos_labels.size():
+			pasos_labels[i].text = pasos[i].nombre
+
+	# Actualizar estado de botones
+	var paso4_completo = pasos_extraccion_completados[3] if pasos_extraccion_completados.size() > 3 else false
+	var paso5_completo = pasos_extraccion_completados[4] if pasos_extraccion_completados.size() > 4 else false
+	var paso3_completo = pasos_extraccion_completados[2] if pasos_extraccion_completados.size() > 2 else false
+
+	# Autorización habilitada si paso 3 completado
+	btn_autorizacion.disabled = not paso3_completo or paso4_completo
+
+	# Cápsula habilitada si paso 4 completado
+	btn_capsula.disabled = not paso4_completo or paso5_completo
+
+	# Extraer habilitado siempre (penaliza si incompleto)
+	btn_extraer.disabled = false
+
+	# Cambiar textura del extraer según si está completo
+	var todo_completo = pasos_extraccion_completados.all(func(c): return c)
+	if todo_completo:
+		btn_extraer.texture_normal = load("res://assets/ui/extraction/extraer_activo.png")
+	else:
+		btn_extraer.texture_normal = load("res://assets/ui/extraction/extraer_desactivo.png")
 
 func _on_extraer_pressed() -> void:
 	AudioManager.play_sfx("boton")
@@ -1078,26 +1136,23 @@ func _mostrar_aviso(texto: String) -> void:
 	timer_aviso = 2.5
 	
 func _on_colapsar_extraccion_pressed() -> void:
-	AudioManager.play_sfx("boton")
 	panel_extraccion_colapsado = not panel_extraccion_colapsado
-
-	# Oculta todo excepto el título y el botón de colapsar
 	var ocultar = panel_extraccion_colapsado
 
-	for lbl in labels_pasos_extraccion:
-		lbl.visible = not ocultar
+	# Ocultar contenido
+	for tex in pasos_textures:
+		tex.visible = not ocultar
 	btn_autorizacion.visible = not ocultar
 	btn_capsula.visible = not ocultar
 	btn_extraer.visible = not ocultar
 
+	# Cambiar tamaño del panel Y del fondo
 	if panel_extraccion_colapsado:
-		btn_colapsar_extraccion.text = "+"
-		panel_extraccion.custom_minimum_size = Vector2(320, 45)
-		panel_extraccion.size = Vector2(320, 45)
+		panel_extraccion.size.y = 290
+		$HUD/PanelExtraccion/FondoPanel.size.y = 290
 	else:
-		btn_colapsar_extraccion.text = "−"
-		panel_extraccion.custom_minimum_size = Vector2(320, 360)
-		panel_extraccion.size = Vector2(320, 360)
+		panel_extraccion.size.y = 420  # tu altura real expandida
+		$HUD/PanelExtraccion/FondoPanel.size.y = 420
 
 func _input_tooltip_tecnica(event: InputEvent, ficha: TechniqueData, btn: Button) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
