@@ -12,11 +12,9 @@
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_e2cu6"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_lxgh0"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_4vjqo"]
-[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_cs4mp"]
 [ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="6_imr8d"]
 [ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="6_ueydt"]
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="7_eqf5r"]
-[ext_resource type="Resource" uid="uid://nuh7qkj2vbm5" path="res://entities/specialists/esp_divulgador.tres" id="7_l7582"]
 [ext_resource type="Resource" uid="uid://nb0majpveny8" path="res://core/events/evento_baja_visibilidad.tres" id="9_imr8d"]
 [ext_resource type="Resource" uid="uid://cyif8ufmod8gq" path="res://core/events/evento_corrientes.tres" id="10_l7582"]
 [ext_resource type="Resource" uid="uid://dd4queq3q41u6" path="res://core/events/evento_huracan.tres" id="11_3xqyi"]
@@ -29,7 +27,6 @@
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="16_ibdbi"]
 [ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="17_ayxj7"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="17_ibdbi"]
-[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="18_ilfq1"]
 
 [sub_resource type="Resource" id="Resource_ilfq1"]
 script = ExtResource("3_mbhxp")
@@ -91,8 +88,8 @@ nombre_hallazgo = "Naia"
 hallazgo_if = 100.0
 hallazgo_ic = 500.0
 fi_inicial = 200.0
-tecnicas_disponibles = Array[ExtResource("7_eqf5r")]([ExtResource("14_3xqyi"), ExtResource("15_ffxlo"), ExtResource("16_ayxj7"), ExtResource("17_ibdbi"), ExtResource("18_ilfq1")])
-especialistas_disponibles = Array[ExtResource("1_auijx")]([ExtResource("2_1unb8"), ExtResource("3_2m08x"), ExtResource("4_e2cu6"), ExtResource("5_cs4mp"), ExtResource("6_imr8d"), ExtResource("7_l7582")])
+tecnicas_disponibles = Array[ExtResource("7_eqf5r")]([ExtResource("14_3xqyi"), ExtResource("15_ffxlo"), ExtResource("16_ayxj7"), ExtResource("17_ibdbi")])
+especialistas_disponibles = Array[ExtResource("1_auijx")]([ExtResource("2_1unb8"), ExtResource("3_2m08x"), ExtResource("4_e2cu6"), ExtResource("6_imr8d")])
 oleadas = Array[ExtResource("3_mbhxp")]([SubResource("Resource_ilfq1"), SubResource("Resource_qxvgr"), SubResource("Resource_3i4ag"), SubResource("Resource_alxmk"), SubResource("Resource_wh8i5"), SubResource("Resource_d8upj"), SubResource("Resource_78nxs")])
 eventos_posibles = Array[ExtResource("2_pirlv")]([ExtResource("9_imr8d"), ExtResource("10_l7582"), ExtResource("11_3xqyi"), ExtResource("12_ffxlo")])
 prob_evento_por_minuto = 0.6

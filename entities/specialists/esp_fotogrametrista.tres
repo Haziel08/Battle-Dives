@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_wy276")
 nombre = "Fotogrametrista"
-costo = 85
-duracion = 20.0
+es_estatico = true
+costo = 90
+duracion = 25.0
+pasiva_reduce_prob_evento = 0.3
 tiene_activa = true
 nombre_activa = "Escaneo 3D"
 cooldown_activa = 35.0

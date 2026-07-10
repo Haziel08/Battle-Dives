@@ -18,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="8_c5yvw"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="8_v5b75"]
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="9_vs3d3"]
-[ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="10_d0dbt"]
 
 [sub_resource type="Resource" id="Resource_8503b"]
 script = ExtResource("3_vkgxw")
@@ -57,7 +56,7 @@ nombre_hallazgo = "Cráneo de Smilodon"
 hallazgo_if = 200.0
 hallazgo_ic = 150.0
 fi_inicial = 110.0
-tecnicas_disponibles = Array[ExtResource("7_0i5gj")]([ExtResource("8_v5b75"), ExtResource("9_vs3d3"), ExtResource("10_d0dbt")])
+tecnicas_disponibles = Array[ExtResource("7_0i5gj")]([ExtResource("8_v5b75"), ExtResource("9_vs3d3")])
 especialistas_disponibles = Array[ExtResource("1_wv603")]([ExtResource("2_bjuea"), ExtResource("3_otg6q"), ExtResource("4_mocfe")])
 duracion_nivel = 150.0
 oleadas = Array[ExtResource("3_vkgxw")]([SubResource("Resource_8503b"), SubResource("Resource_tdych"), SubResource("Resource_3lhvt"), SubResource("Resource_pj281")])
