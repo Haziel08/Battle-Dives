@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://b7u1fjmpm3mqy"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_fbc2e"]
+
+[resource]
+script = ExtResource("1_fbc2e")
+texto = "PASO 1 — Fotografía/Escaneo: Despliega al FOTOGRAMETRISTA y luego haz DOBLE CLIC sobre su botón para que realice el escaneo 3D del hallazgo."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

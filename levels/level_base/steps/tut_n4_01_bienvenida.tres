@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://fd3ynts7h30g"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_4m0y8"]
+
+[resource]
+script = ExtResource("1_4m0y8")
+texto = "¡Bienvenido al Nivel 4! Este nivel es especial: además de proteger el hallazgo, puedes EXTRAER el Sinsacro del Perezoso Gigante siguiendo un protocolo. Ganas aun si proteges el hallazgo, pero perderas si lo dañan o intentas extraerlo sin el protocolo adecuado."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

@@ -13,7 +13,6 @@ efectivo_contra = Array[String](["contaminacion"])
 multiplicador_danio = 2.5
 color_debug = Color(0.24705882, 0.99215686, 0.4392157, 1)
 spritesheet_path = "res://assets/cientifico_materiales_spritesheet.png"
-info_real = "Los científicos de materiales en arqueología subacuática analizan la composición química de fósiles, sedimentos y el agua misma para 
-detectar contaminantes y su impacto en los hallazgos. En Hoyo Negro, el monitoreo del pH y la química del agua es crítico porque la acidificación puede disolver los huesos calcáreos en años."
+info_real = "Los científicos de materiales en arqueología subacuática analizan la composición química de fósiles, sedimentos y el agua misma para detectar contaminantes y su impacto en los hallazgos. En Hoyo Negro, el monitoreo del pH y la química del agua es crítico porque la acidificación puede disolver los huesos calcáreos en años."
 descripcion_graciosa = "Mandan muestras de agua al laboratorio y regresan con noticias de si la cueva 'está bien' o 'está siendo disuelta lentamente'. El rango de respuestas no tiene término medio."
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

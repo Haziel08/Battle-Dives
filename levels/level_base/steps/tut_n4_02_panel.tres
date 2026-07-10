@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://bgl0gtkgltftw"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_ys8wj"]
+
+[resource]
+script = ExtResource("1_ys8wj")
+texto = "El panel de EXTRACCIÓN está a la izquierda. Muestra 5 pasos que debes completar en orden antes de poder extraer el hallazgo."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

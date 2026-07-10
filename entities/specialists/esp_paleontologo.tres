@@ -6,7 +6,7 @@
 script = ExtResource("1_35xck")
 nombre = "Paleontólogo"
 costo = 100
-duracion = 2.0
+duracion = 3.0
 tiene_activa = true
 nombre_activa = "Identificación de Hallazgo"
 cooldown_activa = 45.0

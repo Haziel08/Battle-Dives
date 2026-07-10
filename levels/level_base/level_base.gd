@@ -127,7 +127,7 @@ const BANNERS = {
 const REVERSOS: Dictionary = {
 	"Espeleobuzo": "res://assets/ui/cards/reverso_espeleobuzo.png",
 	"Ingeniero": "res://assets/ui/cards/reverso_ingeniero.png",
-	"Científico de Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
+	"Cient. Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
 	"Vigilancia": "res://assets/ui/cards/reverso_vigilancia.png",
 	"Policía Marítima": "res://assets/ui/cards/reverso_policia_maritima.png",
 	"Arqueólogo": "res://assets/ui/cards/reverso_arqueologo.png",
@@ -135,7 +135,7 @@ const REVERSOS: Dictionary = {
 	"Oceanógrafo": "res://assets/ui/cards/reverso_oceanografo.png",
 	"Fotogrametrista": "res://assets/ui/cards/reverso_fotogrametrista.png",
 	"Paleontólogo": "res://assets/ui/cards/reverso_paleontologo.png",
-	"Educador Comunitario": "res://assets/ui/cards/reverso_voluntario.png",
+	"Voluntario": "res://assets/ui/cards/reverso_voluntario.png",
 }
 
 var pasos_extraccion_completados: Array[bool] = []

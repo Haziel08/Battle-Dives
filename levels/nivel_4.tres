@@ -31,6 +31,14 @@
 [ext_resource type="Resource" uid="uid://6ot8obkcmss6" path="res://core/extraction/paso_03_riesgo.tres" id="18_ns50c"]
 [ext_resource type="Resource" uid="uid://dwi5gm6hkbi64" path="res://core/extraction/paso_04_autorizacion.tres" id="19_lurwe"]
 [ext_resource type="Resource" uid="uid://d3pcdvxg8lcyg" path="res://core/extraction/paso_05_capsula.tres" id="20_fa4v6"]
+[ext_resource type="Resource" uid="uid://fd3ynts7h30g" path="res://levels/level_base/steps/tut_n4_01_bienvenida.tres" id="25_3h5bn"]
+[ext_resource type="Resource" uid="uid://bgl0gtkgltftw" path="res://levels/level_base/steps/tut_n4_02_panel.tres" id="26_2dhpo"]
+[ext_resource type="Resource" uid="uid://b7u1fjmpm3mqy" path="res://levels/level_base/steps/tut_n4_03_paso1.tres" id="27_1xjfw"]
+[ext_resource type="Resource" uid="uid://c8lmtjjgwgkev" path="res://levels/level_base/steps/tut_n4_04_paso2.tres" id="28_iab4f"]
+[ext_resource type="Resource" uid="uid://hynlyon8ik84" path="res://levels/level_base/steps/tut_n4_05_paso3.tres" id="29_5x4np"]
+[ext_resource type="Resource" uid="uid://cf343trkx7iln" path="res://levels/level_base/steps/tut_n4_06_pasos45.tres" id="30_2uup3"]
+[ext_resource type="Resource" uid="uid://e2k374u1tglg" path="res://levels/level_base/steps/tut_n4_07_extraer.tres" id="31_t7t1u"]
+[ext_resource type="Resource" uid="uid://dtbbxini6xc7f" path="res://levels/level_base/steps/tut_n4_08_inicio.tres" id="32_ysauf"]
 
 [sub_resource type="Resource" id="Resource_pqelc"]
 script = ExtResource("3_svvik")
@@ -82,15 +90,16 @@ metadata/_custom_type_script = "uid://bxea5stxciutd"
 script = ExtResource("6_ej262")
 nombre_nivel = "Conservación Crítica"
 nombre_hallazgo = "Sinsacro del Perezoso Gigante"
-hallazgo_if = 150.0
+hallazgo_if = 250.0
 hallazgo_ic = 150.0
-fi_inicial = 90.0
 tecnicas_disponibles = Array[ExtResource("7_6eaul")]([ExtResource("8_ej262"), ExtResource("9_6eaul"), ExtResource("10_ps6ke"), ExtResource("11_y6xl2"), ExtResource("12_lmrcp")])
 especialistas_disponibles = Array[ExtResource("1_17x2a")]([ExtResource("2_sf74g"), ExtResource("3_sx6ao"), ExtResource("4_720li"), ExtResource("5_70jch"), ExtResource("6_3w4c1"), ExtResource("7_iwpa4")])
+duracion_nivel = 200.0
 oleadas = Array[ExtResource("3_svvik")]([SubResource("Resource_pqelc"), SubResource("Resource_l51pi"), SubResource("Resource_qlfxc"), SubResource("Resource_l6kwk"), SubResource("Resource_3h08x"), SubResource("Resource_volvt")])
 eventos_posibles = Array[ExtResource("2_q74wt")]([ExtResource("9_iwpa4"), ExtResource("10_pqelc")])
-prob_evento_por_minuto = 0.4
 danio_if_por_tiempo = 0.6
+es_tutorial = true
+pasos_tutorial = Array[ExtResource("5_hwpdu")]([ExtResource("25_3h5bn"), ExtResource("26_2dhpo"), ExtResource("27_1xjfw"), ExtResource("28_iab4f"), ExtResource("29_5x4np"), ExtResource("30_2uup3"), ExtResource("31_t7t1u"), ExtResource("32_ysauf")])
 permite_extraccion = true
 pasos_extraccion = Array[ExtResource("4_rqix3")]([ExtResource("16_3h08x"), ExtResource("17_volvt"), ExtResource("18_ns50c"), ExtResource("19_lurwe"), ExtResource("20_fa4v6")])
 hallazgo_info_real = "El Nohochichak xibalbahkah ('animal de grandes garras que vivía en el inframundo' en maya) es una nueva especie y género de perezoso terrestre gigante descubierta en Hoyo Negro. Su sinsacro fue extraído mediante un procedimiento meticuloso: fotografía previa, registro 3D de ubicación y profundidad, evaluación del conservador, autorización científica y embalaje especializado. Todo el proceso fue filmado. Sus restos están resguardados en el Laboratorio de Arqueozoología del INAH. 
