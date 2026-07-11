@@ -20,6 +20,16 @@ func _ready() -> void:
 		$HoverArea.mouse_entered.connect(_on_hover_enter)
 		$HoverArea.mouse_exited.connect(_on_hover_exit)
 
+func set_sprite(tex: Texture2D) -> void:
+	if tex == null:
+		return
+	var sprite: Sprite2D = get_node_or_null("Sprite")
+	if sprite:
+		sprite.texture = tex
+		sprite.scale = Vector2(0.09, 0.09)
+		sprite.z_index = 1
+		queue_redraw()
+
 func recibir_danio_fisico(cantidad: float) -> void:
 	integridad_fisica = max(0.0, integridad_fisica - cantidad)
 	emit_signal("stats_actualizados", integridad_fisica, if_max, integridad_cientifica, ic_max)
@@ -60,4 +70,6 @@ func _on_hover_exit() -> void:
 		ref_nivel.ocultar_tooltip()
 
 func _draw() -> void:
-	draw_rect(Rect2(-32, -32, 64, 64), Color.YELLOW)
+	var sprite: Sprite2D = get_node_or_null("Sprite")
+	if sprite == null or sprite.texture == null:
+		draw_rect(Rect2(-32, -32, 64, 64), Color.YELLOW)

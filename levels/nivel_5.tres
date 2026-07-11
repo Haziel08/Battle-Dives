@@ -28,6 +28,8 @@
 [ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="17_ayxj7"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="17_ibdbi"]
 
+[ext_resource type="Texture2D" uid="uid://hallazgo_nai2" path="res://assets/hallazgos/naia.png" id="img_nai"]
+
 [sub_resource type="Resource" id="Resource_ilfq1"]
 script = ExtResource("3_mbhxp")
 threat = ExtResource("14_ffxlo")
@@ -97,4 +99,5 @@ danio_if_por_tiempo = 0.7
 hallazgo_info_real = "Naia es el esqueleto humano más completo y entre los más antiguos de América (~13,000 años). Murió entre los 15 y 17 años, medía ~145 cm y pesaba ~50 kg. Fue descubierta en 2007 por espeleobuzos del Proyecto Espeleológico Tulum y estudiada desde 2011 por el INAH. Su ADN confirmó que los nativos americanos contemporáneos descienden de los primeros pobladores que cruzaron desde Siberia por el Estrecho de Bering. Su sacro forzado indica que fue madre."
 hallazgo_descripcion_graciosa = "13,000 años después, Naia sigue enseñándonos sobre quiénes somos como especie. Pocos de nosotros dejamos una huella tan importante."
 entradas_almanaque = Array[ExtResource("1_alxmk")]([ExtResource("3_d8upj"), ExtResource("2_wh8i5"), ExtResource("4_78nxs")])
+hallazgo_imagen = ExtResource("img_nai")
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

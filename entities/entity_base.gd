@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 	flash_danio = lerp(flash_danio, 0.0, delta * 15.0)
 
 	if datos.es_estatico:
+		z_index = 0
 		timer_vida_estatico += delta
 		if timer_vida_estatico >= datos.duracion_estatico:
 			esta_vivo = false

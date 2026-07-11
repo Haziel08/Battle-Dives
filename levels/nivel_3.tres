@@ -23,6 +23,8 @@
 [ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="15_5bny7"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="16_bfthc"]
 
+[ext_resource type="Texture2D" uid="uid://hallazgo_gon2" path="res://assets/hallazgos/gonfoterio.png" id="img_gon"]
+
 [sub_resource type="Resource" id="Resource_q0b7u"]
 script = ExtResource("3_0jaqp")
 threat = ExtResource("11_3ld76")
@@ -75,4 +77,5 @@ prob_evento_por_minuto = 0.4
 hallazgo_info_real = "El Cuvieronius hyodon (gonfoterio) era un proboscídeo pariente de los elefantes modernos que habitó América hasta hace ~10,000 años. Sus restosnen Hoyo Negro pertenecen a uno de los 42 animales del Pleistoceno tardío encontrados en el sitio, de 13 especies distintas, 7 de ellas extintas. Su presencia confirma que la región era un ecosistema radicalmente diferente al actual. "
 hallazgo_descripcion_graciosa = "Un elefante con colmillos extra curvos que vivía en lo que hoy es la Riviera Maya. Los turistas de aquella época tenían una experiencia muy diferente en la playa. "
 entradas_almanaque = Array[ExtResource("1_bfthc")]([ExtResource("3_hqn81"), ExtResource("2_va31t")])
+hallazgo_imagen = ExtResource("img_gon")
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

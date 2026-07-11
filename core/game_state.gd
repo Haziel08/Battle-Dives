@@ -4,7 +4,7 @@ extends Node
 var niveles: Array[LevelData] = []
 
 var indice_nivel_actual: int = 0
-var niveles_desbloqueados: Array[bool] = [true, false, false, false, false]
+var niveles_desbloqueados: Array[bool] = [true, true, true, true, true]
 
 var entradas_almanaque_desbloqueadas: Array[String] = []
 

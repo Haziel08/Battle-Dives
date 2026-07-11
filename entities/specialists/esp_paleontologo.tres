@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_35xck")
-nombre = "Paleontólogo"
+nombre = "Paleontóloga"
 costo = 100
 duracion = 2.0
 tiene_activa = true
@@ -14,6 +14,8 @@ pasiva_fi_por_seg = 0.5
 activa_fi_instantaneo = 5.0
 activa_duracion_efecto = 1.0
 color_debug = Color(0.680403, 0.061220236, 0.40249294, 1)
+spritesheet_path = "res://assets/paleontologo_spritesheet.png"
+spritesheet_hframes = 4
 info_real = "Los paleontólogos del Proyecto Hoyo Negro identificaron restos de 44 especies animales del Pleistoceno tardío, incluyendo una especie y género completamente nuevos (Nohochichak xibalbahkah). El Dr. Joaquín Arroyo-Cabrales del Laboratorio de Arqueozoología del INAH y el Dr. Blaine Schubert de la Universidad Estatal de Tennessee del Este lideran el análisis de fauna del sitio."
 descripcion_graciosa = "Identifica una especie completamente nueva de perezoso gigante y la nombra 'animal de grandes garras que vive en el inframundo' en maya. Los paleontólogos de Hoyo Negro tienen energía muy específica y me encanta."
 metadata/_custom_type_script = "uid://jp81cwh1fegm"
