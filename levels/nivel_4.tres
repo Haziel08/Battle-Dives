@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="11_3w4c1"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="11_y6xl2"]
 [ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="12_iwpa4"]
+[ext_resource type="Resource" uid="uid://vyjuxdp1q4sy" path="res://entities/threats/contaminacion.tres" id="15_xh53g"]
 [ext_resource type="Resource" uid="uid://dsmyn7xspxxn7" path="res://core/extraction/paso_01_escaneo.tres" id="16_3h08x"]
 [ext_resource type="Resource" uid="uid://hujjredxtu5c" path="res://core/extraction/paso_02_registro.tres" id="17_volvt"]
 [ext_resource type="Resource" uid="uid://6ot8obkcmss6" path="res://core/extraction/paso_03_riesgo.tres" id="18_ns50c"]
@@ -36,52 +37,36 @@
 [ext_resource type="Resource" uid="uid://cf343trkx7iln" path="res://levels/level_base/steps/tut_n4_06_pasos45.tres" id="30_2uup3"]
 [ext_resource type="Resource" uid="uid://e2k374u1tglg" path="res://levels/level_base/steps/tut_n4_07_extraer.tres" id="31_t7t1u"]
 [ext_resource type="Resource" uid="uid://dtbbxini6xc7f" path="res://levels/level_base/steps/tut_n4_08_inicio.tres" id="32_ysauf"]
+[ext_resource type="Texture2D" uid="uid://c8el50aycd8fa" path="res://assets/hallazgos/perezoso.png" id="img_per"]
 
-[ext_resource type="Texture2D" uid="uid://hallazgo_per2" path="res://assets/hallazgos/perezoso.png" id="img_per"]
-
-[sub_resource type="Resource" id="Resource_pqelc"]
+[sub_resource type="Resource" id="Resource_3h5bn"]
 script = ExtResource("3_svvik")
 threat = ExtResource("10_70jch")
-intervalo_spawn = 25.0
+cantidad = 10
+intervalo_spawn = 6.0
+tiempo_inicio = 3.0
+metadata/_custom_type_script = "uid://bxea5stxciutd"
+
+[sub_resource type="Resource" id="Resource_2dhpo"]
+script = ExtResource("3_svvik")
+threat = ExtResource("15_xh53g")
+cantidad = 5
+intervalo_spawn = 8.0
 tiempo_inicio = 10.0
 metadata/_custom_type_script = "uid://bxea5stxciutd"
 
-[sub_resource type="Resource" id="Resource_l51pi"]
+[sub_resource type="Resource" id="Resource_1xjfw"]
 script = ExtResource("3_svvik")
 threat = ExtResource("11_3w4c1")
-cantidad = 2
-intervalo_spawn = 30.0
+cantidad = 4
+intervalo_spawn = 20.0
 tiempo_inicio = 20.0
 metadata/_custom_type_script = "uid://bxea5stxciutd"
 
-[sub_resource type="Resource" id="Resource_qlfxc"]
+[sub_resource type="Resource" id="Resource_iab4f"]
 script = ExtResource("3_svvik")
 threat = ExtResource("12_iwpa4")
 cantidad = 1
-tiempo_inicio = 45.0
-metadata/_custom_type_script = "uid://bxea5stxciutd"
-
-[sub_resource type="Resource" id="Resource_l6kwk"]
-script = ExtResource("3_svvik")
-threat = ExtResource("11_3w4c1")
-cantidad = 2
-intervalo_spawn = 25.0
-tiempo_inicio = 90.0
-metadata/_custom_type_script = "uid://bxea5stxciutd"
-
-[sub_resource type="Resource" id="Resource_3h08x"]
-script = ExtResource("3_svvik")
-threat = ExtResource("12_iwpa4")
-cantidad = 2
-intervalo_spawn = 40.0
-tiempo_inicio = 100.0
-metadata/_custom_type_script = "uid://bxea5stxciutd"
-
-[sub_resource type="Resource" id="Resource_volvt"]
-script = ExtResource("3_svvik")
-threat = ExtResource("10_70jch")
-cantidad = 2
-intervalo_spawn = 20.0
 tiempo_inicio = 150.0
 metadata/_custom_type_script = "uid://bxea5stxciutd"
 
@@ -94,8 +79,7 @@ hallazgo_ic = 150.0
 fi_inicial = 90.0
 tecnicas_disponibles = Array[ExtResource("7_6eaul")]([ExtResource("8_ej262"), ExtResource("9_6eaul"), ExtResource("10_ps6ke"), ExtResource("11_y6xl2")])
 especialistas_disponibles = Array[ExtResource("1_17x2a")]([ExtResource("2_sf74g"), ExtResource("3_sx6ao"), ExtResource("4_720li"), ExtResource("6_3w4c1")])
->>>>>>> ebe900651e0e763fa12939e37ec8194e78a606bd
-oleadas = Array[ExtResource("3_svvik")]([SubResource("Resource_pqelc"), SubResource("Resource_l51pi"), SubResource("Resource_qlfxc"), SubResource("Resource_l6kwk"), SubResource("Resource_3h08x"), SubResource("Resource_volvt")])
+oleadas = Array[ExtResource("3_svvik")]([SubResource("Resource_3h5bn"), SubResource("Resource_2dhpo"), SubResource("Resource_1xjfw"), SubResource("Resource_iab4f")])
 eventos_posibles = Array[ExtResource("2_q74wt")]([ExtResource("9_iwpa4"), ExtResource("10_pqelc")])
 danio_if_por_tiempo = 0.6
 es_tutorial = true
