@@ -24,15 +24,12 @@ var tecnicas: Array[TechniqueData] = [
 	preload("res://entities/specialists/tec_ingeniero.tres"),
 	preload("res://entities/specialists/tec_cient_materiales.tres"),
 	preload("res://entities/specialists/tec_vigilancia.tres"),
-	preload("res://entities/specialists/tec_policia_maritima.tres"),
 ]
 
 var especialistas: Array[SpecialistData] = [
 	preload("res://entities/specialists/esp_arqueologo.tres"),
 	preload("res://entities/specialists/esp_conservadore.tres"),
-	preload("res://entities/specialists/esp_oceanografo.tres"),
 	preload("res://entities/specialists/esp_fotogrametrista.tres"),
-	preload("res://entities/specialists/esp_divulgador.tres"),
 	preload("res://entities/specialists/esp_paleontologo.tres"),
 ]
 

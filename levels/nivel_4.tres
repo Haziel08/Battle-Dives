@@ -10,12 +10,10 @@
 [ext_resource type="Resource" uid="uid://cj5akcqmu3yec" path="res://assets/almanac/entries/entry_n4_paleontologo.tres" id="3_vcxif"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_720li"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_rqix3"]
-[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_70jch"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_hwpdu"]
 [ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="6_3w4c1"]
 [ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="6_ej262"]
 [ext_resource type="Script" uid="uid://cn5ubsk5eln5s" path="res://entities/specialists/technique_data.gd" id="7_6eaul"]
-[ext_resource type="Resource" uid="uid://nuh7qkj2vbm5" path="res://entities/specialists/esp_divulgador.tres" id="7_iwpa4"]
 [ext_resource type="Resource" uid="uid://bj5br1cc4vkti" path="res://entities/specialists/tec_espeleobuzo.tres" id="8_ej262"]
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="9_6eaul"]
 [ext_resource type="Resource" uid="uid://k5ye8tk3bx3l" path="res://core/events/evento_sismo.tres" id="9_iwpa4"]
@@ -25,7 +23,6 @@
 [ext_resource type="Resource" uid="uid://d1p6sces8obfg" path="res://entities/threats/buceador.tres" id="11_3w4c1"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="11_y6xl2"]
 [ext_resource type="Resource" uid="uid://cqnmwh05koeev" path="res://entities/threats/saqueador.tres" id="12_iwpa4"]
-[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="12_lmrcp"]
 [ext_resource type="Resource" uid="uid://dsmyn7xspxxn7" path="res://core/extraction/paso_01_escaneo.tres" id="16_3h08x"]
 [ext_resource type="Resource" uid="uid://hujjredxtu5c" path="res://core/extraction/paso_02_registro.tres" id="17_volvt"]
 [ext_resource type="Resource" uid="uid://6ot8obkcmss6" path="res://core/extraction/paso_03_riesgo.tres" id="18_ns50c"]
@@ -39,6 +36,8 @@
 [ext_resource type="Resource" uid="uid://cf343trkx7iln" path="res://levels/level_base/steps/tut_n4_06_pasos45.tres" id="30_2uup3"]
 [ext_resource type="Resource" uid="uid://e2k374u1tglg" path="res://levels/level_base/steps/tut_n4_07_extraer.tres" id="31_t7t1u"]
 [ext_resource type="Resource" uid="uid://dtbbxini6xc7f" path="res://levels/level_base/steps/tut_n4_08_inicio.tres" id="32_ysauf"]
+
+[ext_resource type="Texture2D" uid="uid://hallazgo_per2" path="res://assets/hallazgos/perezoso.png" id="img_per"]
 
 [sub_resource type="Resource" id="Resource_pqelc"]
 script = ExtResource("3_svvik")
@@ -92,9 +91,10 @@ nombre_nivel = "Conservación Crítica"
 nombre_hallazgo = "Sinsacro del Perezoso Gigante"
 hallazgo_if = 250.0
 hallazgo_ic = 150.0
-tecnicas_disponibles = Array[ExtResource("7_6eaul")]([ExtResource("8_ej262"), ExtResource("9_6eaul"), ExtResource("10_ps6ke"), ExtResource("11_y6xl2"), ExtResource("12_lmrcp")])
-especialistas_disponibles = Array[ExtResource("1_17x2a")]([ExtResource("2_sf74g"), ExtResource("3_sx6ao"), ExtResource("4_720li"), ExtResource("5_70jch"), ExtResource("6_3w4c1"), ExtResource("7_iwpa4")])
-duracion_nivel = 200.0
+fi_inicial = 90.0
+tecnicas_disponibles = Array[ExtResource("7_6eaul")]([ExtResource("8_ej262"), ExtResource("9_6eaul"), ExtResource("10_ps6ke"), ExtResource("11_y6xl2")])
+especialistas_disponibles = Array[ExtResource("1_17x2a")]([ExtResource("2_sf74g"), ExtResource("3_sx6ao"), ExtResource("4_720li"), ExtResource("6_3w4c1")])
+>>>>>>> ebe900651e0e763fa12939e37ec8194e78a606bd
 oleadas = Array[ExtResource("3_svvik")]([SubResource("Resource_pqelc"), SubResource("Resource_l51pi"), SubResource("Resource_qlfxc"), SubResource("Resource_l6kwk"), SubResource("Resource_3h08x"), SubResource("Resource_volvt")])
 eventos_posibles = Array[ExtResource("2_q74wt")]([ExtResource("9_iwpa4"), ExtResource("10_pqelc")])
 danio_if_por_tiempo = 0.6
@@ -106,4 +106,5 @@ hallazgo_info_real = "El Nohochichak xibalbahkah ('animal de grandes garras que 
 "
 hallazgo_descripcion_graciosa = "Su nombre en maya ya advertía que era intimidante."
 entradas_almanaque = Array[ExtResource("1_fa4v6")]([ExtResource("2_blr2u"), ExtResource("3_vcxif")])
+hallazgo_imagen = ExtResource("img_per")
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"

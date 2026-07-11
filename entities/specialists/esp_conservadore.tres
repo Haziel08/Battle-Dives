@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_qyv4t")
-nombre = "Conservador"
+nombre = "Conservadora"
 costo = 70
 duracion = 20.0
 pasiva_if_por_seg = 2.0

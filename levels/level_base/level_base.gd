@@ -129,13 +129,10 @@ const REVERSOS: Dictionary = {
 	"Ingeniero": "res://assets/ui/cards/reverso_ingeniero.png",
 	"Cient. Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
 	"Vigilancia": "res://assets/ui/cards/reverso_vigilancia.png",
-	"Policía Marítima": "res://assets/ui/cards/reverso_policia_maritima.png",
 	"Arqueólogo": "res://assets/ui/cards/reverso_arqueologo.png",
-	"Conservador": "res://assets/ui/cards/reverso_conservador.png",
-	"Oceanógrafo": "res://assets/ui/cards/reverso_oceanografo.png",
+	"Conservadora": "res://assets/ui/cards/reverso_conservador.png",
 	"Fotogrametrista": "res://assets/ui/cards/reverso_fotogrametrista.png",
-	"Paleontólogo": "res://assets/ui/cards/reverso_paleontologo.png",
-	"Voluntario": "res://assets/ui/cards/reverso_voluntario.png",
+	"Paleontóloga": "res://assets/ui/cards/reverso_paleontologo.png",
 }
 
 var pasos_extraccion_completados: Array[bool] = []
@@ -232,6 +229,8 @@ func _cargar_configuracion() -> void:
 	# Reinicializar sin llamar _ready() para evitar señales duplicadas
 	finding.if_max = nivel_actual.hallazgo_if
 	finding.ic_max = nivel_actual.hallazgo_ic
+	if nivel_actual.hallazgo_imagen != null:
+		finding.set_sprite(nivel_actual.hallazgo_imagen)
 
 	fondo_investigacion = nivel_actual.fi_inicial
 	fi_pasivo_base = nivel_actual.fi_pasivo_base
@@ -571,7 +570,10 @@ func desplegar_especialista(indice: int) -> void:
 	AudioManager.play_sfx("despliegue_especialista")
 	var esp = specialist_scene.instantiate()
 	# Se coloca cerca del hallazgo (offset pequeño para no superponerse exacto)
-	esp.position = finding.position + Vector2(-40, especialistas_activos.size() * 20 - 20)
+	var idx = especialistas_activos.size()
+	var offset_x = -60 + (idx % 3) * 60
+	var offset_y = (idx / 3) * 70
+	esp.position = finding.position + Vector2(offset_x, offset_y - 40)
 	$FindingZone.add_child(esp)
 	esp.inicializar(ficha, finding, self)
 

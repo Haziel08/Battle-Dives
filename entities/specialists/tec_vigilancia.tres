@@ -11,6 +11,7 @@ velocidad = 50.0
 radio_deteccion = 100.0
 efectivo_contra = Array[String](["saqueador", "buceador"])
 color_debug = Color(0.50147754, 0.56512266, 0.09797313, 1)
+spritesheet_path = "res://assets/vigilancia_spritesheet.png"
 info_real = "La vigilancia de sitios arqueológicos subacuáticos combina cámaras submarinas, patrullaje por buzos y registro de accesos. El INAH y el Gobierno de Quintana Roo coordinan la protección legal de Hoyo Negro, que está catalogado como Zona de Monumentos Arqueológicos. El acceso no autorizado es un delito federal en México."
 descripcion_graciosa = "La cámara submarina no tiene Wi-Fi, el buzo de patrulla tiene frío, y el saqueador tiene que explicarle a la policía marítima por qué traía un fósil de perezoso gigante en la mochila."
 metadata/_custom_type_script = "uid://cn5ubsk5eln5s"

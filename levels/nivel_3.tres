@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://be1kkelvh3dy4" path="res://entities/specialists/esp_arqueologo.tres" id="3_xjoya"]
 [ext_resource type="Resource" uid="uid://cathf3gev17fc" path="res://entities/specialists/esp_paleontologo.tres" id="4_a1rhe"]
 [ext_resource type="Script" uid="uid://hk2socci21sf" path="res://core/extraction_step_data.gd" id="4_y60mo"]
-[ext_resource type="Resource" uid="uid://d4mf3lfkgc1m2" path="res://entities/specialists/esp_oceanografo.tres" id="5_h0o0n"]
 [ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="5_w1hvu"]
 [ext_resource type="Resource" uid="uid://dulf5jjqjf0mj" path="res://entities/specialists/esp_fotogrametrista.tres" id="6_3ld76"]
 [ext_resource type="Script" uid="uid://dbmq8y8dxronl" path="res://core/level_data.gd" id="6_44s2u"]
@@ -23,7 +22,8 @@
 [ext_resource type="Resource" uid="uid://bbbwcfhe43j23" path="res://entities/specialists/tec_ingeniero.tres" id="14_q0b7u"]
 [ext_resource type="Resource" uid="uid://cnio0m1nj2ixd" path="res://entities/specialists/tec_vigilancia.tres" id="15_5bny7"]
 [ext_resource type="Resource" uid="uid://basdxl0cb76qc" path="res://entities/specialists/tec_cient_materiales.tres" id="16_bfthc"]
-[ext_resource type="Resource" uid="uid://b213q5vbfvt6j" path="res://entities/specialists/tec_policia_maritima.tres" id="17_va31t"]
+
+[ext_resource type="Texture2D" uid="uid://hallazgo_gon2" path="res://assets/hallazgos/gonfoterio.png" id="img_gon"]
 
 [sub_resource type="Resource" id="Resource_q0b7u"]
 script = ExtResource("3_0jaqp")
@@ -68,8 +68,8 @@ metadata/_custom_type_script = "uid://bxea5stxciutd"
 script = ExtResource("6_44s2u")
 nombre_nivel = "Zona de Sedimentos"
 nombre_hallazgo = "Restos de Gonfoterio"
-tecnicas_disponibles = Array[ExtResource("7_dtucr")]([ExtResource("13_11qgs"), ExtResource("14_q0b7u"), ExtResource("15_5bny7"), ExtResource("16_bfthc"), ExtResource("17_va31t")])
-especialistas_disponibles = Array[ExtResource("1_5tmrs")]([ExtResource("2_fjyne"), ExtResource("3_xjoya"), ExtResource("4_a1rhe"), ExtResource("5_h0o0n"), ExtResource("6_3ld76")])
+tecnicas_disponibles = Array[ExtResource("7_dtucr")]([ExtResource("13_11qgs"), ExtResource("14_q0b7u"), ExtResource("15_5bny7"), ExtResource("16_bfthc")])
+especialistas_disponibles = Array[ExtResource("1_5tmrs")]([ExtResource("2_fjyne"), ExtResource("3_xjoya"), ExtResource("4_a1rhe"), ExtResource("6_3ld76")])
 duracion_nivel = 150.0
 oleadas = Array[ExtResource("3_0jaqp")]([SubResource("Resource_q0b7u"), SubResource("Resource_5bny7"), SubResource("Resource_3ld76"), SubResource("Resource_11qgs"), SubResource("Resource_bfthc")])
 eventos_posibles = Array[ExtResource("2_txr5h")]([ExtResource("8_a1rhe"), ExtResource("9_h0o0n")])
@@ -77,4 +77,5 @@ prob_evento_por_minuto = 0.4
 hallazgo_info_real = "El Cuvieronius hyodon (gonfoterio) era un proboscídeo pariente de los elefantes modernos que habitó América hasta hace ~10,000 años. Sus restosnen Hoyo Negro pertenecen a uno de los 42 animales del Pleistoceno tardío encontrados en el sitio, de 13 especies distintas, 7 de ellas extintas. Su presencia confirma que la región era un ecosistema radicalmente diferente al actual. "
 hallazgo_descripcion_graciosa = "Un elefante con colmillos extra curvos que vivía en lo que hoy es la Riviera Maya. Los turistas de aquella época tenían una experiencia muy diferente en la playa. "
 entradas_almanaque = Array[ExtResource("1_bfthc")]([ExtResource("3_hqn81"), ExtResource("2_va31t")])
+hallazgo_imagen = ExtResource("img_gon")
 metadata/_custom_type_script = "uid://dbmq8y8dxronl"
