@@ -110,10 +110,13 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TopPanel" type="TextureRect" parent="HUD" unique_id=2119066772]
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_bottom = 60.0
+anchor_bottom = 1.0
+offset_top = -60.0
 grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("6_5qqpq")
 
 [node name="LabelFI" type="Label" parent="HUD/TopPanel" unique_id=1625199864]
@@ -172,14 +175,10 @@ offset_right = 809.0
 offset_bottom = 105.0
 
 [node name="BottomPanel" type="TextureRect" parent="HUD" unique_id=1540433401]
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -131.0
-offset_bottom = -1.0
+offset_bottom = 131.0
 grow_horizontal = 2
-grow_vertical = 0
 texture = ExtResource("7_c1bvk")
 
 [node name="BtnTabTecnicas" type="Button" parent="HUD/BottomPanel" unique_id=1687149238]
@@ -317,10 +316,10 @@ offset_bottom = 120.0
 
 [node name="BtnMejoraFI" type="TextureButton" parent="HUD/BottomPanel" unique_id=391739322]
 layout_mode = 0
-offset_left = 997.0
-offset_top = -44.0
-offset_right = 1206.0
-offset_bottom = 162.0
+offset_left = 1006.0
+offset_top = -56.0
+offset_right = 1215.0
+offset_bottom = 150.0
 texture_normal = ExtResource("22_boton")
 texture_pressed = ExtResource("23_botonhover")
 texture_hover = ExtResource("23_botonhover")
@@ -329,10 +328,10 @@ stretch_mode = 0
 
 [node name="Icono" type="TextureRect" parent="HUD/BottomPanel/BtnMejoraFI" unique_id=1213915480]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 19.0
-offset_right = 157.0
-offset_bottom = 145.0
+offset_left = 38.0
+offset_top = 29.0
+offset_right = 160.0
+offset_bottom = 155.0
 mouse_filter = 2
 texture = ExtResource("24_botondinero")
 expand_mode = 1
@@ -340,10 +339,10 @@ stretch_mode = 5
 
 [node name="LabelMejora" type="Label" parent="HUD/BottomPanel/BtnMejoraFI" unique_id=1825926081]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 133.0
-offset_right = 146.0
-offset_bottom = 153.0
+offset_left = 61.0
+offset_top = 139.00002
+offset_right = 153.0
+offset_bottom = 160.00002
 rotation = 0.0013460976
 scale = Vector2(0.96, 1.64)
 theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.99607843, 1)
@@ -439,10 +438,14 @@ scale = Vector2(0.32636362, 0.2949382)
 texture = ExtResource("17_sal")
 
 [node name="BtnPausa" type="TextureButton" parent="HUD" unique_id=42655146]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 370.0
-offset_top = 6.0
+offset_top = -56.0
 offset_right = 420.0
-offset_bottom = 56.0
+offset_bottom = -6.0
+grow_vertical = 0
 texture_normal = ExtResource("14_pb")
 texture_hover = ExtResource("15_pbh")
 ignore_texture_size = true
@@ -586,9 +589,9 @@ autowrap_mode = 2
 z_index = -1
 clip_contents = true
 offset_left = 10.0
-offset_top = 70.0
+offset_top = 135.0
 offset_right = 355.0
-offset_bottom = 490.0
+offset_bottom = 555.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2u3pq")
 
 [node name="FondoPanel" type="TextureRect" parent="HUD/PanelExtraccion" unique_id=1325029935]
