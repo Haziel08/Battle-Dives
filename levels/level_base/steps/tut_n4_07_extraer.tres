@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://e2k374u1tglg"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_8w6d0"]
+
+[resource]
+script = ExtResource("1_8w6d0")
+texto = "IMPORTANTE: Si presionas EXTRAER sin completar todos los pasos, ¡pierdes 30 IC! Completa el protocolo primero para una extracción exitosa."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

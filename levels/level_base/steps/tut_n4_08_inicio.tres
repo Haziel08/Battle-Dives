@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://dtbbxini6xc7f"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_tjhs2"]
+
+[resource]
+script = ExtResource("1_tjhs2")
+texto = "¡Protege el hallazgo mientras completas el protocolo! Las amenazas no esperan. Usa tus técnicas para defenderlo mientras los especialistas trabajan."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

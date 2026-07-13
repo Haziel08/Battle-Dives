@@ -127,7 +127,7 @@ const BANNERS = {
 const REVERSOS: Dictionary = {
 	"Espeleobuzo": "res://assets/ui/cards/reverso_espeleobuzo.png",
 	"Ingeniero": "res://assets/ui/cards/reverso_ingeniero.png",
-	"Científico de Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
+	"Cient. Materiales": "res://assets/ui/cards/reverso_cient_materiales.png",
 	"Vigilancia": "res://assets/ui/cards/reverso_vigilancia.png",
 	"Arqueólogo": "res://assets/ui/cards/reverso_arqueologo.png",
 	"Conservadora": "res://assets/ui/cards/reverso_conservador.png",

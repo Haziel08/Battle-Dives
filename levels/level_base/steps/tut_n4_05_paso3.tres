@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://hynlyon8ik84"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_youp8"]
+
+[resource]
+script = ExtResource("1_youp8")
+texto = "PASO 3 — Evaluación de riesgo: Despliega al CONSERVADOR y haz DOBLE CLIC para que evalúe si es seguro extraer el hallazgo."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

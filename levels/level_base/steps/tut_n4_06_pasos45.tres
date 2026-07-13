@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://cf343trkx7iln"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_3cmkc"]
+
+[resource]
+script = ExtResource("1_3cmkc")
+texto = "¡Bien! Los pasos 4 y 5 (Autorización y Cápsula) se realizan con los botones del panel. Cuestan FI pero son necesarios para completar el protocolo."
+metadata/_custom_type_script = "uid://y421pwqha5yv"

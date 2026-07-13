@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TutorialStep" format=3 uid="uid://c8lmtjjgwgkev"]
+
+[ext_resource type="Script" uid="uid://y421pwqha5yv" path="res://core/tutorial_step.gd" id="1_1erkn"]
+
+[resource]
+script = ExtResource("1_1erkn")
+texto = "PASO 2 — Registro: Despliega al ARQUEÓLOGO y haz DOBLE CLIC para que registre la ubicación y profundidad exacta del hallazgo."
+metadata/_custom_type_script = "uid://y421pwqha5yv"
